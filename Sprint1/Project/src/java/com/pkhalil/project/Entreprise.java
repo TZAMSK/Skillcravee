@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.pkhalil.project;
+package com.stage.chezbio.model.entities;
 
 import java.io.Serializable;
 
@@ -15,17 +10,21 @@ public class Entreprise implements Serializable{
     private int IDInc;
     private String NomInc;
     private int Telephone;
-    private char Email;
+    private String Email;
     private String Contact;
-    private char PasswordInc;
+    private String PasswordInc;
     
-    public Entreprise(int idInc, String nomInc, int telephone, char email, String contact, char passwordInc){
+    public Entreprise(int idInc, String nomInc, int telephone, String email, String contact, String passwordInc){
         this.IDInc = idInc;
         this.NomInc = nomInc;
         this.Telephone = telephone;
         this.Email = email;
         this.Contact = contact;
         this.PasswordInc = passwordInc;
+    }
+
+    public Entreprise() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     public int getIDInc(){
@@ -50,10 +49,10 @@ public class Entreprise implements Serializable{
     }
     
     
-    public char getemail(){
+    public String getemail(){
         return Email;
     }
-    public void setemail(char email){
+    public void setemail(String email){
         this.Email = email;
     }
     
@@ -66,10 +65,10 @@ public class Entreprise implements Serializable{
     }
     
     
-    public char getPasswordInc(){
+    public String getPasswordInc(){
         return PasswordInc;
     }
-    public void setPasswordInc(char passwordInc){
+    public void setPasswordInc(String passwordInc){
         this.PasswordInc = passwordInc;
     }
 }

@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.pkhalil.project;
+package com.stage.chezbio.model.entities;
 
 import java.io.Serializable;
 
@@ -14,12 +9,19 @@ import java.io.Serializable;
 public class Administrateur implements Serializable{
     private int IdAdmin;
     private String NomAdmin;
-    private char PasswordAdmin;
+    private String PrenomAdmin;
+    private String emailAdmin;
+    private String PasswordAdmin;
    
-    public Administrateur(int idAdmin, String nomAdmin,char passwordAdmin){
-        this.IdAdmin = idAdmin;
-        this.NomAdmin = nomAdmin;
-        this.PasswordAdmin = passwordAdmin;
+    public Administrateur(int id, String nom, String prenom, String email, String password){
+        this.IdAdmin = id;
+        this.NomAdmin = nom;
+        this.PrenomAdmin = prenom;
+        this.emailAdmin = email;
+        this.PasswordAdmin = password;
+    }
+
+    public Administrateur() {
     }
     
     public int getIdAdmin(){
@@ -38,10 +40,27 @@ public class Administrateur implements Serializable{
     }
     
     
-    public char getPasswordAdmin(){
+    public String getPasswordAdmin(){
         return PasswordAdmin;
     }
-    public void setPasswordAdmin(char passwordAdmin){
+    public void setPasswordAdmin(String passwordAdmin){
         this.PasswordAdmin = passwordAdmin;
     }
+
+    public String getPrenomAdmin() {
+        return PrenomAdmin;
+    }
+
+    public void setPrenomAdmin(String PrenomAdmin) {
+        this.PrenomAdmin = PrenomAdmin;
+    }
+
+    public String getEmailAdmin() {
+        return emailAdmin;
+    }
+
+    public void setEmailAdmin(String emailAdmin) {
+        this.emailAdmin = emailAdmin;
+    }
+    
 }

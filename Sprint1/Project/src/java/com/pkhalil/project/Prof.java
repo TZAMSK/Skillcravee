@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.pkhalil.project;
+package com.stage.chezbio.model.entities;
 
 import java.io.Serializable;
 
@@ -15,14 +10,19 @@ public class Prof implements Serializable{
     private int IDProf;
     private String NomProf;
     private String PrenomProf;
-    private char PasswordProf;
+    private String emailProf;
+    private String passwordProf;
     
-    public Prof(int idProf, String nomProf, String prenomProf, char passwordProf){
+    public Prof(int idProf, String nomProf, String prenomProf, String email, String password){
         this.IDProf = idProf;
         this.NomProf = nomProf;
         this.PrenomProf = prenomProf;
-        this.PasswordProf = passwordProf;
+        this.emailProf = email;
+        this.passwordProf = password;
     }
+
+    public Prof(){}
+    
     
     
     public String getPrenomProf(){
@@ -48,12 +48,21 @@ public class Prof implements Serializable{
     public void setIDProf(int idProf){
         this.IDProf = idProf;
     }
-    
-    
-    public char getPasswordProf(){
-        return PasswordProf;
+
+    public String getEmailProf() {
+        return emailProf;
     }
-    public void setPasswordProf(char passwordProf){
-        this.PasswordProf = passwordProf;
+
+    public void setEmailProf(String emailProf) {
+        this.emailProf = emailProf;
     }
+
+    public String getPasswordProf() {
+        return passwordProf;
+    }
+
+    public void setPasswordProf(String passwordProf) {
+        this.passwordProf = passwordProf;
+    }
+    
 }
