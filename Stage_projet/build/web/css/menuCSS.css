@@ -1,0 +1,45 @@
+#logo{
+    width: 100px
+}
+#titre{
+    font-family: Candara;
+    padding-left: 15px;
+    color: rgb(29,97,74);
+}
+
+ul#liste {
+    min-width: 696px;
+    list-style: none;
+    padding-top: 20px;
+}
+
+ul#liste li {
+    display: inline;
+}
+
+#droite ul a{
+    text-decoration: none;
+    color: rgb(29,97,74);
+    padding-right: 30px;
+    font-family: Candara,sans-serif;
+    font-size: 19px;
+}
+
+header{
+    border-bottom: 1px solid rgb(82, 22, 22);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tete{
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+}
+
+
+
+
