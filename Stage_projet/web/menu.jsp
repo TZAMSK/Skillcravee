@@ -56,7 +56,7 @@
 
                             <li>
                                 <a
-                                    href="administrationConcontroller">Administration
+                                    href="adminLog.jsp">Administration
                                 </a>
                             </li>
 
