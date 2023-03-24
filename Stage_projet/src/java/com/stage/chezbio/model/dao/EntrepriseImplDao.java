@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.stage.chezbio.model.dao;
 
-import com.stage.chezbio.model.entities.Administrateur;
 import com.stage.chezbio.model.entities.Entreprise;
 import com.stage.chezbio.model.singleton.ConnexionBD;
 import java.sql.PreparedStatement;
@@ -30,24 +26,17 @@ public class EntrepriseImplDao implements EntrepriseDAO {
     public List<Entreprise> findAll() {
         List<Entreprise> listeEntreprise = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_INC);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
 
             listeEntreprise = new ArrayList<>();
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 Entreprise entreprise = new Entreprise();
                 entreprise.setIDInc(result.getInt("id"));
                 entreprise.setNomInc(result.getString("nom"));
                 entreprise.setTelephone(result.getInt("telephone"));
                 entreprise.setContact(result.getString("contact"));
-                entreprise.setemail(result.getString("email"));
+                entreprise.setEmail(result.getString("email"));
                 entreprise.setPasswordInc(result.getString("password"));
 
                 listeEntreprise.add(entreprise);
@@ -55,7 +44,6 @@ public class EntrepriseImplDao implements EntrepriseDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EntrepriseImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return listeEntreprise;
     }
@@ -64,32 +52,22 @@ public class EntrepriseImplDao implements EntrepriseDAO {
     public Entreprise findById(int IDInc) {
         Entreprise entreprise = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_INC_BY_ID);
-            // on initialise la propriété id du bean avec sa valeur
             ps.setInt(1, IDInc);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
-
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 entreprise = new Entreprise();
                 entreprise.setIDInc(result.getInt("id"));
                 entreprise.setNomInc(result.getString("nom"));
                 entreprise.setTelephone(result.getInt("telephone"));
                 entreprise.setContact(result.getString("contact"));
-                entreprise.setemail(result.getString("email"));
+                entreprise.setEmail(result.getString("email"));
                 entreprise.setPasswordInc(result.getString("password"));
 
             }
         } catch (SQLException ex) {
             Logger.getLogger(EntrepriseImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return entreprise;
     }
@@ -98,32 +76,22 @@ public class EntrepriseImplDao implements EntrepriseDAO {
     public Entreprise findByName(String NomInc) {
         Entreprise entreprise = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_INC_BY_NAME);
-            // on initialise la propriété id du bean avec sa valeur
             ps.setString(1, NomInc);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
-
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 entreprise = new Entreprise();
                 entreprise.setIDInc(result.getInt("id"));
                 entreprise.setNomInc(result.getString("nom"));
                 entreprise.setTelephone(result.getInt("telephone"));
                 entreprise.setContact(result.getString("contact"));
-                entreprise.setemail(result.getString("email"));
+                entreprise.setEmail(result.getString("email"));
                 entreprise.setPasswordInc(result.getString("password"));
 
             };
         } catch (SQLException ex) {
             Logger.getLogger(EntrepriseImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return entreprise;
     }
@@ -132,32 +100,22 @@ public class EntrepriseImplDao implements EntrepriseDAO {
     public Entreprise findByEmail(String Email) {
 Entreprise entreprise = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_CONNEXION_BY_EMAIL);
-            // on initialise la propriété id du bean avec sa valeur
             ps.setString(1, Email);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
-
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 entreprise = new Entreprise();
                 entreprise.setIDInc(result.getInt("id"));
                 entreprise.setNomInc(result.getString("nom"));
                 entreprise.setTelephone(result.getInt("telephone"));
                 entreprise.setContact(result.getString("contact"));
-                entreprise.setemail(result.getString("email"));
+                entreprise.setEmail(result.getString("email"));
                 entreprise.setPasswordInc(result.getString("password"));
 
             };
         } catch (SQLException ex) {
             Logger.getLogger(EntrepriseImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return entreprise;    }
 

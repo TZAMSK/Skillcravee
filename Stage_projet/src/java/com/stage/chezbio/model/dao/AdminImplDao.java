@@ -30,25 +30,17 @@ public class AdminImplDao implements AdministrateurDAO {
     public List<Administrateur> findAll() {
         List<Administrateur> listeAdmin = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_ADMIN);
-            
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
 
             listeAdmin = new ArrayList<>();
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 Administrateur admin = new Administrateur();
                 admin.setIdAdmin(result.getInt("id"));
                 admin.setNomAdmin(result.getString("nom"));
                 admin.setPrenomAdmin(result.getString("prenom"));
-                admin.setPasswordAdmin(result.getString("password"));
                 admin.setEmailAdmin(result.getString("email"));
+                admin.setUsernameAdmin(result.getString("username"));
                 admin.setPasswordAdmin(result.getString("password"));
 
                 listeAdmin.add(admin);
@@ -56,7 +48,6 @@ public class AdminImplDao implements AdministrateurDAO {
         } catch (SQLException ex) {
             Logger.getLogger(AdminImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return listeAdmin;
     }
@@ -66,31 +57,23 @@ public class AdminImplDao implements AdministrateurDAO {
         Administrateur admin = null;
         try {
 
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_ADMIN_BY_ID);
-            // on initialise la propriété id du bean avec sa valeur
             ps.setInt(1, IdAdmin);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
 
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 admin = new Administrateur();
                 admin.setIdAdmin(result.getInt("id"));
                 admin.setNomAdmin(result.getString("nom"));
                 admin.setPrenomAdmin(result.getString("prenom"));
-                admin.setPasswordAdmin(result.getString("password"));
                 admin.setEmailAdmin(result.getString("email"));
+                admin.setUsernameAdmin(result.getString("username"));
                 admin.setPasswordAdmin(result.getString("password"));
 
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return admin;
     }
@@ -99,32 +82,22 @@ public class AdminImplDao implements AdministrateurDAO {
     public Administrateur findByName(String NomAdmin) {
         Administrateur admin = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_SELECT_ADMIN_BY_NAME);
-            // on initialise la propriété id du bean avec sa valeur
             ps.setString(1, NomAdmin);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
-
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 admin = new Administrateur();
                 admin.setIdAdmin(result.getInt("id"));
                 admin.setNomAdmin(result.getString("nom"));
                 admin.setPrenomAdmin(result.getString("prenom"));
-                admin.setPasswordAdmin(result.getString("password"));
                 admin.setEmailAdmin(result.getString("email"));
+                admin.setUsernameAdmin(result.getString("username"));
                 admin.setPasswordAdmin(result.getString("password"));
 
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return admin;
     }
@@ -133,18 +106,9 @@ public class AdminImplDao implements AdministrateurDAO {
     public Administrateur existsByPassword(String PasswordAdmin) {
         Administrateur admin = null;
         try {
-
-            //Initialise la requête préparée basée sur la connexion
-            // la requête SQL passé en argument pour construire l'objet preparedStatement
             PreparedStatement ps = ConnexionBD.getConnection().prepareStatement(SQL_CONNEXION_BY_PASSWORD);
-            // on initialise la propriété email du bean avec sa premiere valeur
             ps.setString(2, PasswordAdmin);
-            //On execute la requête et on récupère les résultats dans la requête 
-            // dans ResultSet
             ResultSet result = ps.executeQuery();
-
-            //// la méthode next() pour se déplacer sur l'enregistrement suivant
-            //on parcours ligne par ligne les résultas retournés
             while (result.next()) {
                 admin = new Administrateur();
                 admin.setNomAdmin(result.getString("nom"));
@@ -154,7 +118,6 @@ public class AdminImplDao implements AdministrateurDAO {
         } catch (SQLException ex) {
             Logger.getLogger(AdminImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return admin;
     }
