@@ -16,10 +16,9 @@
             <form method="POST" action="#">
             <h1 class="h1">CONTENT DE VOUS REVOIR!<h1>
                 <p>Mettez vos identifiants pour continuer</p>
-            <input placeholder="Username" type="text" class="form-control" id="email"  name="username">
-            <input placeholder="Password" type="password" class="form-control" id="password"  name="password">
-           
-            <input type="submit" id="submit" name="submit" value="LOGIN" class="btn-login"/>
+                <input placeholder="Username" type="text" class="form-control" id="email"  name="username">
+                <input placeholder="Password" type="password" class="form-control" id="password"  name="password">
+                <input type="submit" id="submit" name="submit" value="LOGIN" class="btn-login"/>
             <br>
             <p>Pas de compte?</p>
             <a href="inscription.jsp">Créer une!</a>

@@ -21,7 +21,7 @@
                 <h1 class="h1">PRESQUE LÀ!<h1>
                     <p>Maintenant, donnez votre email et mot de passe</p>
                 <form method="post" id="inscription2" action="inscription3.jsp">    
-                    <input placeholder="Adresse E-mail" type="text" class="form-control" id="email" for="email"  name="email">
+                    <input placeholder="Username" type="text" class="form-control" id="username" for="username" name="username">
                     <input placeholder="Mot de passe" type="password" class="form-control" id="pwd" for="pwd"  name="pwd">
                     <input placeholder="À nouveau" type="password" class="form-control" id="pw2" for="pw2"  name="pw2">
                     <div class="navigation">

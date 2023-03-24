@@ -19,7 +19,6 @@
                         <input placeholder="Prénom" type="text" class="form-control" id="prenom" for="prenom" name="prenom">
                         <input placeholder="Nom" type="text" class="form-control" id="nom" for="nom" name="nom">
                         <input placeholder="Email" type="text" class="form-control" id="email" for="email" name="email">
-                        <input placeholder="Username" type="text" class="form-control" id="username" for="username" name="username">
 
                         <br>
                         <input type="checkbox" name="condition" value="Agree">

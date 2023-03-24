@@ -21,12 +21,13 @@
             <form method="POST" action="#">
             <h1 class="h1">Administrateur</h1>
                 <p>Mettez vos identifiants pour continuer</p>
-            <input placeholder="Email" type="text" class="form-control" id="email"  name="email">
+                <input placeholder="Email" type="text" class="form-control" id="email"  name="email">
             <p><input placeholder="Password" type="password" class="form-control" id="password"  name="password">
             <input type="submit" id="submit" name="submit" value="LOGIN" class="btn-login"/>
-            
+            <p>Vous n'etes pas un Admin<br>
+            <a href="connexion.jsp">Allez sur l'autre page Connexion!</a>
         </div>
-    <ody>
+        
 </html>
             </form>
 </body>

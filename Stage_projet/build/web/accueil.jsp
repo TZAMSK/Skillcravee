@@ -14,7 +14,7 @@
                       <center><b><font color=red> <%=request.getAttribute("deconnexion")  %></font><b></center>
                <%}%>
                  <% if( session.getAttribute("nom")!=null) { %>
-        <marquee>    Bienvenue <span class="rouge">  <%=session.getAttribute("nom")  %>  <%=session.getAttribute("prenom")  %></span></marquee>
+        <marquee>    Bienvenues <span class="rouge">  <%=session.getAttribute("nom")  %>  <%=session.getAttribute("prenom")  %></span></marquee>
         <%} else{%>
 
 
