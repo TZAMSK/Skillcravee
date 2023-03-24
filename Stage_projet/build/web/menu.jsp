@@ -42,7 +42,13 @@
                             </li>
                             <li>
                                 <a
-                                    href="connexion.jsp">Connexion
+                                    href="#">Connexion
+                                    <ul>
+                                        <li><a href="EtudiantLog.html">Etudiant</a></li>
+                                        <li><a href="ProfLog.html"> Professeur</a></li> 
+                                        <li><a href="EntrepriseLog.html">Entreprise</a></li>
+                                        <li><a href="adminLog.jsp">Administration</a></li>                                        
+                                    </ul>
                                 </a>
                             </li>
 
@@ -53,13 +59,6 @@
                                 </a>
                             </li>
                             <%}%>
-
-                            <li>
-                                <a
-                                    href="adminLog.jsp">Administration
-                                </a>
-                            </li>
-
                         </ul>
 
                     </nav>
