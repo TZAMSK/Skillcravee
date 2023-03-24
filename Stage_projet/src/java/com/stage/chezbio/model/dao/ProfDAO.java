@@ -12,6 +12,6 @@ public interface ProfDAO {
     
       Prof findById(int IDProf);
       Prof findByName(String NomProf);
-      Prof existsByPassword(char PasswordProf);
+      Prof existsByPassword(String PasswordProf);
     
 }

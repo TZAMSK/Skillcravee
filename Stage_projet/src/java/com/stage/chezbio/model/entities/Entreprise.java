@@ -10,61 +10,70 @@ public class Entreprise implements Serializable{
     private int IDInc;
     private String NomInc;
     private int Telephone;
-    private char Email;
+    private String Email;
     private String Contact;
-    private char PasswordInc;
+    private String PasswordInc;
     
-    public Entreprise(int idInc, String nomInc, int telephone, char email, String contact, char passwordInc){
-        this.IDInc = idInc;
-        this.NomInc = nomInc;
-        this.Telephone = telephone;
-        this.Email = email;
-        this.Contact = contact;
-        this.PasswordInc = passwordInc;
+    public Entreprise(int IDInc, String NomInc, int Telephone, String Email, String Contact, String PasswordInc){
+        this.IDInc = IDInc;
+        this.NomInc = NomInc;
+        this.Telephone = Telephone;
+        this.Email = Email;
+        this.Contact = Contact;
+        this.PasswordInc = PasswordInc;
+    }
+    
+    public Entreprise(){
+        this.IDInc = IDInc;
+        this.NomInc = NomInc;
+        this.Telephone = Telephone;
+        this.Email = Email;
+        this.Contact = Contact;
+        this.PasswordInc = PasswordInc;
     }
     
     public int getIDInc(){
         return IDInc;
     }
-    public void setIDInc(int idInc){
-        this.IDInc = idInc;
+    public void setIDInc(int IDInc){
+        this.IDInc = IDInc;
     }
     
     public String getNomInc(){
         return NomInc;
     }
-    public void setNomInc(String nomInc){
-        this.NomInc = nomInc;
+    public void setNomInc(String NomInc){
+        this.NomInc = NomInc;
     }
     
     public int getTelephone(){
         return Telephone;
     }
-    public void setTelephone(int telephone){
-        this.Telephone = telephone;
+    public void setTelephone(int Telephone){
+        this.Telephone = Telephone;
     }
     
     
-    public char getemail(){
+    public String getEmail(){
         return Email;
     }
-    public void setemail(char email){
-        this.Email = email;
+    public void setEmail(String Email){
+        this.Email = Email;
     }
     
     
     public String getContact(){
         return Contact;
     }
-    public void setContact(String contact){
-        this.Contact = contact;
+    public void setContact(String Contact){
+        this.Contact = Contact;
     }
     
     
-    public char getPasswordInc(){
+    public String getPasswordInc(){
         return PasswordInc;
     }
-    public void setPasswordInc(char passwordInc){
-        this.PasswordInc = passwordInc;
+    public void setPasswordInc(String passwordInc){
+        this.PasswordInc = PasswordInc;
     }
 }

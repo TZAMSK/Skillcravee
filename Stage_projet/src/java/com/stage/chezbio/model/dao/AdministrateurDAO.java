@@ -9,9 +9,9 @@ import java.util.List;
  * @author phili
  */
 public interface AdministrateurDAO {
-    List<Administrateur> findAll();
     
+    List<Administrateur> findAll();    
     Administrateur findById(int IdAdmin);
     Administrateur findByName(String NomAdmin);
-    Administrateur existsByPassword(char PasswordAdmin);
+    Administrateur existsByPassword(String PasswordAdmin);
 }
