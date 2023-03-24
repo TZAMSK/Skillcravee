@@ -13,7 +13,10 @@ CREATE TABLE etudiant (
   nom VARCHAR(50) NOT NULL,
   prenom VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  telephone VARCHAR(20)
+  statusStage BOOLEAN,
+  numeroStage INT,
+  retenir BOOLEAN,
+  password VARCHAR(50) NOT NULL
 );
 
 -- Création de la table de l'administration

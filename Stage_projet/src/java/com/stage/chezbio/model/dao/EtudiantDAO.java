@@ -8,10 +8,10 @@ import java.util.List;
  * @author phili
  */
 public interface EtudiantDAO {
-    List <Etudiant> findAll();
     
+    List <Etudiant> findAll();   
     Etudiant findById(int DA);
     Etudiant findByName(String Nom);
-    Etudiant findByFirstName(String Prenom);
-    Etudiant existsByPassword(char Password);
+    Etudiant findByEmail(String email);
+    Etudiant existsByEmailAndPassword(String email, String password);
 }
