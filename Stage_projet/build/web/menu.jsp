@@ -41,15 +41,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    href="#">Connexion
-                                    <ul>
-                                        <li><a href="EtudiantLog.html">Etudiant</a></li>
-                                        <li><a href="ProfLog.html"> Professeur</a></li> 
-                                        <li><a href="EntrepriseLog.html">Entreprise</a></li>
-                                        <li><a href="adminLog.jsp">Administration</a></li>                                        
-                                    </ul>
-                                </a>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Connexion</button>
+                                    <div class="dropdown-content">
+                                        <a href="EtudiantLog.html">Etudiant</a>
+                                        <a href="ProfLog.html"> Professeur</a> 
+                                        <a href="EntrepriseLog.html">Entreprise</a>
+                                        <a href="adminLog.jsp">Administration</a>                                        
+                                    </div>
+                                </div>
                             </li>
 
                              <% if( session.getAttribute("nom")!=null) { %>

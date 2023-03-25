@@ -60,7 +60,7 @@
                    
                     <div class="navigation">
                         <br>
-                        <a hRef="inscription2.jsp" class="bouton">Revenir</a>
+                        <a href="inscription2.jsp" class="bouton">Revenir</a>
                         <br>
                         <input class="bouton" type="submit" name="next" value="Suivant">
                     </div>
