@@ -14,7 +14,7 @@
             <div class="contenu">
                 <a href= "index.jsp"><img height="60"  width="80" src="images/logo.PNG"/></a>
                 <h1 class="h1">BIENVENUE<h1>
-                    <p>Entrez votre nom d'utilisateur, prénom et nom d'utilisateur</p>
+                    <p>Entrez votre Nom, Prénom et Email</p>
                     <form method="post" id="inscription" action="inscription2.jsp">
                         <input placeholder="Prénom" type="text" class="form-control" id="prenom" for="prenom" name="prenom">
                         <input placeholder="Nom" type="text" class="form-control" id="nom" for="nom" name="nom">

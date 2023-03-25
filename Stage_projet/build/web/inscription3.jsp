@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inscription3</title>
         <link href="css/inscriptionCSS.css" rel="stylesheet" type="text/css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
@@ -19,7 +19,6 @@
                     <select>
                         <option>Étudiant</option>
                         <option>Professeur</option>
-                        <option>Entreprise</option>
                     </select>
                       <label id=da style='display: none;'>
                         <p>DA</p>
