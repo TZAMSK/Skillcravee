@@ -22,11 +22,6 @@ $(document).ready(function () {
             document.querySelector('#telephone').style.display = 'block';
             document.querySelector('#contacte').style.display = 'block';
             break;
-            
-          case 'Entreprise':
-            document.querySelector('#telephone').style.display = 'block';
-            document.querySelector('#contacte').style.display = 'block';
-            break;
         }
       }
 
