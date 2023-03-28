@@ -33,7 +33,7 @@
                 </table>
         </div>
         
-        <h5><a href="">PUBLIER VOTRE CV</a></h5>
+        <!--<h5><a href="">PUBLIER VOTRE CV</a></h5>-->
         
         <div class="general">
             <div class="travail">

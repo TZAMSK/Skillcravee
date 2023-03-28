@@ -26,7 +26,7 @@
 
                             <li>
                                 <a
-                                    href="connexion.jsp">Téléchargez CV
+                                    href="EtudiantLog.html">Téléchargez CV
                                 </a>
                             </li>
 
@@ -51,7 +51,15 @@
                                     </div>
                                 </div>
                             </li>
-
+                             
+                            <li> 
+                                <div class ="language-switcher">
+                                    <select id="language-select">
+                                        <option value ="en">English</option>
+                                        <option value ="fr">Français</option>
+                                    </select> 
+                                </div>
+                                
                              <% if( session.getAttribute("nom")!=null) { %>
                                <li>
                                 <a
