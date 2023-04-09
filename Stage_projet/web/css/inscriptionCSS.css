@@ -53,7 +53,13 @@ input:last-child(-1){
 
 input:last-child{
     height: 30px;
+    margin-bottom: 10px;
 }
+
+input:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 
 .bouton {
     background: linear-gradient(to right, #3FC032 17%, #669D60 95%);
