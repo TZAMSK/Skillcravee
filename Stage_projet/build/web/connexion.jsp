@@ -21,7 +21,7 @@
                 <input type="submit" id="submit" name="submit" value="LOGIN" class="btn-login"/>
             <br>
             <p>Pas de compte?</p>
-            <a href="inscription.jsp">Créer une!</a>
+            <a href="inscriptionFinal.jsp">Créer une!</a>
         </div>
     </div> 
             </form>

@@ -37,7 +37,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="inscription.jsp">Inscription
+                                    href="inscriptionFinal.jsp">Inscription
                                 </a>
                             </li>
                             <li>

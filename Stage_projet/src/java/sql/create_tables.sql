@@ -18,7 +18,7 @@ USE `stagedb` ;
 
 -- Création de la table des étudiants
 CREATE TABLE IF NOT EXISTS `stagedb`. etudiant (
- id INT PRIMARY KEY,
+ id INT PRIMARY KEY AUTO_INCREMENT,
  nom VARCHAR(50) NOT NULL,
  prenom VARCHAR(50) NOT NULL,
  email VARCHAR(50) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `stagedb`. etudiant (
 
 -- Création de la table de l'administration
 CREATE TABLE administration (
- id INT PRIMARY KEY,
+ id INT PRIMARY KEY AUTO_INCREMENT,
  nom VARCHAR(50) NOT NULL,
  prenom VARCHAR(50) NOT NULL,
  email VARCHAR(100) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE administration (
 
 -- Création de la table des entreprises
 CREATE TABLE entreprise (
- id INT PRIMARY KEY,
+ id INT PRIMARY KEY AUTO_INCREMENT,
  nom VARCHAR(50) NOT NULL,
  adresse VARCHAR(100),
  telephone VARCHAR(20),
@@ -53,7 +53,7 @@ password VARCHAR(50) NOT NULL
 
 -- Création de la table des professeurs
 CREATE TABLE professeur (
- id INT PRIMARY KEY,
+ id INT PRIMARY KEY AUTO_INCREMENT,
  nom VARCHAR(50) NOT NULL,
  prenom VARCHAR(50) NOT NULL,
  email VARCHAR(100) NOT NULL,
@@ -63,7 +63,7 @@ password VARCHAR(50) NOT NULL
 
 -- Création d'une table pour stocker les emplois
 CREATE TABLE emploi (
- id INT PRIMARY KEY,
+ id INT PRIMARY KEY AUTO_INCREMENT,
  titre VARCHAR(100) NOT NULL,
  description TEXT,
  entreprise_id INT,

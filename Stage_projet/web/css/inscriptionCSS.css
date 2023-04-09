@@ -4,18 +4,20 @@
 
 .formulaire{
     border: 1px solid rgb(43,134,103);
-    border-radius: 14px;
+    border-radius: 54px;
     background-color: white;
-    width: 400px;
-    height: 490px;
+    width: auto;
+    height: auto;
     position: absolute;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto;
+    margin: 10px 450px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
+
 
 .h1{
     font-family:Arial, Helvetica, sans-serif;
@@ -50,7 +52,6 @@ input:last-child(-1){
 }
 
 input:last-child{
-    width: 50px;
     height: 30px;
 }
 
@@ -64,6 +65,8 @@ input:last-child{
     margin: 4px 2px;
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
+ 
 }
 
 input[type="checkbox"]{
