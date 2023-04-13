@@ -1,34 +1,61 @@
-$(document).ready(function () {
-    function toggle(ev) {
-  
-        var inputs = Array.prototype.slice.call(document.querySelectorAll('input'));
 
-
-        inputs.forEach(input => input.value = '');
-
-
-        switch (ev.target.value) {
-          case 'Étudiant':
-            document.querySelector('#idProf').style.display = 'block';
-            document.querySelector('#telephone').style.display = 'block';
-            document.querySelector('#contacte').style.display = 'block';
+function toggleLabels(value) {
+    var prenomLabel = document.getElementById("prenom");
+    var nomLabel = document.getElementById("nom");
+    var telephoneLabel = document.getElementById("telephone");
+    var adresseLabel = document.getElementById("adresse");
+    switch (value) {
+        case "0":
+            prenomLabel.style.display = "none";
+            nomLabel.style.display = "none";
+            telephoneLabel.style.display = "none";
+            adresseLabel.style.display = "none";
             break;
-            
-          case 'Professeur':
-            document.querySelector('#da').style.display = 'block';
-            document.querySelector('#statusStage').style.display = 'block';
-            document.querySelector('#retention').style.display = 'block';
-            document.querySelector('#numeroStage').style.display = 'block';
-            document.querySelector('#telephone').style.display = 'block';
-            document.querySelector('#contacte').style.display = 'block';
+        case "1":
+            prenomLabel.style.display = "block";
+            nomLabel.style.display = "block";
+            telephoneLabel.style.display = "block";
+            adresseLabel.style.display = "none";
             break;
-            
-          case 'Entreprise':
-            document.querySelector('#telephone').style.display = 'block';
-            document.querySelector('#contacte').style.display = 'block';
+        case "2":
+            prenomLabel.style.display = "block";
+            nomLabel.style.display = "block";
+            telephoneLabel.style.display = "block";
+            adresseLabel.style.display = "none";
             break;
-        }
-      }
+        case "3":
+            prenomLabel.style.display = "block";
+            nomLabel.style.display = "none";
+            telephoneLabel.style.display = "block";
+            adresseLabel.style.display = "block";
+            break;
+        default:
+            prenomLabel.style.display = "block";
+            nomLabel.style.display = "block";
+            telephoneLabel.style.display = "block";
+            adresseLabel.style.display = "block";
+            break;
+    }
+}
 
-      document.querySelector('select').addEventListener('change', toggle);
+document.addEventListener("DOMContentLoaded", function (event) {
+    var selectElement = document.getElementsByName("selection")[0];
+    selectElement.addEventListener("change", function (event) {
+        toggleLabels(this.value);
+    });
 });
+
+
+var password = document.getElementById("password");
+var confirm_password = document.getElementById("confirm_password");
+function validatePassword() {
+    if (password.value !== confirm_password.value) {
+        confirm_password.setCustomValidity("Les mots de passe doivent correspondre");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
