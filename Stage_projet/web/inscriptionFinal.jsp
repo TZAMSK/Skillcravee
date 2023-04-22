@@ -43,7 +43,7 @@
                             <input placeholder="Email" type="email" class="form-control" id="email" for="email" name="email" required>
                         </div>
                         <div>
-                            <input placeholder="Mot de passe (4 caracteres min)" type="password" class="form-control" id="password" minlength="6" for="pwd" name="password" required>
+                            <input placeholder="Mot de passe (4 caracteres min)" type="password" class="form-control" id="password" minlength="6" for="pwd" name="password" required><br>
                             <input placeholder="Confirmer mot de passe" type="password" id="confirm_password" required>
                         </div>
                     </div>

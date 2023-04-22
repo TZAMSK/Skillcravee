@@ -21,20 +21,6 @@
                 <div id='droite'>
                     <nav>
                         <ul id='liste'>
-                            <li class="active"><a href="index.jsp">Accueil</a></li>
-
-
-                            <li>
-                                <a
-                                    href="EtudiantLog.html">Téléchargez CV
-                                </a>
-                            </li>
-
-                            <li>
-                                <a
-                                    href="utilisateurController">Utilisateurs
-                                </a>
-                            </li>
                             <li>
                                 <a
                                     href="inscriptionFinal.jsp">Inscription
@@ -44,9 +30,9 @@
                                 <div class="dropdown">
                                     <button class="dropbtn">Connexion</button>
                                     <div class="dropdown-content">
-                                        <a href="EtudiantLog.html">Etudiant</a>
-                                        <a href="ProfLog.html"> Professeur</a> 
-                                        <a href="EntrepriseLog.html">Entreprise</a>
+                                        <a href="EtudiantLog.jsp">Etudiant</a>
+                                        <a href="ProfLog.jsp"> Professeur</a> 
+                                        <a href="EntrepriseLog.jsp">Entreprise</a>
                                         <a href="adminLog.jsp">Administration</a>                                        
                                     </div>
                                 </div>
@@ -55,9 +41,16 @@
                             <li> 
                                 <div class ="language-switcher">
                                     <select id="language-select">
-                                        <option value ="en">English</option>
                                         <option value ="fr">Français</option>
+                                        <option value ="en">English</option>
                                     </select> 
+                                    <script>
+                                        const languageSwitcher = document.getElementById('language-select')
+                                        languageSwitcher.addEventListener('change', function(){
+                                            const selectedLanguage = languageSwitcher.value;
+                                            window.location.href = '/' + selectedLanguage + '/';
+                                        });
+                                        </script>
                                 </div>
                                 
                              <% if( session.getAttribute("nom")!=null) { %>

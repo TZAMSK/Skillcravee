@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link href="css/menuCSS.css" rel="stylesheet" type="text/css" />
+        <link href="css/menuAdmin.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header style="background: white">
@@ -21,6 +21,20 @@
                 <div id='droite'>
                     <nav>
                         <ul id='liste'>
+                            <li class="active"><a href="index.jsp">Accueil</a></li>
+
+
+                            <li>
+                                <a
+                                    href="emploi.jsp">Emploi
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="utilisateurController">Utilisateurs
+                                </a>
+                            </li>
                             <li>
                                 <a
                                     href="inscriptionFinal.jsp">Inscription

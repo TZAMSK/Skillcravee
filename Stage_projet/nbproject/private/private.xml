@@ -3,10 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/rafaelfo/Desktop/systeme_information_de_stage_emplois/systeme_information_de_stage_emplois/Stage_projet/src/java/sql/create_tables.sql</file>
-            <file>file:/Users/rafaelfo/Desktop/systeme_information_de_stage_emplois/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/controller/InscriptionController.java</file>
-            <file>file:/Users/rafaelfo/Desktop/systeme_information_de_stage_emplois/systeme_information_de_stage_emplois/Stage_projet/web/inscriptionFinal.jsp</file>
-            <file>file:/Users/rafaelfo/Desktop/systeme_information_de_stage_emplois/systeme_information_de_stage_emplois/Stage_projet/web/pageTestApresInscription.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/adminLog.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/service/AdministrationService.java</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/inscriptionFinal.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/EntrepriseLog.html</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/pageTestApresInscription.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/controller/DeconnexionController.java</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/css/connexionCSS.css</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/service/EntrepriseService.java</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/connexion.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/sql/create_tables.sql</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/menu.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/index.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/accueil.jsp</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/js/formulaire.js</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/controller/ConnexionController.java</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/js/formulaire2.js</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/js/formulaire3.js</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/web/css/adminLog.css</file>
+            <file>file:/C:/Users/phili/Desktop/Web2/systeme_information_de_stage_emplois/Stage_projet/src/java/com/stage/model/controller/InscriptionController.java</file>
         </group>
     </open-files>
 </project-private>
