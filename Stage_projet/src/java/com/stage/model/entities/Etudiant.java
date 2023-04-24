@@ -86,7 +86,7 @@ public class Etudiant implements Serializable{
     }
     
     
-    public boolean Retenir() {
+    public boolean getRetenir() {
         return retenir;
      }
     public void setRetenir(boolean retenir) {

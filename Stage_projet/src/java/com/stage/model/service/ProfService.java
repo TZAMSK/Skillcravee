@@ -7,27 +7,28 @@ import java.util.List;
 
 public class ProfService {
 
-    ProfImplDao profDAO = new ProfImplDao();;
-    boolean retour = false;
+    ProfImplDao daoProf = new ProfImplDao();
+    private List<Prof> listeProf;
+    Prof prof = null;
+    boolean retour =false;
 
     public List<Prof> afficherLesProfs() {
-        return profDAO.findAll();
+        listeProf = daoProf.findAll();
+        return listeProf;
     }
 
     public Prof chercherProfParId(int id) {
-        return profDAO.findById(id);
+        prof = daoProf.findById(id);
+        return prof;
     }
 
     public Prof chercherProfParNom(String nom) {
-        return profDAO.findByName(nom);
+        prof = daoProf.findByName(nom);
+        return prof;
     }
 
-    public boolean verifierMotDePasseProf(String password) {
-        Prof prof = profDAO.existsByPassword(password);
-        return prof != null;
-    }
     public boolean ajouterUnProf(Prof prof) {
-        if (profDAO.create(prof)) {
+        if (daoProf.create(prof)) {
             retour = true;
         }
         return retour;

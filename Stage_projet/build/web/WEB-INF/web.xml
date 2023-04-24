@@ -15,6 +15,22 @@
         <servlet-name>InscriptionController</servlet-name>
         <servlet-class>com.stage.model.controller.InscriptionController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfController</servlet-name>
+        <servlet-class>com.stage.model.controller.ProfController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EtudiantController</servlet-name>
+        <servlet-class>com.stage.model.controller.EtudiantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EntrepriseController</servlet-name>
+        <servlet-class>com.stage.model.controller.EntrepriseController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdministrateurController</servlet-name>
+        <servlet-class>com.stage.model.controller.AdministrateurController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnexionController</servlet-name>
         <url-pattern>/ConnexionController</url-pattern>
@@ -26,6 +42,22 @@
     <servlet-mapping>
         <servlet-name>InscriptionController</servlet-name>
         <url-pattern>/InscriptionController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfController</servlet-name>
+        <url-pattern>/ProfController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EtudiantController</servlet-name>
+        <url-pattern>/EtudiantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EntrepriseController</servlet-name>
+        <url-pattern>/EntrepriseController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministrateurController</servlet-name>
+        <url-pattern>/AdministrateurController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,30 +6,38 @@ import com.stage.model.entities.Entreprise;
 import java.util.List;
 
 public class EntrepriseService {
-    EntrepriseImplDao entrepriseDao = new EntrepriseImplDao();
-    boolean retour = false;
+    
+    EntrepriseImplDao daoEntreprise = new EntrepriseImplDao();
+    private List<Entreprise> listeEntreprise;
+    Entreprise entreprise = null;
+    boolean retour =false;
  
 
     public List<Entreprise> afficherLesEntreprises() {
-        return entrepriseDao.findAll();
+        listeEntreprise = daoEntreprise.findAll();
+        return listeEntreprise;
     }
 
     public Entreprise findEntrepriseById(int id) {
-        return entrepriseDao.findById(id);
+        entreprise = daoEntreprise.findById(id);
+        return entreprise;
     }
 
     public Entreprise findEntrepriseByName(String name) {
-        return entrepriseDao.findByName(name);
+        entreprise = daoEntreprise.findByName(name);
+        return entreprise;
     }
 
     public Entreprise findEntrepriseByEmail(String email) {
-        return entrepriseDao.findByEmail(email);
+        entreprise = daoEntreprise.findByName(email);
+        return entreprise;
     }
     
     public boolean ajouterUneEntreprise(Entreprise entreprise) {
-        if (entrepriseDao.create(entreprise)) {
-            retour = true;
+       if ( daoEntreprise.create(entreprise)) {
+             retour = true;
         }
-        return retour;
+    
+       return retour;
     }
 }

@@ -15,20 +15,26 @@ import java.util.List;
 public class AdministrationService {
     
     AdminImplDao daoAdmin = new AdminImplDao();
+    private List<Administrateur> listeAdministrateur;
+    Administrateur administrateur = null;
 
-    private List<Administrateur> afficherLesAdministrateurs() {
-        return daoAdmin.findAll();
+    public List<Administrateur> afficherLesAdministrateurs() {
+        listeAdministrateur = daoAdmin.findAll();
+        return listeAdministrateur;
     }
 
     public Administrateur chercherAdministrateurParId(int id) {
-        return daoAdmin.findById(id);
+        administrateur = daoAdmin.findById(id);
+        return administrateur;
     }
 
     public Administrateur chercherAdministrateurParNom(String name) {
-        return daoAdmin.findByName(name);
+        administrateur = daoAdmin.findByName(name);
+        return administrateur;
     }
 
-    public Administrateur verifierMotDePasseAdministrateur(String password) {
-        return daoAdmin.existsByPassword(password);
+    public Administrateur verifierMotDePasseAdministrateur(String motDePasse) {
+        administrateur = daoAdmin.existsByPassword(motDePasse);
+        return administrateur;
     }
 }

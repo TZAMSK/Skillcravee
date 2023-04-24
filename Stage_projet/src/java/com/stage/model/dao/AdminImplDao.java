@@ -5,7 +5,6 @@
 package com.stage.model.dao;
 
 import com.stage.model.entities.Administrateur;
-import com.stage.model.entities.Prof;
 import com.stage.model.singleton.ConnexionBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,10 +20,10 @@ import java.util.logging.Logger;
  */
 public class AdminImplDao implements AdministrateurDAO {
 
-    private static final String SQL_SELECT_ADMIN = "select * from administrateur";
-    private static final String SQL_SELECT_ADMIN_BY_ID = "select * from administrateur where id = ?";
-    private static final String SQL_SELECT_ADMIN_BY_NAME = "select * from administrateur where nom = ?";
-    private static final String SQL_CONNEXION_BY_PASSWORD = "select nom, prenom from administrateur where password=?";
+    private static final String SQL_SELECT_ADMIN = "select * from administration";
+    private static final String SQL_SELECT_ADMIN_BY_ID = "select * from administration where id = ?";
+    private static final String SQL_SELECT_ADMIN_BY_NAME = "select * from administration where nom = ?";
+    private static final String SQL_CONNEXION_BY_PASSWORD = "select nom, prenom from administration where password=?";
 
     @Override
     public List<Administrateur> findAll() {
@@ -78,6 +77,7 @@ public class AdminImplDao implements AdministrateurDAO {
         return admin;
     }
 
+    
     @Override
     public Administrateur findByName(String NomAdmin) {
         Administrateur admin = null;
@@ -93,7 +93,6 @@ public class AdminImplDao implements AdministrateurDAO {
                 admin.setEmailAdmin(result.getString("email"));
                 admin.setUsernameAdmin(result.getString("username"));
                 admin.setPasswordAdmin(result.getString("password"));
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminImplDao.class.getName()).log(Level.SEVERE, null, ex);

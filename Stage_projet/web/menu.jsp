@@ -21,6 +21,27 @@
                 <div id='droite'>
                     <nav>
                         <ul id='liste'>
+                            
+                            <li class="active"><a href="index.jsp">Accueil</a></li>
+                            
+                            <li>
+                                <a
+                                    href="EtudiantLog.jsp">Téléchargez CV
+                                </a>
+                            </li>
+
+                            <li>
+                                
+                                <div class="dropdown">
+                                    <button class="dropbtn">Utilisateurs</button>
+                                    <div class="dropdown-content">
+                                        <a href="EtudiantController">Etudiant</a>
+                                        <a href="ProfController"> Professeur</a> 
+                                        <a href="EntrepriseController">Entreprise</a>
+                                        <a href="AdministrateurController">Administration</a>                                        
+                                    </div>
+                                </div>
+                            </li>
                             <li>
                                 <a
                                     href="inscriptionFinal.jsp">Inscription

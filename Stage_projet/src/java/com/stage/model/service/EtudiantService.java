@@ -5,31 +5,39 @@ import com.stage.model.dao.EtudiantImplDao;
 import com.stage.model.entities.Etudiant;
 
 public class EtudiantService {
-    EtudiantImplDao etudiantDao = new EtudiantImplDao();
-    boolean retour = false; 
+   
+    EtudiantImplDao daoEtudiant = new EtudiantImplDao();
+    private List<Etudiant> listeEtudiant;
+    Etudiant etudiant = null;
+    boolean retour =false;
 
 
     public List<Etudiant> afficherLesEtudiants() {
-        return etudiantDao.findAll();
+        listeEtudiant = daoEtudiant.findAll();
+        return listeEtudiant;
     }
 
     public Etudiant chercherEtudiantParId(int id) {
-        return etudiantDao.findById(id);
+        etudiant = daoEtudiant.findById(id);
+        return etudiant;
     }
 
     public Etudiant chercherEtudiantParEmail(String email) {
-        return etudiantDao.findByEmail(email);
+        etudiant = daoEtudiant.findByEmail(email);
+        return etudiant;
     }
 
     public Etudiant chercherEtudiantParNom(String nom) {
-        return etudiantDao.findByName(nom);
+        etudiant = daoEtudiant.findByName(nom);
+        return etudiant;
     }
 
     public Etudiant verifierEmailMotDePasseAdministrateur(String email, String motDePasse) {
-        return etudiantDao.existsByEmailAndPassword(email, motDePasse);
+        etudiant = daoEtudiant.existsByEmailAndPassword(email,motDePasse);
+        return etudiant;
     }
     public boolean ajouterUnEtudiant(Etudiant etudiant) {
-        if (etudiantDao.create(etudiant)) {
+        if (daoEtudiant.create(etudiant)) {
             retour = true;
         }
         return retour;

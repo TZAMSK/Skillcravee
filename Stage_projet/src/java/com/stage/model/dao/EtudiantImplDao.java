@@ -80,6 +80,8 @@ public class EtudiantImplDao implements EtudiantDAO {
         return etudiant;
     }
 
+    
+    
     @Override
     public Etudiant findByName(String nom) {
         Etudiant etudiant = null;
@@ -101,7 +103,6 @@ public class EtudiantImplDao implements EtudiantDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EtudiantImplDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Fermeture de toutes les ressources ouvertes
         ConnexionBD.closeConnection();
         return etudiant;
     }
