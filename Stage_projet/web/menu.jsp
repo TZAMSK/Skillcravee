@@ -35,10 +35,10 @@
                                 <div class="dropdown">
                                     <button class="dropbtn">Utilisateurs</button>
                                     <div class="dropdown-content">
-                                        <a href="EtudiantController">Etudiant</a>
-                                        <a href="ProfController"> Professeur</a> 
-                                        <a href="EntrepriseController">Entreprise</a>
-                                        <a href="AdministrateurController">Administration</a>                                        
+                                        <a href="EtudiantController?userType=etudiantChoix">Etudiant</a>
+                                        <a href="ProfController?userType=profChoix"> Professeur</a> 
+                                        <a href="EntrepriseController?userType=entrepriseChoix">Entreprise</a>
+                                        <a href="AdministrateurController?userType=adminChoix">Administration</a>                                        
                                     </div>
                                 </div>
                             </li>

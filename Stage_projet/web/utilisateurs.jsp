@@ -50,137 +50,145 @@
             </div>
         </div>
          <h4>Liste des utilisateurs</h4>
-         
-    <h2>Liste des administrateurs</h2>
-    <table style="width:79%">
-        <tr>
-           <th> Id </th>
-           <th> Username </th>
-           <th> Nom </th>
-           <th> Prenom </th>
-           <th> Email </th>
-           <th> Password </th>
-        </tr>
-        <%if(administrateur!=null) {%>
-        <tr>
-           <td> <%=administrateur.getIdAdmin() %> </td>
-           <td> <%=administrateur.getUsernameAdmin() %> </td>
-           <td> <%=administrateur.getNomAdmin() %> </td>
-           <td> <%=administrateur.getPrenomAdmin() %> </td>
-           <td> <%=administrateur.getEmailAdmin() %> </td>
-           <td> <%=administrateur.getPasswordAdmin() %> </td>
-        </tr>
-        <% }else { 
-        for(Administrateur admin : listeAdministrateurs){%>
-            <tr>
-                <td> <%=admin.getIdAdmin() %> </td>
-                <td> <%=admin.getUsernameAdmin() %> </td>
-                <td> <%=admin.getNomAdmin() %> </td>
-                <td> <%=admin.getPrenomAdmin() %> </td>
-                <td> <%=admin.getEmailAdmin() %> </td>
-                <td> <%=admin.getPasswordAdmin() %> </td>
-            </tr>  
-        <% } } %>
-    </table>
     
-    <h2>Liste des entreprises</h2>
-    <table style="width:79%">
-        <tr>
-           <th> Id </th>
-           <th> Nom </th>
-           <th> Téléphone </th>
-           <th> Adresse %> </th>
-           <th> Email %> </th>
-           <th> Password %> </th>
-        </tr>
-        <%if(entreprise!=null) {%>
-        <tr>
-           <td> <%=entreprise.getIDInc() %> </td>
-           <td> <%=entreprise.getNomInc() %> </td>
-           <td> <%=entreprise.getTelephone() %> </td>
-           <td> <%=entreprise.getAdresse() %> </td>
-           <td> <%=entreprise.getEmail() %> </td>
-           <td> <%=entreprise.getPasswordInc() %> </td>
-        </tr>
-        <% }else { 
-        for(Entreprise inc : listeEntreprises){%>
+    <% if ("adminChoix".equals(request.getParameter("userType"))) { %>
+        <h2>Liste des administrateurs</h2>
+        <table style="width:79%">
             <tr>
-                <td> <%=inc.getIDInc() %> </td>
-                <td> <%=inc.getNomInc() %> </td>
-                <td> <%=inc.getTelephone() %> </td>
-                <td> <%=inc.getAdresse() %> </td>
-                <td> <%=inc.getEmail() %> </td>
-                <td> <%=inc.getPasswordInc() %> </td>
+               <th> Id </th>
+               <th> Username </th>
+               <th> Nom </th>
+               <th> Prenom </th>
+               <th> Email </th>
+               <th> Password </th>
             </tr>
-        <% } } %>
-    </table>
-    
-    <h2>Liste des étudiants</h2>
-    <table style="width:79%">
-        <tr>
-           <th> Id </th>
-           <th> Nom </th>
-           <th> Prenom </th>
-           <th> Email </th>
-           <th> Password </th>
-           <th> Statut stage </th>
-           <th> Numero stage </th>
-           <th> retention </th>
-        </tr>
-        <%if(etudiant!=null) {%>
-        <tr>
-           <td> <%=etudiant.getId() %> </td>
-           <td> <%=etudiant.getNom() %> </td>
-           <td> <%=etudiant.getPrenom() %> </td>
-           <td> <%=etudiant.getEmail() %> </td>
-           <td> <%=etudiant.getPassword() %> </td>
-           <td> <%=etudiant.getStatusStage() %> </td>
-           <td> <%=etudiant.getNumeroStage() %> </td>
-           <td> <%=etudiant.getRetenir() %> </td>
-        </tr>
-        <% }else { 
-        for(Etudiant etud : listeEtudiants){%>
+            <%if(administrateur!=null) {%>
             <tr>
-                <td> <%=etud.getId() %> </td>
-                <td> <%=etud.getNom() %> </td>
-                <td> <%=etud.getPrenom() %> </td>
-                <td> <%=etud.getEmail() %> </td>
-                <td> <%=etud.getPassword() %> </td>
-                <td> <%=etud.getStatusStage() %> </td>
-                <td> <%=etud.getNumeroStage() %> </td>
-                <td> <%=etud.getRetenir() %> </td>
-            </tr>  
-        <% } } %>
-    </table>
+               <td> <%=administrateur.getIdAdmin() %> </td>
+               <td> <%=administrateur.getUsernameAdmin() %> </td>
+               <td> <%=administrateur.getNomAdmin() %> </td>
+               <td> <%=administrateur.getPrenomAdmin() %> </td>
+               <td> <%=administrateur.getEmailAdmin() %> </td>
+               <td> <%=administrateur.getPasswordAdmin() %> </td>
+            </tr>
+            <% }else { 
+            for(Administrateur admin : listeAdministrateurs){%>
+                <tr>
+                    <td> <%=admin.getIdAdmin() %> </td>
+                    <td> <%=admin.getUsernameAdmin() %> </td>
+                    <td> <%=admin.getNomAdmin() %> </td>
+                    <td> <%=admin.getPrenomAdmin() %> </td>
+                    <td> <%=admin.getEmailAdmin() %> </td>
+                    <td> <%=admin.getPasswordAdmin() %> </td>
+                </tr>  
+            <% } } %>
+        </table>
+    <% } %>
     
-    <h2>Liste des professeurs</h2>
-    <table style="width:79%">
-        <tr>
-           <th> Id </th>
-           <th> Nom </th>
-           <th> Prenom </th>
-           <th> Email </th>
-           <th> Password </th>
-        </tr>
-        <%if(prof!=null) {%>
-        <tr>
-           <td> <%=etudiant.getId() %> </td>
-           <td> <%=etudiant.getNom() %> </td>
-           <td> <%=etudiant.getPrenom() %> </td>
-           <td> <%=etudiant.getEmail() %> </td>
-           <td> <%=etudiant.getPassword() %> </td>
-        </tr>
-        <% }else { 
-        for(Etudiant etud : listeEtudiants){%>
+    <% if ("entrepriseChoix".equals(request.getParameter("userType"))) { %>
+        <h2>Liste des entreprises</h2>
+        <table style="width:79%">
             <tr>
-                <td> <%=etud.getId() %> </td>
-                <td> <%=etud.getNom() %> </td>
-                <td> <%=etud.getPrenom() %> </td>
-                <td> <%=etud.getEmail() %> </td>
-                <td> <%=etud.getPassword() %> </td>
-            </tr>  
-        <% } } %>
-    </table>
+               <th> Id </th>
+               <th> Nom </th>
+               <th> Téléphone </th>
+               <th> Adresse %> </th>
+               <th> Email %> </th>
+               <th> Password %> </th>
+            </tr>
+            <%if(entreprise!=null) {%>
+            <tr>
+               <td> <%=entreprise.getIDInc() %> </td>
+               <td> <%=entreprise.getNomInc() %> </td>
+               <td> <%=entreprise.getTelephone() %> </td>
+               <td> <%=entreprise.getAdresse() %> </td>
+               <td> <%=entreprise.getEmail() %> </td>
+               <td> <%=entreprise.getPasswordInc() %> </td>
+            </tr>
+            <% }else { 
+            for(Entreprise inc : listeEntreprises){%>
+                <tr>
+                    <td> <%=inc.getIDInc() %> </td>
+                    <td> <%=inc.getNomInc() %> </td>
+                    <td> <%=inc.getTelephone() %> </td>
+                    <td> <%=inc.getAdresse() %> </td>
+                    <td> <%=inc.getEmail() %> </td>
+                    <td> <%=inc.getPasswordInc() %> </td>
+                </tr>
+            <% } } %>
+        </table>
+    <% } %>
+    
+    <% if ("etudiantChoix".equals(request.getParameter("userType"))) { %>
+        <h2>Liste des étudiants</h2>
+        <table style="width:79%">
+            <tr>
+               <th> Id </th>
+               <th> Nom </th>
+               <th> Prenom </th>
+               <th> Email </th>
+               <th> Password </th>
+               <th> Statut stage </th>
+               <th> Numero stage </th>
+               <th> retention </th>
+            </tr>
+            <%if(etudiant!=null) {%>
+            <tr>
+               <td> <%=etudiant.getId() %> </td>
+               <td> <%=etudiant.getNom() %> </td>
+               <td> <%=etudiant.getPrenom() %> </td>
+               <td> <%=etudiant.getEmail() %> </td>
+               <td> <%=etudiant.getPassword() %> </td>
+               <td> <%=etudiant.getStatusStage() %> </td>
+               <td> <%=etudiant.getNumeroStage() %> </td>
+               <td> <%=etudiant.getRetenir() %> </td>
+            </tr>
+            <% }else { 
+            for(Etudiant etud : listeEtudiants){%>
+                <tr>
+                    <td> <%=etud.getId() %> </td>
+                    <td> <%=etud.getNom() %> </td>
+                    <td> <%=etud.getPrenom() %> </td>
+                    <td> <%=etud.getEmail() %> </td>
+                    <td> <%=etud.getPassword() %> </td>
+                    <td> <%=etud.getStatusStage() %> </td>
+                    <td> <%=etud.getNumeroStage() %> </td>
+                    <td> <%=etud.getRetenir() %> </td>
+                </tr>  
+            <% } } %>
+        </table>
+    <% } %>
+    
+    <% if ("profChoix".equals(request.getParameter("userType"))) { %>
+        <h2>Liste des professeurs</h2>
+        <table style="width:79%">
+            <tr>
+               <th> Id </th>
+               <th> Nom </th>
+               <th> Prenom </th>
+               <th> Email </th>
+               <th> Password </th>
+            </tr>
+            <%if(prof!=null) {%>
+            <tr>
+               <td> <%=prof.getIDProf() %> </td>
+               <td> <%=prof.getNomProf() %> </td>
+               <td> <%=prof.getPrenomProf() %> </td>
+               <td> <%=prof.getEmailProf() %> </td>
+               <td> <%=prof.getPasswordProf() %> </td>
+            </tr>
+            <% }else { 
+            for(Prof pro : listeProfs){%>
+                <tr>
+                    <td> <%=pro.getIDProf() %> </td>
+                    <td> <%=pro.getNomProf() %> </td>
+                    <td> <%=pro.getPrenomProf() %> </td>
+                    <td> <%=pro.getEmailProf() %> </td>
+                    <td> <%=pro.getPasswordProf() %> </td>
+                </tr>  
+            <% } } %>     
+        </table>
+    <% } %>
       <jsp:include page="pied.jsp"/>
     </body>
 </html>
