@@ -81,7 +81,7 @@ INSERT INTO `stagedb`.`professeur`(idProf , nom, prenom, email, password) VALUES
 (8, 'Brown', 'William', 'williambrown7@example.com', 'password444'),
 (9, 'Martinez', 'Jose', 'josemartinez8@example.com', 'password555'),
 (10, 'Miller', 'Jessica', 'jessicamiller9@example.com', 'password666'),
-('Davis', 'Kevin', 'kevindavis10@example.com', 'password777');
+(11,'Davis', 'Kevin', 'kevindavis10@example.com', 'password777');
 
 INSERT INTO `stagedb`.`administration`(nom, prenom, email, username, password) VALUES
 ('DESJARDINS', 'PIERRE', 'pierre.desjardins@gmail.com', 'Pdesjardins', 'pass123'),
