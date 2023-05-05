@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<body>
+<header style="background: white">
+    <div class='tete'>
+        <div class="banniere">
+            <table>
+                <tr>
+                    <th><a href=""><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
+                    <th><h1 id="titre">Skillcravee</h1></th>
+                </tr>
+            </table>
+        </div>
+        <div id='droite'>
+            <nav>
+                <ul id='liste'>
+
+                    <li class="active"><a th:href="@{/}">Accueil</a></li>
+
+                    <li>
+                        <a
+                                th:href="@{/Etudiant_connexion}">Téléchargez CV
+                        </a>
+                    </li>
+
+                    <li>
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Utilisateurs</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/Etudiant}">Etudiant</a>
+                                <a th:href="@{/Prof}"> Professeur</a>
+                                <a th:href="@{/Entreprise}">Entreprise</a>
+                                <a th:href="@{/Administrateur}">Administration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a
+                                th:href="@{/inscription_form}">Inscription
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="dropbtn">Connexion</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/Etudiant_connexion}">Etudiant</a>
+                                <a th:href="@{/Prof_connexion}">Professeur</a>
+                                <a th:href="@{/Entreprise_connexion}">Entreprise</a>
+                                <a th:href="@{/admin_connexion}">Administration</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class ="language-switcher">
+                            <select id="language-select">
+                                <option value ="fr">Français</option>
+                                <option value ="en">English</option>
+                            </select>
+                            <script>
+                                const languageSwitcher = document.getElementById('language-select')
+                                languageSwitcher.addEventListener('change', function(){
+                                    const selectedLanguage = languageSwitcher.value;
+                                    window.location.href = '/' + selectedLanguage + '/';
+                                });
+                            </script>
+                        </div>
+
+
+                    <li>
+                        <a
+                                th:href="@{/deconnexion}">Quitter
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+</header>
+</body>
+</html>
