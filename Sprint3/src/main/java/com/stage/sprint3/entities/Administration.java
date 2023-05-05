@@ -3,7 +3,7 @@ package com.stage.sprint3.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "administration")
 public class Administration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

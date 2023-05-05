@@ -25,14 +25,23 @@ public class Emploi {
     @Temporal(TemporalType.DATE)
     private Date Date_fin;
 
-    @Column(name="salaire")
-    private int salaire;
+    @Column(name="salaire", length = 64)
+        private String salaire;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "idInc", nullable = false)
+    @JoinColumn(name = "id_inc", nullable = false)
     private Entreprise entreprise;
 
-    public Emploi(int id, String titre, String description, Date date_debut, Date date_fin, int salaire, Entreprise entreprise) {
+    public Emploi() {
+
+    }
+
+    public Emploi(int id, String titre) {
+        this.id = id;
+        this.titre = titre;
+    }
+
+    public Emploi(int id, String titre, String description, Date date_debut, Date date_fin, String salaire, Entreprise entreprise) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -82,19 +91,19 @@ public class Emploi {
         Date_fin = date_fin;
     }
 
-    public int getSalaire() {
+    public String getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(int salaire) {
+    public void setSalaire(String salaire) {
         this.salaire = salaire;
     }
 
-   /* public Entreprise getEntreprise() {
+    public Entreprise getEntreprise() {
         return entreprise;
     }
 
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
-    }*/
+    }
 }
