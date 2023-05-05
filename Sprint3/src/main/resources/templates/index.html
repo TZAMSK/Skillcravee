@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
 <body>
-<header style="background: white">
+<header>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
+
     <div class='tete'>
         <div class="banniere">
             <table>
@@ -22,19 +26,6 @@
                                 th:href="@{/Etudiant_connexion}">Téléchargez CV
                         </a>
                     </li>
-
-                    <li>
-
-                        <div class="dropdown">
-                            <button class="dropbtn">Utilisateurs</button>
-                            <div class="dropdown-content">
-                                <a th:href="@{/Etudiant}">Etudiant</a>
-                                <a th:href="@{/Prof}"> Professeur</a>
-                                <a th:href="@{/Entreprise}">Entreprise</a>
-                                <a th:href="@{/Administrateur}">Administration</a>
-                            </div>
-                        </div>
-                    </li>
                     <li>
                         <a
                                 th:href="@{/inscription_form}">Inscription
@@ -51,7 +42,11 @@
                             </div>
                         </div>
                     </li>
-
+                    <li>
+                        <a
+                                th:href="@{/deconnexion}">Quitter
+                        </a>
+                    </li>
                     <li>
                         <div class ="language-switcher">
                             <select id="language-select">
@@ -66,12 +61,6 @@
                                 });
                             </script>
                         </div>
-
-
-                    <li>
-                        <a
-                                th:href="@{/deconnexion}">Quitter
-                        </a>
                     </li>
                 </ul>
 

@@ -77,3 +77,103 @@ input[id=password]{
 
 
 
+
+
+#accueil{
+    background:linear-gradient(to right, rgb(226,235,232) 17%, rgb(210,229,223) 95%);
+}
+
+
+.principal{
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+
+.bordure_recherche{
+    width: 220px;
+    height: 35px;
+    border: 1.5px solid rgb(224, 189, 189);
+    border-radius: 6px;
+    padding-left: 6px;
+    background-color: white;
+    box-shadow: 4px 4px rgb(196, 119, 119);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h5{
+    color: rgb(196, 119, 119);
+    text-align: center;
+    font-family: Candara,sans-serif;
+}
+
+.recherche{
+    border: none;
+
+}
+
+img[alt|="loupe"]{
+    height: 19px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    padding-left: 4%;
+    padding-right:4%;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 115px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.travail{
+    border: 1px solid rgb(224, 189, 189);
+    border-radius: 6px;
+    flex: 1;
+    padding: 10px;
+    background: white;
+    flex-grow: 1;
+    margin-right: 60px
+}
+
+.droite{
+    border: 1px solid rgb(224, 189, 189);
+    border-radius: 6px;
+    flex: 1;
+    padding: 10px;
+    background: white;
+    flex-grow: 1;
+}
+
+.general{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.nom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
