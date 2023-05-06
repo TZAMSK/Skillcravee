@@ -10,7 +10,7 @@ public class Entreprise {
     @Column(name = "nom", length = 120, unique = true, nullable = false)
     private String nom;
     @Column(name = "address", length = 120, nullable = false)
-    private String prenom;
+    private String address;
     @Column(name="telephone", length = 128, nullable = false, unique = true)
     private String telephone;
     @Column(name="email", length = 128, nullable = false, unique = true)
@@ -19,17 +19,17 @@ public class Entreprise {
     private String password;
     public Entreprise() {
     }
-    public Entreprise( String nom, String prenom,String email, String password) {
+    public Entreprise( String nom, String address,String email, String password) {
         this.nom = nom;
-        this.prenom = prenom;
+        this.address = address;
         this.email = email;
         this.password = password;
     }
-    public Entreprise(int idInc, String nom, String prenom, String telephone, String email, String password) {
+    public Entreprise(int idInc, String nom, String address, String telephone, String email, String password) {
         this.idInc = idInc;
         this.email = email;
         this.nom = nom;
-        this.prenom = prenom;
+        this.address = address;
         this.password = password;
         this.telephone = telephone;
     }
@@ -38,7 +38,7 @@ public class Entreprise {
         return idInc;
     }
 
-    public void setIdInc(int idInc) {
+    public void setId(int idInc) {
         this.idInc = idInc;
     }
 
@@ -50,12 +50,12 @@ public class Entreprise {
         this.nom = nom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTelephone() {

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Afficher utilisateur</title>
+
+    <link rel="stylesheet" href="">
+</head>
 <body>
 <header>
     <meta charset="UTF-8">
@@ -80,5 +86,40 @@
         </div>
     </div>
 </header>
+<div>
+    <div class="center">
+
+        <h4>Chercher un administrateur par nom</h4>
+        <input type="search" name="nom">
+        <input type="submit"  value="nom" />
+    </div>
+</div>
+<h1>Liste des professeurs</h1>
+<table style="width:79%">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Nom </th>
+            <th> Prenom </th>
+            <th> Email </th>
+            <th> Password </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="prof : ${listeProfs}">
+            <td>[[${prof.idProf}]]</td>
+            <td>[[${prof.nom}]]</td>
+            <td>[[${prof.prenom}]]</td>
+            <td>[[${prof.email}]]</td>
+            <td>[[${prof.password}]]</td>
+            <td>
+                <a class="link-delete"
+                   th:href="@{'/profs/delete/' + ${prof.idProf}}"
+                   th:userId="${prof.idProf}"
+                   title="Supprimer cet professeur">Supprimer  [[${prof.idProf}]]</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>

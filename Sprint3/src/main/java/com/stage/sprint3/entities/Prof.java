@@ -34,12 +34,10 @@ public class Prof {
     public int getIdProf(){
         return idProf;
     }
-    public int setIdProf(){
-        return idProf;
-    }
-    public void getPassword(int idProf) {
+    public void setIdProf(){
         this.idProf = idProf;
     }
+    public String getPassword() {return password;}
     public void setPassword(String password) {
         this.password = password;
     }
