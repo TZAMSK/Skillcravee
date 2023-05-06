@@ -1,8 +1,10 @@
 package com.stage.sprint3.controller;
 
+import com.stage.sprint3.entities.Administration;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,23 +33,12 @@ public class EtudiantController {
         return "redirect:/etudiants";
     }
 
-    /*
-    @GetMapping("/etudiant/new")
-    public String afficherFormulaireEtudiant(Model model){
-        Etudiant etudiant = new Etudiant();
-        model.addAttribute("etudiant", etudiant);
-        return "etudiant_form";
+    @GetMapping("rechercher/etudiants")
+    public String rechercherEtudiant(Model model, @Param("keyword") String keyword){
+        List<Etudiant> listeEtudiants = etudiantService.rechercherEtudiantParNom(keyword);
+        model.addAttribute("listeEtudiants", listeEtudiants);
+        model.addAttribute("keyword", keyword);
+        return "etudiants";
     }
-
-
-
-    @PostMapping("/etudiant/save")
-    public String ajouterEtudiant(Etudiant etudiant, RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("message","Le etudiant: "+ etudiant.getNom() +"a ete ajouter avec succes");
-        service.ajouterEtudiant(etudiant);
-        return "redirect:/index";
-    }
-
-     */
 
 }

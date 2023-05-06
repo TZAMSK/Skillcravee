@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Accueil</title>
     <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
-
+    <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
     <div class='tete'>
         <div class="banniere">
             <table>
@@ -80,5 +80,162 @@
         </div>
     </div>
 </header>
+<div th:if="${message!=null}" class="alert">
+    [[${message}]]
+</div>
+<div class="bordure_recherche centrer_recherche">
+    <form th:action="@{rechercher/index}">
+        <table>
+            <tr>
+                <td>
+                    <input th:value="${keyword}" name="keyword" type="search" placeholder="Poste de travail" class="recherche" required/>
+                </td>
+                <td style="text-align: right;">
+                    <button type="submit" style="border: none;background-color: white">
+                    <img src="images/loupe.png" alt="loupe">
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<table>
+    <tbody>
+    <tr th:each="emploi : ${listeEmplois}">
+        <td class="travail" style="text-align: center; vertical-align: middle; width: 1%;">
+            <div class="yo">
+                <img style="margin-left: auto; margin-right: auto;" th:src="@{${'/images/entreprise/' + emploi.entreprise.nom + '.png'}}" />
+            </div>
+        </td>
+        <td class="travail">
+            <h4 class="job-title" th:text="${emploi.titre}"></h4>
+            <h4>
+                <span th:text="${emploi.salaire}"></span>
+            </h4>
+            <button class="show-info-btn">+</button>
+        </td>
+        <td class="job-info-container travail">
+            <div class="job-info" style="display: none;">
+                <p>
+                    <span th:text="${emploi.date_debut}"></span>
+                </p>
+                <p>
+                    <span th:text="${emploi.date_fin}"></span>
+                </p>
+                <p>
+                    <span th:text="${emploi.entreprise.address}"></span>
+                </p>
+                <p>
+                    <span th:text="${emploi.entreprise.email}"></span>
+                </p>
+                <p>
+                    <span th:text="${emploi.description}"></span>
+                </p>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
+
+<style>
+    .left-side {
+        width: calc(100% / 3.3);
+        float: left;
+    }
+
+    .travail {
+        border: 1px solid #ccc;
+        padding: 10px;
+        background-color:white;
+    }
+
+    .job-container {
+        display: flex;
+        justify-content: center;
+        border: 1px solid #ccc;
+        padding: 10px;
+        color: rgb(29,97,74);
+        background-color:rgb(29,97,74);
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .yo {
+        display: flex;
+        align-items: center;
+    }
+
+    .yo img {
+        height: 35px;
+        width: auto;
+        margin-right: 10px;
+    }
+
+    .job-title {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .badge {
+        margin-top: 5px;
+    }
+
+    .bordure_recherche {
+        width: 220px;
+        height: 35px;
+        border: 1.5px solid rgb(224, 189, 189);
+        border-radius: 6px;
+        padding-left: 6px;
+        background-color: white;
+        box-shadow: 4px 4px rgb(196, 119, 119);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .recherche {
+        border: none;
+    }
+
+    img[alt|="loupe"] {
+        height: 27px;
+    }
+
+    textarea:focus,
+    input:focus {
+        outline: none;
+    }
+
+    .right-side {
+        width: calc(100% - calc(100% / 3.3));
+        float: right;
+    }
+</style>
+<script>
+    const showInfoBtns = document.querySelectorAll('.show-info-btn');
+
+    showInfoBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const jobInfo = this.parentNode.nextElementSibling.querySelector('.job-info');
+
+            this.classList.toggle('expanded');
+            jobInfo.style.display = this.classList.contains('expanded') ? 'block' : 'none';
+            const jobInfoContainer = this.parentNode.nextElementSibling;
+            jobInfoContainer.classList.toggle('bordered');
+
+            if (this.classList.contains('expanded')) {
+                this.textContent = '-';
+            } else {
+                this.textContent = '+';
+            }
+        });
+    });
+</script>
 </html>

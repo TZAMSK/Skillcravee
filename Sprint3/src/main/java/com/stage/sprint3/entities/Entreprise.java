@@ -38,7 +38,7 @@ public class Entreprise {
         return idInc;
     }
 
-    public void setId(int idInc) {
+    public void setIdInc(int idInc) {
         this.idInc = idInc;
     }
 

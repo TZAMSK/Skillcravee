@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <title>Accueil</title>
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
-
+  <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
@@ -86,48 +86,47 @@
     </div>
   </div>
 </header>
-<div>
-  <div class="center">
-
-    <h4>Chercher un étudiant par nom</h4>
-    <input type="search" name="nom">
-    <input type="submit"  value="nom" />
-  </div>
-
+<div th:if="${message!=null}" class="alert">
+  [[${message}]]
 </div>
-<h1>Liste des étudiants</h1>
+<h1>Liste des emplois de l'entreprise<span> [[${nomEntreprise}]]</span></h1>
 
-<table style="width:79%">
-  <thead>
-  <tr>
-    <th> Id </th>
-    <th> Nom </th>
-    <th> Prenom </th>
-    <th> Email </th>
-    <th> Password </th>
-    <th> Statut stage </th>
-    <th> Numero stage </th>
-    <th> retention </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="etud : ${listeEtudiants}">
-    <td>[[${etud.id}]]</td>
-    <td>[[${etud.nom}]]</td>
-    <td>[[${etud.prenom}]]</td>
-    <td>[[${etud.email}]]</td>
-    <td>[[${etud.password}]]</td>
-    <td>[[${etud.statusStage}]]</td>
-    <td>[[${etud.numeroStage}]]</td>
-    <td>[[${etud.retenir}]]</td>
-    <td>
-      <a class="link-delete"
-         th:href="@{'/etudiants/delete/' + ${etud.id}}"
-         th:userId="${etud.id}"
-         title="Supprimer cet étudiant">Supprimer  [[${etud.id}]]</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+    <div class="row">
+
+      <div class="col-12 p-2">
+        <div class="card m-1 p-1 bg-light"
+             th:each="emploi : ${listeEmploisEntreprise}">
+
+          <h4 th:text="${emploi.titre}"> </h4>
+
+
+
+          <h4>
+            <span class="badge badge-pill badge-primary float-right" th:text="${emploi.salaire}">
+            </span>
+          </h4>
+          <h4>
+            <span class="badge badge-pill badge-primary float-right" th:text="${emploi.date_debut}">
+            </span>
+          </h4>
+          <h4>
+            <span class="badge badge-pill badge-primary float-right" th:text="${emploi.date_fin}">
+            </span>
+          </h4>
+
+          <div class="card-text bg-white p-1" th:text="${emploi.description}">
+
+          </div>
+
+          <a class="link-delete"
+             th:href="@{'/emplois_entreprise/delete/' + ${emploi.id}}"
+             th:userId="${emploi.id}"
+             title="Supprimer cet emploi">Supprimer  [[${emploi.id}]]</a>
+
+
+        </div>
+      </div>
+
+    </div>
 </body>
 </html>

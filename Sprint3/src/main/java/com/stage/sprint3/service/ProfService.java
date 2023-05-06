@@ -1,5 +1,6 @@
 package com.stage.sprint3.service;
 
+import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.ProfRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,6 @@ public class ProfService {
     public void supprimer(Integer id) {
         profRepo.deleteById(id);
     }
-
-
 
     public List<Prof> rechercherProfParNom(String keyword){
         if(keyword != null){

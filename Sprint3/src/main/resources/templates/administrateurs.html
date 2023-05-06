@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <title>Accueil</title>
         <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
 
         <div class='tete'>
             <div class="banniere">
@@ -86,12 +87,22 @@
             </div>
         </div>
     </header>
+    <div th:if="${message!=null}" class="alert">
+        [[${message}]]
+    </div>
         <div>
             <div class="center">
 
-                <h4>Chercher un administrateur par nom</h4>
-                    <input type="search" name="nom">
-                    <input type="submit"  value="nom" />
+                <form th:action="@{rechercher/administrateurs}" class="form-inline m-3">
+
+                    Recherche administrateur:&nbsp;
+                    <input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+                    &nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    &nbsp;&nbsp;
+                </form>
             </div>
         </div>
          <h1>Liste des administrateurs</h1>

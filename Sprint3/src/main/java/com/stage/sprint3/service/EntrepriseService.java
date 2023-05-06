@@ -29,15 +29,7 @@ public class EntrepriseService {
     }
 
 
-    public List<Entreprise> rechercherEntrepriseParNom(String keyword){
-        if(keyword != null){
-            return incRepo.findAll(keyword);
-        }
-        return null;
-    }
 
-
-    public Entreprise get(Integer id){return incRepo.findById(id).get();}
 
     public List<Emploi> getEmploisByEntreprise(Entreprise entreprise) {
         List<Emploi> emploisByEntreprise = new ArrayList<>();
@@ -48,6 +40,13 @@ public class EntrepriseService {
             }
         }
         return emploisByEntreprise;
+    }
+
+    public List<Entreprise> rechercherEntrepriseParNom(String keyword){
+        if(keyword != null){
+            return incRepo.findAll(keyword);
+        }
+        return null;
     }
 
     public Entreprise findById(Integer id) {

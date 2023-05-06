@@ -1,11 +1,10 @@
 package com.stage.sprint3.entities;
 
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="emploi")
+@Table(name = "emploi")
 public class Emploi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +24,15 @@ public class Emploi {
     @Temporal(TemporalType.DATE)
     private Date Date_fin;
 
-    @Column(name="salaire", length = 64)
-        private String salaire;
+    @Column(name = "salaire", length = 64)
+    private String salaire;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_inc", nullable = false)
     private Entreprise entreprise;
 
+    @Transient
+    private String entrepriseNom;
     public Emploi() {
 
     }
@@ -48,7 +49,7 @@ public class Emploi {
         Date_debut = date_debut;
         Date_fin = date_fin;
         this.salaire = salaire;
-        //this.entreprise = entreprise;
+        this.entreprise = entreprise;
     }
 
     public int getId() {
@@ -99,11 +100,9 @@ public class Emploi {
         this.salaire = salaire;
     }
 
+
     public Entreprise getEntreprise() {
         return entreprise;
     }
 
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
-    }
 }

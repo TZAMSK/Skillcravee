@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <title>Accueil</title>
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
-
+  <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
@@ -86,12 +86,22 @@
     </div>
   </div>
 </header>
+<div th:if="${message!=null}" class="alert">
+  [[${message}]]
+</div>
 <div>
   <div class="center">
 
-    <h4>Chercher un étudiant par nom</h4>
-    <input type="search" name="nom">
-    <input type="submit"  value="nom" />
+    <form th:action="@{rechercher/entreprises}" class="form-inline m-3">
+
+      Recherche entreprise:&nbsp;
+      <input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
+      &nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+      &nbsp;&nbsp;
+    </form>
   </div>
 
 </div>
@@ -117,32 +127,11 @@
     <td>[[${inc.email}]]</td>
     <td>[[${inc.password}]]</td>
     <td>
-      <button onclick="showJobs(${inc.idInc})">Montrer emplois</button>
+      <a th:href="@{'/emplois_entreprise/' + ${inc.idInc}}" th:userId="${inc.idInc}">Emplois</a>
     </td>
+
   </tr>
   </tbody>
 </table>
 </body>
-
-<div id="job-list-[[${inc.idInc}]]" class="job-list">
-  <div class="card m-1 p-1 bg-light" th:each="emploi : ${listeEmploisEntreprise}">
-    <h4 th:text="${emploi.titre}"></h4>
-    <h4>
-      <span class="badge badge-pill badge-primary float-right" th:text="${emploi.salaire}"></span>
-    </h4>
-    <div class="card-text bg-white p-1" th:text="${emploi.description}"></div>
-  </div>
-</div>
-
-<script>
-  function showJobs(idInc) {
-    var jobList = document.getElementById("job-list-" + idInc);
-    if (jobList.style.display === "none") {
-      jobList.style.display = "block";
-    } else {
-      jobList.style.display = "none";
-    }
-  }
-</script>
-
 </html>

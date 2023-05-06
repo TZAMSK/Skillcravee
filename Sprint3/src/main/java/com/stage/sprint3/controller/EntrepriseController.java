@@ -7,6 +7,7 @@ import com.stage.sprint3.service.AdministrateurService;
 import com.stage.sprint3.service.EntrepriseService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,12 +34,21 @@ public class EntrepriseController {
         return "redirect:/entreprises";
     }
 
-    @GetMapping("/entreprises/{id}")
+    @GetMapping("/emplois_entreprise/{id}")
     public String afficherEmploiParEntreprise(@PathVariable("id") Integer id, Model model){
         Entreprise entreprise = incService.findById(id);
         List<Emploi> listeEmploisEntreprise= incService.getEmploisByEntreprise(entreprise);
         model.addAttribute("entreprise", entreprise);
         model.addAttribute("listeEmploisEntreprise", listeEmploisEntreprise);
-        return "redirect:/entreprises";
+        model.addAttribute("nomEntreprise", entreprise.getNom());
+        return "emplois_entreprise";
+    }
+
+    @GetMapping("rechercher/entreprises")
+    public String rechercherEntreprise(Model model, @Param("keyword") String keyword){
+        List<Entreprise> listeEntreprises = incService.rechercherEntrepriseParNom(keyword);
+        model.addAttribute("listeEntreprises", listeEntreprises);
+        model.addAttribute("keyword", keyword);
+        return "entreprises";
     }
 }
