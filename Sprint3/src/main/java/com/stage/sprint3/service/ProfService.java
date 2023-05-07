@@ -21,6 +21,7 @@ public class ProfService {
     }
     public Prof ajouterProf(Prof prof) { return profRepo.save(prof);}
 
+
     public void supprimer(Integer id) {
         profRepo.deleteById(id);
     }

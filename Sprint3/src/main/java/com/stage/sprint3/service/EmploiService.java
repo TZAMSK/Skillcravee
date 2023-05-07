@@ -33,4 +33,12 @@ public class EmploiService {
     public void supprimer(Integer id) {
         emploiRepo.deleteById(id);
     }
+
+    public List<Emploi> afficherAscendant() {
+        return emploiRepo.findByOrderByTitreAsc();
+    }
+
+    public List<Emploi> afficherDescendant() {
+        return emploiRepo.findByOrderByTitreDesc();
+    }
 }

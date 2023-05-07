@@ -25,6 +25,13 @@ public class Entreprise {
         this.email = email;
         this.password = password;
     }
+    public Entreprise(String nom, String address, String telephone, String email, String password) {
+        this.nom = nom;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
+        this.password = password;
+    }
     public Entreprise(int idInc, String nom, String address, String telephone, String email, String password) {
         this.idInc = idInc;
         this.email = email;

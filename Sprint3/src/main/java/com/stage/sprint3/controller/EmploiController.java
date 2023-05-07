@@ -43,4 +43,19 @@ public class EmploiController {
         return "redirect:/entreprises";
     }
 
+    @GetMapping("/filtrer/index")
+    public String filtrerEmplois(Model model, @Param("sort") String sort) {
+        List<Emploi> listeEmplois;
+        if ("asc".equals(sort)) {
+            listeEmplois = emploiService.afficherAscendant();
+        } else if ("desc".equals(sort)) {
+            listeEmplois = emploiService.afficherDescendant();
+        } else {
+            listeEmplois = emploiService.afficherEmplois();
+        }
+        model.addAttribute("listeEmplois", listeEmplois);
+        return "index";
+    }
+
+
 }

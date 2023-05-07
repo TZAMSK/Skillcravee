@@ -25,6 +25,7 @@ public class EntrepriseService {
     }
     public Entreprise ajouterEntreprise(Entreprise entreprise) { return incRepo.save(entreprise);}
 
+
     public void supprimer(Integer id) {
         incRepo.deleteById(id);
     }

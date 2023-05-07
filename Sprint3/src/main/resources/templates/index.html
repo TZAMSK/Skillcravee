@@ -6,11 +6,12 @@
     <title>Accueil</title>
     <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
     <div class='tete'>
         <div class="banniere">
             <table>
                 <tr>
-                    <th><a href=""><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
+                    <th><a th:href="@{/}"><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
                     <th><h1 id="titre">Skillcravee</h1></th>
                 </tr>
             </table>
@@ -84,7 +85,7 @@
     [[${message}]]
 </div>
 <div class="bordure_recherche centrer_recherche">
-    <form th:action="@{rechercher/index}">
+    <form th:action="@{rechercher/index}" class="center-form">
         <table>
             <tr>
                 <td>
@@ -94,6 +95,23 @@
                     <button type="submit" style="border: none;background-color: white">
                     <img src="images/loupe.png" alt="loupe">
                     </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="bordure_recherche centrer_recherche">
+    <form th:action="@{/filtrer/index}" method="get" class="left-form">
+        <table>
+            <tr>
+                <td>
+                    <select name="sort" class="recherche">
+                        <option value="asc" th:value="asc" th:selected="${sort == 'asc'}">A to Z</option>
+                        <option value="desc" th:value="desc" th:selected="${sort == 'desc'}">Z to A</option>
+                    </select>
+                </td>
+                <td style="text-align: right;">
+                    <input type="submit" value="Sort" style="border: none; background-color: white">
                 </td>
             </tr>
         </table>
@@ -141,24 +159,11 @@
 </body>
 
 <style>
-    .left-side {
-        width: calc(100% / 3.3);
-        float: left;
-    }
 
     .travail {
         border: 1px solid #ccc;
         padding: 10px;
         background-color:white;
-    }
-
-    .job-container {
-        display: flex;
-        justify-content: center;
-        border: 1px solid #ccc;
-        padding: 10px;
-        color: rgb(29,97,74);
-        background-color:rgb(29,97,74);
     }
 
     table {
@@ -181,41 +186,16 @@
         font-size: 18px;
     }
 
-    .badge {
-        margin-top: 5px;
-    }
-
-    .bordure_recherche {
-        width: 220px;
-        height: 35px;
-        border: 1.5px solid rgb(224, 189, 189);
-        border-radius: 6px;
-        padding-left: 6px;
-        background-color: white;
-        box-shadow: 4px 4px rgb(196, 119, 119);
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: block;
+    .center-form {
+        display: flex;
+        justify-content: center;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .recherche {
-        border: none;
-    }
-
-    img[alt|="loupe"] {
-        height: 27px;
-    }
-
-    textarea:focus,
-    input:focus {
-        outline: none;
-    }
-
-    .right-side {
-        width: calc(100% - calc(100% / 3.3));
-        float: right;
+    .left-form {
+        display: flex;
+        justify-content: flex-start;
     }
 </style>
 <script>
