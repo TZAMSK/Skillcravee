@@ -107,7 +107,7 @@
 </div>
 <h1>Liste des étudiants</h1>
 
-<table style="width:79%">
+<table style="width: 100%">
   <thead>
   <tr>
     <th> Id </th>
@@ -122,22 +122,71 @@
   </thead>
   <tbody>
   <tr th:each="etud : ${listeEtudiants}">
-    <td>[[${etud.id}]]</td>
-    <td>[[${etud.nom}]]</td>
-    <td>[[${etud.prenom}]]</td>
-    <td>[[${etud.email}]]</td>
-    <td>[[${etud.password}]]</td>
-    <td>[[${etud.statusStage}]]</td>
-    <td>[[${etud.numeroStage}]]</td>
-    <td>[[${etud.retenir}]]</td>
-    <td>
+    <th>[[${etud.id}]]</th>
+    <th>[[${etud.nom}]]</th>
+    <th>[[${etud.prenom}]]</th>
+    <th>[[${etud.email}]]</th>
+    <th>[[${etud.password}]]</th>
+    <th style="cursor: pointer">
+      <a th:if="${etud.statusStage == true}" style="background-color: green;"
+         th:href="@{'/etudiants/' + ${etud.id} + '/stage/false'}"
+         title="Dans un stage">&nbsp;</a>
+
+      <a th:if="${etud.statusStage == false}" style="background-color: red;"
+         th:href="@{'/etudiants/' + ${etud.id} + '/stage/true'}"
+         title="Pas dans un stage">&nbsp;</a>
+    </th>
+    <th>[[${etud.numeroStage}]]</th>
+    <th>[[${etud.retenir}]]</th>
+    <th>
       <a class="link-delete"
          th:href="@{'/etudiants/delete/' + ${etud.id}}"
          th:userId="${etud.id}"
          title="Supprimer cet étudiant">Supprimer  [[${etud.id}]]</a>
-    </td>
+    </th>
+    <th>
+      <a class="fas fa-edit fa-2x icon-green" href="" th:href="@{'/index/edit/' + ${etud.id}}" title="Editer">Editer</a>
+    </th>
   </tr>
   </tbody>
 </table>
 </body>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+  }
+
+  thead th {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  a[title="Dans un stage"] {
+    background-color: lightgreen;
+  }
+
+  a[title="Pas dans un stage"] {
+    background-color: red;
+  }
+</style>
 </html>

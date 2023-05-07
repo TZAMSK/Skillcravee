@@ -15,10 +15,9 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
     @Query("SELECT e FROM Etudiant e where e.nom like %?1% or e.prenom like %?1%")
     public List<Etudiant> findAll(String keyword);
 
-    /*
-    @Query("UPDATE Etudiant e set e.active = ?2 where u.id = ?1")
+    @Query("UPDATE Etudiant e set e.statusStage = ?2 where e.id = ?1")
     @Modifying
-    public void updateActiveStat(Integer id, boolean active);
+    public void updateStatus(Integer id, boolean statusStage);
 
-     */
+    Etudiant findById(int id);
 }

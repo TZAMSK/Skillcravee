@@ -2,6 +2,7 @@ package com.stage.sprint3.service;
 
 import com.stage.sprint3.entities.Emploi;
 import com.stage.sprint3.entities.Entreprise;
+import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EntrepriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,4 +53,7 @@ public class EntrepriseService {
     public Entreprise findById(Integer id) {
         return incRepo.findById(id).orElse(null);
     }
+
+    public Entreprise get(Integer id){return incRepo.findById(id).get();}
+
 }

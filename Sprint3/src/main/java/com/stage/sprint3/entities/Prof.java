@@ -7,6 +7,7 @@ import java.util.Set;
 public class Prof {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idProf", columnDefinition = "INT AUTO_INCREMENT")
     private int idProf;
     @Column(name = "nom", length = 120, unique = true, nullable = false)
     private String nom;
@@ -34,7 +35,7 @@ public class Prof {
     public int getIdProf(){
         return idProf;
     }
-    public void setIdProf(){
+    public void setIdProf(int idProf) {
         this.idProf = idProf;
     }
     public String getPassword() {return password;}

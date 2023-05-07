@@ -34,11 +34,11 @@ public class Entreprise {
         this.telephone = telephone;
     }
 
-    public int getIdInc() {
+    public Integer getIdInc() {
         return idInc;
     }
 
-    public void setIdInc(int idInc) {
+    public void setIdInc(Integer idInc) {
         this.idInc = idInc;
     }
 

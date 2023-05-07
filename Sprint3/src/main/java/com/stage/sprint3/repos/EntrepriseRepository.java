@@ -15,4 +15,6 @@ public interface EntrepriseRepository extends CrudRepository <Entreprise, Intege
     @Query("SELECT e FROM Entreprise e where e.nom like %?1%")
     public List<Entreprise> findAll(String keyword);
 
+    Entreprise findById(int id);
+
 }
