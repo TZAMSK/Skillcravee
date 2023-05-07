@@ -25,6 +25,13 @@ public class Entreprise {
         this.email = email;
         this.password = password;
     }
+    public Entreprise(String nom, String address, String telephone, String email, String password) {
+        this.nom = nom;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
+        this.password = password;
+    }
     public Entreprise(int idInc, String nom, String address, String telephone, String email, String password) {
         this.idInc = idInc;
         this.email = email;
@@ -34,11 +41,11 @@ public class Entreprise {
         this.telephone = telephone;
     }
 
-    public int getIdInc() {
+    public Integer getIdInc() {
         return idInc;
     }
 
-    public void setId(int idInc) {
+    public void setIdInc(Integer idInc) {
         this.idInc = idInc;
     }
 

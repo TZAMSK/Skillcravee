@@ -11,4 +11,6 @@ public interface ProfRepository extends CrudRepository<Prof, Integer> {
 
     @Query("SELECT p FROM Prof p where p.nom like %?1% or p.prenom like %?1%")
     public List<Prof> findAll(String keyword);
+
+    Prof findById(int id);
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Afficher utilisateur</title>
+  <title>Afficher entreprises</title>
 
   <link rel="stylesheet" href="">
 </head>
@@ -11,12 +11,13 @@
   <meta charset="UTF-8">
   <title>Accueil</title>
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
-
+  <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
         <tr>
-          <th><a href=""><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
+          <th><a th:href="@{/}"><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
           <th><h1 id="titre">Skillcravee</h1></th>
         </tr>
       </table>
@@ -91,14 +92,24 @@
     </div>
   </div>
 </header>
-<div>
-  <div class="center">
-
-    <h4>Chercher un étudiant par nom</h4>
-    <input type="search" name="nom">
-    <input type="submit"  value="nom" />
-  </div>
-
+<div th:if="${message!=null}" class="alert">
+  [[${message}]]
+</div>
+<div class="bordure_recherche centrer_recherche">
+  <form th:action="@{rechercher/entreprises}">
+    <table>
+      <tr>
+        <td>
+          <input th:value="${keyword}" name="keyword" type="search" placeholder="Nom entreprise" class="recherche" required/>
+        </td>
+        <td style="text-align: right;">
+          <button type="submit" style="border: none;background-color: white">
+            <img src="images/loupe.png" alt="loupe">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
 </div>
 <h1>Liste des entreprises</h1>
 
@@ -122,32 +133,11 @@
     <td>[[${inc.email}]]</td>
     <td>[[${inc.password}]]</td>
     <td>
-      <button onclick="showJobs(${inc.idInc})">Montrer emplois</button>
+      <a th:href="@{'/emplois_entreprise/' + ${inc.idInc}}" th:userId="${inc.idInc}">Emplois</a>
     </td>
+
   </tr>
   </tbody>
 </table>
 </body>
-
-<div id="job-list-[[${inc.idInc}]]" class="job-list">
-  <div class="card m-1 p-1 bg-light" th:each="emploi : ${listeEmploisEntreprise}">
-    <h4 th:text="${emploi.titre}"></h4>
-    <h4>
-      <span class="badge badge-pill badge-primary float-right" th:text="${emploi.salaire}"></span>
-    </h4>
-    <div class="card-text bg-white p-1" th:text="${emploi.description}"></div>
-  </div>
-</div>
-
-<script>
-  function showJobs(idInc) {
-    var jobList = document.getElementById("job-list-" + idInc);
-    if (jobList.style.display === "none") {
-      jobList.style.display = "block";
-    } else {
-      jobList.style.display = "none";
-    }
-  }
-</script>
-
 </html>

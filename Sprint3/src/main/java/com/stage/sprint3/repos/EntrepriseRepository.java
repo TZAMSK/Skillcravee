@@ -1,6 +1,7 @@
 package com.stage.sprint3.repos;
 
 import com.stage.sprint3.entities.Entreprise;
+import com.stage.sprint3.entities.Prof;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,5 +14,7 @@ public interface EntrepriseRepository extends CrudRepository <Entreprise, Intege
 
     @Query("SELECT e FROM Entreprise e where e.nom like %?1%")
     public List<Entreprise> findAll(String keyword);
+
+    Entreprise findById(int id);
 
 }

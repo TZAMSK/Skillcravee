@@ -1,5 +1,6 @@
 package com.stage.sprint3.service;
 
+import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.ProfRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,10 @@ public class ProfService {
     }
     public Prof ajouterProf(Prof prof) { return profRepo.save(prof);}
 
+
     public void supprimer(Integer id) {
         profRepo.deleteById(id);
     }
-
-
 
     public List<Prof> rechercherProfParNom(String keyword){
         if(keyword != null){
@@ -32,6 +32,20 @@ public class ProfService {
         }
         return null;
     }
+    public Prof findById(Integer id) {
+        return profRepo.findById(id).orElse(null);
+    }
 
     public Prof get(Integer id){return profRepo.findById(id).get();}
+
+    public void updateProf(Prof prof) {
+        Prof existingProf = profRepo.findById(prof.getIdProf());
+        if (existingProf != null) {
+            existingProf.setNom(prof.getNom());
+            existingProf.setPrenom(prof.getPrenom());
+            existingProf.setEmail(prof.getEmail());
+            existingProf.setPassword(prof.getPassword());
+            profRepo.save(existingProf);
+        }
+    }
 }
