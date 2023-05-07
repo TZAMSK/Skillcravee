@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
            <title>Afficher utilisateur</title>
@@ -33,9 +33,14 @@
                             </a>
                         </li>
                         <li>
-                            <a
-                                    th:href="@{/}">Inscription
-                            </a>
+                            <div class="dropdown">
+                                <button class="dropbtn">Inscription</button>
+                                <div class="dropdown-content">
+                                    <a th:href="@{/etudiants/new}">Etudiants</a>
+                                    <a th:href="@{/profs/new}">Professeurs</a>
+                                    <a th:href="@{/entreprise/new}">Entreprises</a>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <div class="dropdown">

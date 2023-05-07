@@ -31,23 +31,4 @@ public class EtudiantController {
         return "redirect:/etudiants";
     }
 
-    /*
-    @GetMapping("/etudiant/new")
-    public String afficherFormulaireEtudiant(Model model){
-        Etudiant etudiant = new Etudiant();
-        model.addAttribute("etudiant", etudiant);
-        return "etudiant_form";
-    }
-
-
-
-    @PostMapping("/etudiant/save")
-    public String ajouterEtudiant(Etudiant etudiant, RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("message","Le etudiant: "+ etudiant.getNom() +"a ete ajouter avec succes");
-        service.ajouterEtudiant(etudiant);
-        return "redirect:/index";
-    }
-
-     */
-
 }

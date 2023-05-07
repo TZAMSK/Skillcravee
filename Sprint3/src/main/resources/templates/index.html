@@ -27,9 +27,14 @@
                         </a>
                     </li>
                     <li>
-                        <a
-                                th:href="@{/}">Inscription
-                        </a>
+                        <div class="dropdown">
+                            <button class="dropbtn">Inscription</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/etudiants/new}">Etudiants</a>
+                                <a th:href="@{/profs/new}">Professeurs</a>
+                                <a th:href="@{/entreprise/new}">Entreprises</a>
+                            </div>
+                        </div>
                     </li>
                     <li>
                         <div class="dropdown">
