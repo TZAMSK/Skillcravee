@@ -1,6 +1,5 @@
 package com.stage.sprint3.controller;
 
-import com.stage.sprint3.entities.Administration;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.service.EtudiantService;
@@ -33,7 +32,6 @@ public class ProfController {
         redirectAttributes.addFlashAttribute("message", "Le professeur ID " + id + " a été supprimé avec succès ");
         return "redirect:/profs";
     }
-
     @GetMapping("rechercher/profs")
     public String rechercherProf(Model model, @Param("keyword") String keyword){
         List<Prof> listeProfs = profService.rechercherProfParNom(keyword);
@@ -41,6 +39,7 @@ public class ProfController {
         model.addAttribute("keyword", keyword);
         return "profs";
     }
+
 
 
 }

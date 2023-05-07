@@ -13,7 +13,6 @@
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
-  <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
@@ -154,6 +153,29 @@
 </table>
 </body>
 <style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+  }
+
+  thead th {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+
   a {
     display: block;
     width: 100%;

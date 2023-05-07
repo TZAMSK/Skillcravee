@@ -2,92 +2,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Inscription</title>
-    <link th:href="@{/css/inscription.css}" rel="stylesheet" type="text/css" />
-    <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Inscription</title>
+  <link th:href="@{/css/inscription.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
+  <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
 
 </head>
 <body class="couleur">
 <div class="formulaire">
-    <div class="contenu">
-        <a href= ""><img height="60"  width="80" src="images/logo.PNG"/></a>
-        <h1 class="h1">BIENVENUE</h1>
-        <div th:if="${message!=null}" class="alert">
-            [[${message}]]
-        </div>
-        <p>Entrez les informations suivantes :</p>
-
-        <form th:object="${formulaire}" th:action="@{/index/save}" method="post">
-            <div class="inputInscription">
-                <select name="selection" onchange="showFields(this)">
-                    <option>Choisissez une option</option>
-                    <option>Étudiant</option>
-                    <option>Professeur</option>
-                    <option>Entreprise</option>
-                </select>
-                <br><br>
-                <div id="etudiant-fields" class="form-fields">
-                    <input th:field="*{etudiant.nom}" type="text" placeholder="Nom"/>
-                    <input th:field="*{etudiant.prenom}" type="text" placeholder="Prenom"/>
-                    <input th:field="*{etudiant.email}" type="text" placeholder="Email"/>
-                    <input th:field="*{etudiant.password}" type="password" placeholder="Password"/>
-                </div>
-                <div id="professeur-fields" class="form-fields">
-                    <input th:field="*{prof.nom}" type="text" placeholder="Nom"/>
-                    <input th:field="*{prof.prenom}" type="text" placeholder="Prenom"/>
-                    <input th:field="*{prof.email}" type="text" placeholder="Email"/>
-                    <input th:field="*{prof.password}" type="password" placeholder="Password"/>
-                </div>
-                <div id="entreprise-fields" class="form-fields">
-                    <input th:field="*{entreprise.nom}" type="text" placeholder="Nom"/>
-                    <input th:field="*{entreprise.address}" type="text" placeholder="Adress"/>
-                    <input th:field="*{entreprise.telephone}" type="text" placeholder="Telephone"/>
-                    <input th:field="*{entreprise.email}" type="text" placeholder="Email"/>
-                    <input th:field="*{entreprise.password}" type="password" placeholder="Password"/>
-                </div>
-            </div>
-            <br>
-            <p>Déjà inscrit ?</p>
-            <a href="">Connectez-vous</a>
-            <button type="submit" class="bouton" name="next">Submit</button>
-        </form>
-
-        <script>
-            function showFields(selectElement) {
-                var selectedOption = selectElement.value;
-
-                // Hide all form fields
-                $(".form-fields").hide();
-
-                // Show form fields based on selected option
-                if (selectedOption === "Étudiant") {
-                    $("#etudiant-fields").show();
-                } else if (selectedOption === "Professeur") {
-                    $("#professeur-fields").show();
-                } else if (selectedOption === "Entreprise") {
-                    $("#entreprise-fields").show();
-                }
-            }
-
-            $(document).ready(function() {
-                // Hide all the form fields initially
-                $(".form-fields").hide();
-
-                // Show form fields based on selected option
-                $("select[name='selection']").change(function() {
-                    showFields(this);
-                });
-            });
-        </script>
-<style>
-    .form-fields {
-        display: none;
-    }
-</style>
+  <div class="contenu">
+    <a href= ""><img height="60"  width="80" src="images/logo.PNG"/></a>
+    <h1 class="h1">BIENVENUE</h1>
+    <div th:if="${message!=null}" class="alert">
+      [[${message}]]
     </div>
+    <p>Entrez les informations suivantes :</p>
+
+    <form th:object="${formulaire}" th:action="@{/index/save}" method="post">
+      <div class="inputInscription">
+        <select name="selection" onchange="showFields(this)">
+          <option>Choisissez une option</option>
+          <option>Étudiant</option>
+          <option>Professeur</option>
+          <option>Entreprise</option>
+        </select>
+        <br><br>
+        <div id="etudiant-fields" class="form-fields">
+          <input th:field="*{etudiant.nom}" type="text" placeholder="Nom"/>
+          <input th:field="*{etudiant.prenom}" type="text" placeholder="Prenom"/>
+          <input th:field="*{etudiant.email}" type="text" placeholder="Email"/>
+          <input th:field="*{etudiant.password}" type="password" placeholder="Password"/>
+        </div>
+        <div id="professeur-fields" class="form-fields">
+          <input th:field="*{prof.nom}" type="text" placeholder="Nom"/>
+          <input th:field="*{prof.prenom}" type="text" placeholder="Prenom"/>
+          <input th:field="*{prof.email}" type="text" placeholder="Email"/>
+          <input th:field="*{prof.password}" type="password" placeholder="Password"/>
+        </div>
+        <div id="entreprise-fields" class="form-fields">
+          <input th:field="*{entreprise.nom}" type="text" placeholder="Nom"/>
+          <input th:field="*{entreprise.address}" type="text" placeholder="Adress"/>
+          <input th:field="*{entreprise.telephone}" type="text" placeholder="Telephone"/>
+          <input th:field="*{entreprise.email}" type="text" placeholder="Email"/>
+          <input th:field="*{entreprise.password}" type="password" placeholder="Password"/>
+        </div>
+      </div>
+      <br>
+      <p>Déjà inscrit ?</p>
+      <a href="">Connectez-vous</a>
+      <button type="submit" class="bouton" name="next">Submit</button>
+    </form>
+
+    <script>
+      function showFields(selectElement) {
+        var selectedOption = selectElement.value;
+
+        // Hide all form fields
+        $(".form-fields").hide();
+
+        // Show form fields based on selected option
+        if (selectedOption === "Étudiant") {
+          $("#etudiant-fields").show();
+        } else if (selectedOption === "Professeur") {
+          $("#professeur-fields").show();
+        } else if (selectedOption === "Entreprise") {
+          $("#entreprise-fields").show();
+        }
+      }
+
+      $(document).ready(function() {
+        // Hide all the form fields initially
+        $(".form-fields").hide();
+
+        // Show form fields based on selected option
+        $("select[name='selection']").change(function() {
+          showFields(this);
+        });
+      });
+    </script>
+    <style>
+      .form-fields {
+        display: none;
+      }
+    </style>
+  </div>
 </div>
 </body>
 </html>

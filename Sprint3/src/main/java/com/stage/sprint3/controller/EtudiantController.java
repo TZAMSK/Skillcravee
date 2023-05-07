@@ -1,6 +1,5 @@
 package com.stage.sprint3.controller;
 
-import com.stage.sprint3.entities.Administration;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +25,19 @@ public class EtudiantController {
         return "etudiants";
     }
 
-    @GetMapping("/etudiants/delete/{id}")
-    public String supprimerEtudiant(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes){
-        etudiantService.supprimer(id);
-        redirectAttributes.addFlashAttribute("message", "L'etudiant ID " + id + " a été supprimé avec succès ");
-        return "redirect:/etudiants";
-    }
-
     @GetMapping("rechercher/etudiants")
     public String rechercherEtudiant(Model model, @Param("keyword") String keyword){
         List<Etudiant> listeEtudiants = etudiantService.rechercherEtudiantParNom(keyword);
         model.addAttribute("listeEtudiants", listeEtudiants);
         model.addAttribute("keyword", keyword);
         return "etudiants";
+    }
+
+    @GetMapping("/etudiants/delete/{id}")
+    public String supprimerEtudiant(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes){
+        etudiantService.supprimer(id);
+        redirectAttributes.addFlashAttribute("message", "L'etudiant ID " + id + " a été supprimé avec succès ");
+        return "redirect:/etudiants";
     }
 
     @GetMapping("/etudiants/{id}/stage/{status}")

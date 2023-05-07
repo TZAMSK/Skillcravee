@@ -20,4 +20,6 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
     public void updateStatus(Integer id, boolean statusStage);
 
     Etudiant findById(int id);
+
+//    Etudiant findByAll(int id, String nom, String prenom, String email, String password, boolean statusStage, int numeroStage,boolean retenir);
 }
