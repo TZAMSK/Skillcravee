@@ -84,40 +84,49 @@
 <div th:if="${message!=null}" class="alert">
     [[${message}]]
 </div>
-<div class="bordure_recherche centrer_recherche">
-    <form th:action="@{rechercher/index}" class="center-form">
-        <table>
-            <tr>
-                <td>
-                    <input th:value="${keyword}" name="keyword" type="search" placeholder="Poste de travail" class="recherche" required/>
-                </td>
-                <td style="text-align: right;">
-                    <button type="submit" style="border: none;background-color: white">
-                    <img src="images/loupe.png" alt="loupe">
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </form>
+<div class="body-container">
+    <div class="center">
+        <div class="bordure_recherche centrer_recherche">
+            <div class="center-form">
+                <form th:action="@{rechercher/index}">
+                    <table>
+                        <tr>
+                            <td>
+                                <input th:value="${keyword}" name="keyword" type="search" placeholder="Poste de travail" class="recherche" required/>
+                            </td>
+                            <td style="text-align: right;">
+                                <button type="submit" style="border: none;background-color: white">
+                                <img src="images/loupe.png" alt="loupe">
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="left">
+        <div class="bordure_recherche centrer_recherche">
+            <div class="left-form">
+                <form th:action="@{/filtrer/index}" method="get">
+                    <table>
+                        <tr>
+                            <td>
+                                <select name="sort" class="recherche">
+                                    <option value="asc" th:value="asc" th:selected="${sort == 'asc'}">A to Z</option>
+                                    <option value="desc" th:value="desc" th:selected="${sort == 'desc'}">Z to A</option>
+                                </select>
+                            </td>
+                            <td style="text-align: right;">
+                                <input type="submit" value="Sort" style="border: none; background-color: white">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="bordure_recherche centrer_recherche">
-    <form th:action="@{/filtrer/index}" method="get" class="left-form">
-        <table>
-            <tr>
-                <td>
-                    <select name="sort" class="recherche">
-                        <option value="asc" th:value="asc" th:selected="${sort == 'asc'}">A to Z</option>
-                        <option value="desc" th:value="desc" th:selected="${sort == 'desc'}">Z to A</option>
-                    </select>
-                </td>
-                <td style="text-align: right;">
-                    <input type="submit" value="Sort" style="border: none; background-color: white">
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
-
 <table>
     <tbody>
     <tr th:each="emploi : ${listeEmplois}">
@@ -186,16 +195,20 @@
         font-size: 18px;
     }
 
-    .center-form {
+    .body-container {
         display: flex;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
     }
 
-    .left-form {
-        display: flex;
-        justify-content: flex-start;
+    .left {
+        flex: 0 0 auto;
+    }
+
+    .center {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
 <script>
