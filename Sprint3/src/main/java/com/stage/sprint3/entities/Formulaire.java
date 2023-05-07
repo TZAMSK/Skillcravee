@@ -7,10 +7,13 @@ public class Formulaire{
     private Prof prof;
     private Entreprise entreprise;
 
+    private Administration administration;
+
     public Formulaire() {
         this.etudiant = new Etudiant();
         this.prof = new Prof();
         this.entreprise = new Entreprise();
+        this.administration = new Administration();
     }
 
     public Etudiant getEtudiant() {
@@ -34,5 +37,12 @@ public class Formulaire{
 
     public void setEntreprise(Entreprise entreprise) {
         this.entreprise = entreprise;
+    }
+
+    public Administration getAdmin(){
+        return administration;
+    }
+    public void setAdminstration(Administration administration){
+        this.administration = administration;
     }
 }

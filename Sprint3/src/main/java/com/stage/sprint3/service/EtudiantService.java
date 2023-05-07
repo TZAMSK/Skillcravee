@@ -51,4 +51,10 @@ public class EtudiantService {
             etudiantRepo.save(existingEtudiant);
         }
     }
+    public Etudiant loginEtudiant(String email, String password){
+        if(email != null && password != null){
+            return etudiantRepo.findByEmailAndPassword(email, password);
+        }
+        return null;
+    }
 }

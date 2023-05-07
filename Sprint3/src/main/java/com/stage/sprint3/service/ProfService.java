@@ -48,4 +48,11 @@ public class ProfService {
             profRepo.save(existingProf);
         }
     }
+
+    public Prof loginProf(String email, String password){
+        if(email != null && password != null){
+            return profRepo.findByEmailAndPassword(email, password);
+        }
+        return null;
+    }
 }

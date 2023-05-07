@@ -3,6 +3,7 @@ package com.stage.sprint3.service;
 import com.stage.sprint3.entities.Emploi;
 import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.entities.Etudiant;
+import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.EntrepriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,12 @@ public class EntrepriseService {
     }
 
     public Entreprise get(Integer id){return incRepo.findById(id).get();}
+
+    public Entreprise loginEntreprise(String email, String password){
+        if(email != null && password != null){
+            return incRepo.findByEmailAndPassword(email, password);
+        }
+        return null;
+    }
 
 }

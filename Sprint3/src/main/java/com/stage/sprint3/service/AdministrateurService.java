@@ -1,6 +1,7 @@
 package com.stage.sprint3.service;
 
 import com.stage.sprint3.entities.Administration;
+import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.repos.AdministrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,11 @@ public class AdministrateurService {
  */
 
     public Administration get(Integer id){return adminRepo.findById(id).get();}
+
+    public Administration loginadmin(String email, String password){
+        if(email != null && password != null){
+            return adminRepo.findByEmailAndPassword(email, password);
+        }
+        return null;
+    }
 }

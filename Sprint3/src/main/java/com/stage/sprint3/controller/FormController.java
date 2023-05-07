@@ -41,7 +41,7 @@ public class FormController {
             etudiant.setPassword(formulaire.getEtudiant().getPassword());
             etudiantService.ajouterEtudiant(etudiant);
             redirectAttributes.addFlashAttribute("message", "L'étudiant est bien ajouté");
-        } else if (selection.equals("Professeur")) {
+        } else if (selection.equals("Entreprise")) {
             Entreprise entreprise = new Entreprise();
             entreprise.setNom(formulaire.getEntreprise().getNom());
             entreprise.setAddress(formulaire.getEntreprise().getAddress());
@@ -49,15 +49,15 @@ public class FormController {
             entreprise.setEmail(formulaire.getEntreprise().getEmail());
             entreprise.setPassword(formulaire.getEntreprise().getPassword());
             entrepriseService.ajouterEntreprise(entreprise);
-            redirectAttributes.addFlashAttribute("message", "Le professeur est bien ajouté");
-        } else if (selection.equals("Entreprise")) {
+            redirectAttributes.addFlashAttribute("message", "L'entreprise est bien ajouté");
+        } else if (selection.equals("Professeur")) {
             Prof prof = new Prof();
             prof.setNom(formulaire.getProf().getNom());
             prof.setPrenom(formulaire.getProf().getPrenom());
             prof.setEmail(formulaire.getProf().getEmail());
             prof.setPassword(formulaire.getProf().getPassword());
             profService.ajouterProf(prof);
-            redirectAttributes.addFlashAttribute("message", "L'entreprise est bien ajouté");
+            redirectAttributes.addFlashAttribute("message", "Le Prof est bien ajouté");
         }
         return "inscription_form";
     }
