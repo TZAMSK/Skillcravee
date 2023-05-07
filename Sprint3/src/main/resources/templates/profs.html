@@ -13,6 +13,7 @@
     <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
     <div class='tete'>
         <div class="banniere">
             <table>
@@ -107,7 +108,7 @@
     </form>
 </div>
 <h1>Liste des professeurs</h1>
-<table style="width:79%">
+<table style="width:100%">
     <thead>
         <tr>
             <th> Id </th>
@@ -119,17 +120,17 @@
     </thead>
     <tbody>
         <tr th:each="prof : ${listeProfs}">
-            <td>[[${prof.idProf}]]</td>
-            <td>[[${prof.nom}]]</td>
-            <td>[[${prof.prenom}]]</td>
-            <td>[[${prof.email}]]</td>
-            <td>[[${prof.password}]]</td>
-            <td>
+            <th>[[${prof.idProf}]]</th>
+            <th>[[${prof.nom}]]</th>
+            <th>[[${prof.prenom}]]</th>
+            <th>[[${prof.email}]]</th>
+            <th>[[${prof.password}]]</th>
+            <th>
                 <a class="link-delete"
                    th:href="@{'/profs/delete/' + ${prof.idProf}}"
                    th:userId="${prof.idProf}"
                    title="Supprimer cet professeur">Supprimer  [[${prof.idProf}]]</a>
-            </td>
+            </th>
         </tr>
     </tbody>
 </table>

@@ -13,6 +13,7 @@
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
@@ -108,7 +109,7 @@
 </div>
 <h1>Liste des entreprises</h1>
 
-<table style="width:79%">
+<table style="width:100%">
   <thead>
   <tr>
     <th> Id </th>
@@ -121,15 +122,15 @@
   </thead>
   <tbody>
   <tr th:each="inc : ${listeEntreprises}">
-    <td>[[${inc.idInc}]]</td>
-    <td>[[${inc.nom}]]</td>
-    <td>[[${inc.address}]]</td>
-    <td>[[${inc.telephone}]]</td>
-    <td>[[${inc.email}]]</td>
-    <td>[[${inc.password}]]</td>
-    <td>
+    <th>[[${inc.idInc}]]</th>
+    <th>[[${inc.nom}]]</th>
+    <th>[[${inc.address}]]</th>
+    <th>[[${inc.telephone}]]</th>
+    <th>[[${inc.email}]]</th>
+    <th>[[${inc.password}]]</th>
+    <th>
       <a th:href="@{'/emplois_entreprise/' + ${inc.idInc}}" th:userId="${inc.idInc}">Emplois</a>
-    </td>
+    </th>
 
   </tr>
   </tbody>

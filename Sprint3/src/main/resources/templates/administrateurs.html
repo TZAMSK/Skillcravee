@@ -13,7 +13,7 @@
         <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
         <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
         <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
-
+        <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
         <div class='tete'>
             <div class="banniere">
                 <table>
@@ -108,7 +108,7 @@
         </form>
     </div>
          <h1>Liste des administrateurs</h1>
-        <table style="width:79%">
+        <table style="width:100%">
             <thead>
                 <tr>
                    <th> Id </th>
@@ -121,18 +121,18 @@
             </thead>
             <tbody>
                 <tr th:each="admin : ${listeAdmins}">
-                    <td>[[${admin.id}]]</td>
-                    <td>[[${admin.username}]]</td>
-                    <td>[[${admin.nom}]]</td>
-                    <td>[[${admin.prenom}]]</td>
-                    <td>[[${admin.email}]]</td>
-                    <td>[[${admin.password}]]</td>
-                    <td>
+                    <th>[[${admin.id}]]</th>
+                    <th>[[${admin.username}]]</th>
+                    <th>[[${admin.nom}]]</th>
+                    <th>[[${admin.prenom}]]</th>
+                    <th>[[${admin.email}]]</th>
+                    <th>[[${admin.password}]]</th>
+                    <th>
                         <a class="link-delete"
                            th:href="@{'/administrateurs/delete/' + ${admin.id}}"
                            th:userId="${admin.id}"
                            title="Supprimer cet administrateur">Supprimer  [[${admin.id}]]</a>
-                    </td>
+                    </th>
                 </tr>
             </tbody>
         </table>
