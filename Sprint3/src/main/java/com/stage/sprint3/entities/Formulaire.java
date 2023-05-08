@@ -39,10 +39,10 @@ public class Formulaire{
         this.entreprise = entreprise;
     }
 
-    public Administration getAdmin(){
+    public Administration getAdministration(){
         return administration;
     }
-    public void setAdminstration(Administration administration){
+    public void setAdministration(Administration administration){
         this.administration = administration;
     }
 }

@@ -47,9 +47,7 @@
                             <a th:href="@{/login}">Connexion</a>
                     </li>
                     <li>
-                        <a
-                                th:href="@{/}">Quitter
-                        </a>
+                        <a th:href="@{/deconnexion}">Quitter</a>
                     </li>
                     <li>
                         <div class ="language-switcher">
@@ -104,10 +102,14 @@
                     <table>
                         <tr>
                             <td>
-                                <select name="sort" class="recherche">
-                                    <option value="asc" th:value="asc" th:selected="${sort == 'asc'}">A to Z</option>
-                                    <option value="desc" th:value="desc" th:selected="${sort == 'desc'}">Z to A</option>
-                                </select>
+                                <label for="sortAsc">
+                                    <input id="sortAsc" type="radio" name="sort" value="asc" th:checked="${sort == 'asc'}" /> A to Z
+                                </label>
+                            </td>
+                            <td>
+                                <label for="sortDesc">
+                                    <input id="sortDesc" type="radio" name="sort" value="desc" th:checked="${sort == 'desc'}" /> Z to A
+                                </label>
                             </td>
                             <td style="text-align: right;">
                                 <input type="submit" value="Sort" style="border: none; background-color: white">
@@ -118,6 +120,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <table>
     <tbody>
@@ -197,11 +200,11 @@
 
     .center {
         position: absolute;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
+        left: 50%;
+        transform: translateX(-50%);
     }
+
+
 </style>
 <script>
     const showInfoBtns = document.querySelectorAll('.show-info-btn');
@@ -222,5 +225,6 @@
             }
         });
     });
+
 </script>
 </html>

@@ -15,6 +15,6 @@ public interface ProfRepository extends CrudRepository<Prof, Integer> {
 
     Prof findById(int id);
 
-    @Query("SELECT e FROM Prof e where e.email like %?1% and e.password like %?1%")
+    @Query("SELECT e FROM Prof e where e.email like %?1% and e.password like %?2%")
     Prof findByEmailAndPassword(String email, String password);
 }

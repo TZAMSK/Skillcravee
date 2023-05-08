@@ -18,7 +18,7 @@ public interface EntrepriseRepository extends CrudRepository <Entreprise, Intege
 
     Entreprise findById(int id);
 
-    @Query("SELECT e FROM Entreprise e where e.email like %?1% and e.password like %?1%")
+    @Query("SELECT e FROM Entreprise e where e.email like %?1% and e.password like %?2%")
     Entreprise findByEmailAndPassword(String email, String password);
 
 }

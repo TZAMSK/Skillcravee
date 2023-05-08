@@ -21,7 +21,8 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 
     Etudiant findById(int id);
 
-    @Query("SELECT e FROM Etudiant e where e.email like %?1% and e.password like %?1%")
+
+    @Query("SELECT e FROM Etudiant e where e.email like %?1% and e.password like %?2%")
     Etudiant findByEmailAndPassword(String email, String password);
 
 }
