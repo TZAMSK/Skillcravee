@@ -126,7 +126,9 @@
         </div>
     </div>
 
-    <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
+    <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+        <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
+    </div>
 
     <button onclick="openPopup()">Vos informations</button>
 
@@ -208,7 +210,9 @@
                 <p>
                     <span th:text="${emploi.description}"></span>
                 </p>
-                <a th:href="@{'/emploi/edit/' + ${emploi.id}}" title="Editer">Editer</a>
+                <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+                    <a th:href="@{'/emploi/edit/' + ${emploi.id}}" title="Editer">Editer</a>
+                </div>
             </div>
         </td>
     </tr>
