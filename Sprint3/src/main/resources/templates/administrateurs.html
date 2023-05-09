@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li>
-                            <div class="dropdown">
+                            <div th:if="${session != null and session.role == 'admin'}" class="dropdown">
                                 <button class="dropbtn">Administration</button>
                                 <div class="dropdown-content">
                                     <a th:href="@{/etudiants}">Etudiants</a>
@@ -50,10 +50,12 @@
                             </div>
                         </li>
                         <li>
-                            <a th:href="@{/login}">Connexion</a>
+                            <a th:href="@{/login}" th:unless="${not #strings.isEmpty(session.email)}">Connexion</a>
                         </li>
                         <li>
-                            <a th:href="@{/deconnexion}">Quitter</a>
+                            <div th:if="${session != null}">
+                                <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+                            </div>
                         </li>
                         <li>
                             <div class ="language-switcher">
