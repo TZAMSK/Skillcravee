@@ -38,17 +38,6 @@ public class ProfService {
 
     public Prof get(Integer id){return profRepo.findById(id).get();}
 
-    public void updateProf(Prof prof) {
-        Prof existingProf = profRepo.findById(prof.getIdProf());
-        if (existingProf != null) {
-            existingProf.setNom(prof.getNom());
-            existingProf.setPrenom(prof.getPrenom());
-            existingProf.setEmail(prof.getEmail());
-            existingProf.setPassword(prof.getPassword());
-            profRepo.save(existingProf);
-        }
-    }
-
     public Prof loginProf(String email, String password){
         if(email != null && password != null){
             return profRepo.findByEmailAndPassword(email, password);

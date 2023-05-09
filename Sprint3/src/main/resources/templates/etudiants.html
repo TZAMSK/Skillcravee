@@ -140,13 +140,13 @@
     <th>[[${etud.numeroStage}]]</th>
     <th>[[${etud.retenir}]]</th>
     <th>
+      <a th:href="@{'/etudiants/edit/' + ${etud.id}}" title="Editer">Editer</a>
+    </th>
+    <th>
       <a class="link-delete"
          th:href="@{'/etudiants/delete/' + ${etud.id}}"
          th:userId="${etud.id}"
          title="Supprimer cet étudiant">Supprimer  [[${etud.id}]]</a>
-    </th>
-    <th>
-      <a class="fas fa-edit fa-2x icon-green" href="" th:href="@{'/index/edit/' + ${etud.id}}" title="Editer">Editer</a>
     </th>
   </tr>
   </tbody>

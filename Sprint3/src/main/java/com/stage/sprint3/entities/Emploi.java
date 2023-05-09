@@ -2,6 +2,7 @@ package com.stage.sprint3.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "emploi")
@@ -13,7 +14,7 @@ public class Emploi {
     @Column(name = "titre", length = 120, unique = true, nullable = false)
     private String titre;
 
-    @Column(name = "description", length = 120, unique = true, nullable = false)
+    @Column(name = "description", length = 120, nullable = false)
     private String description;
 
     @Column(name = "Date_debut")
@@ -103,6 +104,9 @@ public class Emploi {
 
     public Entreprise getEntreprise() {
         return entreprise;
+    }
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
 
 }

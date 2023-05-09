@@ -2,6 +2,7 @@ package com.stage.sprint3.service;
 
 import com.stage.sprint3.entities.Emploi;
 import com.stage.sprint3.entities.Entreprise;
+import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.EmploiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,7 @@ public class EmploiService {
     public List<Emploi> afficherDescendant() {
         return emploiRepo.findByOrderByTitreDesc();
     }
+
+    public Emploi get(Integer id){return emploiRepo.findById(id).get();}
+
 }

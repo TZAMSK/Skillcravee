@@ -1,6 +1,7 @@
 package com.stage.sprint3.controller;
 
 import com.stage.sprint3.entities.Etudiant;
+import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -48,12 +50,18 @@ public class EtudiantController {
         return "redirect:/etudiants";
     }
 
+    @PostMapping("/etudiants/save")
+    public String editerEtud(Etudiant etud, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("message","L'étudiant a été édité avec success");
+        etudiantService.ajouterEtudiant(etud);
+        return "redirect:/etudiants";
+    }
     @GetMapping("/etudiants/edit/{id}")
-    public String EditerUtilisateur(@PathVariable(name = "id") Integer id, Model model, RedirectAttributes redirectAttributes){
-        Etudiant etudiant = etudiantService.get(id);
-        model.addAttribute("PageTitle", "Editer étudiant ID: " + id);
-        model.addAttribute("etudiant", etudiant);
-        return "inscription_form";
+    public String EditerEtudiant(@PathVariable(name = "id") Integer id, Model model){
+        Etudiant etud = etudiantService.get(id);
+        model.addAttribute("PageTitle", "Editer Étudiant ID: " + id);
+        model.addAttribute("etud", etud);
+        return "etudiant-editer";
     }
 
 }

@@ -154,6 +154,7 @@
                 <p>
                     <span th:text="${emploi.description}"></span>
                 </p>
+                <a th:href="@{'/emploi/edit/' + ${emploi.id}}" title="Editer">Editer</a>
             </div>
         </td>
     </tr>

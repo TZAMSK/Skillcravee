@@ -7,9 +7,9 @@ public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "nom", length = 120, unique = true, nullable = false)
+    @Column(name = "nom", length = 120, nullable = false)
     private String nom;
-    @Column(name = "prenom", length = 120, unique = true, nullable = false)
+    @Column(name = "prenom", length = 120, nullable = false)
     private String prenom;
     @Column(name="email", length = 128, nullable = false, unique = true)
     private String email;

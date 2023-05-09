@@ -126,6 +126,9 @@
             <th>[[${prof.email}]]</th>
             <th>[[${prof.password}]]</th>
             <th>
+                <a th:href="@{'/profs/edit/' + ${prof.idProf}}" title="Editer">Editer</a>
+            </th>
+            <th>
                 <a class="link-delete"
                    th:href="@{'/profs/delete/' + ${prof.idProf}}"
                    th:userId="${prof.idProf}"

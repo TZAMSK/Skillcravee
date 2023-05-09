@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class EmploiController {
         return "index";
     }
 
+
     @GetMapping("/emplois_entreprise/delete/{id}")
     public String supprimerEntreprise(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes){
         emploiService.supprimer(id);
@@ -57,5 +59,31 @@ public class EmploiController {
         return "index";
     }
 
+    @GetMapping("emploi/new")
+    public String afficherFormulaireEmploi(Model model){
+        Emploi emploi = new Emploi();
+        List<Entreprise> listeEntreprise = incService.afficherEntreprises();
+        model.addAttribute("emploi", emploi);
+        model.addAttribute("listeEntreprise", listeEntreprise);
+        model.addAttribute("pageTitle", "Ajouter un nouveau emploi");
+
+        return "emploi-editer";
+    }
+
+    @PostMapping("/emploi/save")
+    public String ajouterEmploi(Emploi emploi, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("message","L'emploi a été ajouté avec success");
+        emploiService.ajouterEmploi(emploi);
+        return "index";
+    }
+    @GetMapping("/emploi/edit/{id}")
+    public String EditerEmploi(@PathVariable(name = "id") Integer id, Model model){
+        Emploi emploi = emploiService.get(id);
+        List<Entreprise> listeEntreprise = incService.afficherEntreprises();
+        model.addAttribute("PageTitle", "Editer Emploi ID: " + id);
+        model.addAttribute("emploi",emploi);
+        model.addAttribute("listeEntreprise",listeEntreprise);
+        return "emploi-editer";
+    }
 
 }

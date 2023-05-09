@@ -8,8 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -40,6 +44,18 @@ public class ProfController {
         return "profs";
     }
 
-
+    @PostMapping("/profs/save")
+    public String editerProf(Prof prof, RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("message","Le professeurs a été édité avec success");
+        profService.ajouterProf(prof);
+        return "redirect:/profs";
+    }
+    @GetMapping("/profs/edit/{id}")
+    public String EditerProf(@PathVariable(name = "id") Integer id, Model model){
+        Prof prof = profService.get(id);
+        model.addAttribute("PageTitle", "Editer Professeur ID: " + id);
+        model.addAttribute("prof", prof);
+        return "prof-editer";
+    }
 
 }

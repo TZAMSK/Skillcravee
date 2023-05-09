@@ -133,6 +133,9 @@
                     <th>[[${admin.email}]]</th>
                     <th>[[${admin.password}]]</th>
                     <th>
+                        <a th:href="@{'/administrateurs/edit/' + ${admin.id}}" title="Editer">Editer</a>
+                    </th>
+                    <th>
                         <a class="link-delete"
                            th:href="@{'/administrateurs/delete/' + ${admin.id}}"
                            th:userId="${admin.id}"

@@ -116,7 +116,6 @@
             <div class="card-text bg-white p-1" th:text="${emploi.description}">
 
             </div>
-
             <a class="link-delete"
                th:href="@{'/emplois_entreprise/delete/' + ${emploi.id}}"
                th:userId="${emploi.id}"

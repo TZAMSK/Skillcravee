@@ -11,7 +11,7 @@ public class Entreprise {
     private String nom;
     @Column(name = "address", length = 120, nullable = false)
     private String address;
-    @Column(name="telephone", length = 128, nullable = false, unique = true)
+    @Column(name="telephone", length = 128, nullable = false)
     private String telephone;
     @Column(name="email", length = 128, nullable = false, unique = true)
     private String email;
