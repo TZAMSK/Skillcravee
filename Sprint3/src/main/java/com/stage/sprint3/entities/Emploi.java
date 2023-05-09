@@ -18,12 +18,10 @@ public class Emploi {
     private String description;
 
     @Column(name = "Date_debut")
-    @Temporal(TemporalType.DATE)
-    private Date Date_debut;
+    private String Date_debut;
 
     @Column(name = "Date_fin")
-    @Temporal(TemporalType.DATE)
-    private Date Date_fin;
+    private String Date_fin;
 
     @Column(name = "salaire", length = 64)
     private String salaire;
@@ -43,7 +41,7 @@ public class Emploi {
         this.titre = titre;
     }
 
-    public Emploi(int id, String titre, String description, Date date_debut, Date date_fin, String salaire, Entreprise entreprise) {
+    public Emploi(int id, String titre, String description, String date_debut, String date_fin, String salaire, Entreprise entreprise) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -77,19 +75,19 @@ public class Emploi {
         this.description = description;
     }
 
-    public Date getDate_debut() {
+    public String getDate_debut() {
         return Date_debut;
     }
 
-    public void setDate_debut(Date date_debut) {
+    public void setDate_debut(String date_debut) {
         Date_debut = date_debut;
     }
 
-    public Date getDate_fin() {
+    public String getDate_fin() {
         return Date_fin;
     }
 
-    public void setDate_fin(Date date_fin) {
+    public void setDate_fin(String date_fin) {
         Date_fin = date_fin;
     }
 

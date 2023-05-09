@@ -59,7 +59,7 @@ public class EmploiController {
         return "index";
     }
 
-    @GetMapping("emploi/new")
+    @GetMapping("/emploi/new")
     public String afficherFormulaireEmploi(Model model){
         Emploi emploi = new Emploi();
         List<Entreprise> listeEntreprise = incService.afficherEntreprises();
