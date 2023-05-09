@@ -134,6 +134,20 @@
         <div class="modal-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>Vos informations</h2>
+
+            <div th:if="${session != null and session.role == 'étudiant'}">
+                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'prof'}">
+                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'entreprise'}">
+                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'admin'}">
+                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+            </div>
+
             <p th:text="${session.email}"></p>
             <p th:text="${session.password}"></p>
 
