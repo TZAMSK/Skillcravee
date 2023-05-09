@@ -44,103 +44,99 @@ public class ConnexionController {
     @PostMapping("/login/connect")
     public String submitForm(@ModelAttribute("formulaire") Formulaire formulaire, HttpServletResponse response,
                              @RequestParam("selection") String selection, RedirectAttributes redirectAttributes,
-                             HttpSession session, @RequestParam(value = "RememberMe", defaultValue = "NO") String souvenir,
-                             @RequestParam(value = "etudiantEmail", required = false) String etudiantEmail,
-                             @RequestParam(value = "etudiantPassword", required = false) String etudiantPassword,
-                             @RequestParam(value = "profEmail", required = false) String profEmail,
-                             @RequestParam(value = "profPassword", required = false) String profPassword,
-                             @RequestParam(value = "entrepriseEmail", required = false) String entrepriseEmail,
-                             @RequestParam(value = "entreprisePassword", required = false) String entreprisePassword,
-                             @RequestParam(value = "adminEmail", required = false) String adminEmail,
-                             @RequestParam(value = "adminPassword", required = false) String adminPassword) {
-
+                             HttpSession session, @RequestParam(value = "RememberMe", defaultValue = "NO") String souvenir) {
         if (selection.equals("Étudiant")) {
-            if (etudiantEmail != null) {
-                etudiantEmail = etudiantEmail.trim();
-            }
-            if (etudiantPassword != null) {
-                etudiantPassword = etudiantPassword.trim();
-            }
-            Etudiant etudiant = etudiantService.loginEtudiant(etudiantEmail, etudiantPassword);
-            if (etudiant != null && etudiant.getEmail().equals(etudiantEmail) && etudiant.getPassword().equals(etudiantPassword)) {
-                session.setAttribute("email", etudiantEmail);
-                session.setAttribute("password", etudiantPassword);
+            Etudiant etudiant = formulaire.getEtudiant();
+            String email = etudiant.getEmail().trim();
+            String password = etudiant.getPassword().trim();
+            Etudiant etudiantLogged = etudiantService.loginEtudiant(email, password);
+            if (etudiantLogged != null && etudiantLogged.getEmail().equals(email) && etudiantLogged.getPassword().equals(password)) {
+                session.setAttribute("email", email);
+                session.setAttribute("password", password);
                 if (souvenir != null && souvenir.equals("YES")) {
-                    Cookie emailcookie = new Cookie("email", etudiantEmail);
-                    Cookie passwordcookie = new Cookie("password", etudiantPassword);
+                    Cookie emailcookie = new Cookie("email", email);
+                    Cookie passwordcookie = new Cookie("password", password);
                     emailcookie.setMaxAge(60 * 60);
                     passwordcookie.setMaxAge(60 * 60);
                     response.addCookie(emailcookie);
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'étudiant est connecté");
-                return "redirect:/index";
+                session.setAttribute("nomEtud", etudiantLogged.getNom());
+                session.setAttribute("prenomEtud", etudiantLogged.getPrenom());
+                session.setAttribute("statusStage", etudiantLogged.isStatusStage());
+                session.setAttribute("numeroStage", etudiantLogged.getNumeroStage());
+                session.setAttribute("retenir", etudiantLogged.isRetenir());
+                session.setAttribute("role", "étudiant");
+                return "index";
             }
         } else if (selection.equals("Professeur")) {
-            if (profEmail != null) {
-                profEmail = profEmail.trim();
-            }
-            if (profPassword != null) {
-                profPassword = profPassword.trim();
-            }
-            Prof prof = profService.loginProf(profEmail, profPassword);
-            if (prof != null && prof.getEmail().equals(profEmail) && prof.getPassword().equals(profPassword)) {
-                session.setAttribute("email", profEmail);
-                session.setAttribute("password", profPassword);
+            Prof prof = formulaire.getProf();
+            String email = prof.getEmail().trim();
+            String password = prof.getPassword().trim();
+            Prof profLogged = profService.loginProf(email, password);
+            if (profLogged != null && profLogged.getEmail().equals(email) && profLogged.getPassword().equals(password)) {
+                session.setAttribute("email", email);
+                session.setAttribute("password", password);
                 if (souvenir != null && souvenir.equals("YES")) {
-                    Cookie emailcookie = new Cookie("email", profEmail);
-                    Cookie passwordcookie = new Cookie("password", profPassword);
+                    Cookie emailcookie = new Cookie("email", email);
+                    Cookie passwordcookie = new Cookie("password", password);
                     emailcookie.setMaxAge(60 * 60);
                     passwordcookie.setMaxAge(60 * 60);
                     response.addCookie(emailcookie);
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "Le Prof est connecté");
-                return "redirect:/index";
+                session.setAttribute("nomProf", profLogged.getNom());
+                session.setAttribute("prenomProf", profLogged.getPrenom());
+                session.setAttribute("role", "prof");
+                return "index";
             }
         } else if (selection.equals("Entreprise")) {
-            if (entrepriseEmail != null) {
-                entrepriseEmail = entrepriseEmail.trim();
-            }
-            if (entreprisePassword != null) {
-                entreprisePassword = entreprisePassword.trim();
-            }
-            Entreprise entreprise = entrepriseService.loginEntreprise(entrepriseEmail, entreprisePassword);
-            if (entreprise != null && entreprise.getEmail().equals(entrepriseEmail) && entreprise.getPassword().equals(entreprisePassword)) {
-                session.setAttribute("email", entrepriseEmail);
-                session.setAttribute("password", entreprisePassword);
+            Entreprise entreprise = formulaire.getEntreprise();
+            String email = entreprise.getEmail().trim();
+            String password = entreprise.getPassword().trim();
+            Entreprise entrepriseLogged = entrepriseService.loginEntreprise(email, password);
+            if (entrepriseLogged != null && entrepriseLogged.getEmail().equals(email) && entrepriseLogged.getPassword().equals(password)) {
+                session.setAttribute("email", email);
+                session.setAttribute("password", password);
                 if (souvenir != null && souvenir.equals("YES")) {
-                    Cookie emailcookie = new Cookie("email", entrepriseEmail);
-                    Cookie passwordcookie = new Cookie("password", entreprisePassword);
+                    Cookie emailcookie = new Cookie("email", email);
+                    Cookie passwordcookie = new Cookie("password", password);
                     emailcookie.setMaxAge(60 * 60);
                     passwordcookie.setMaxAge(60 * 60);
                     response.addCookie(emailcookie);
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'entreprise est connectée");
-                return "redirect:/index";
+                session.setAttribute("nomInc", entrepriseLogged.getNom());
+                session.setAttribute("address", entrepriseLogged.getAddress());
+                session.setAttribute("telephone", entrepriseLogged.getTelephone());
+                session.setAttribute("role", "entreprise");
+                return "index";
             }
         } else if (selection.equals("Administrateur")) {
-            if (adminEmail != null) {
-                adminEmail = adminEmail.trim();
-            }
-            if (adminPassword != null) {
-                adminPassword = adminPassword.trim();
-            }
-            Administration administration = administrateurService.loginadmin(adminEmail, adminPassword);
-            if (administration != null && administration.getEmail().equals(adminEmail) && administration.getPassword().equals(adminPassword)) {
-                session.setAttribute("email", adminEmail);
-                session.setAttribute("password", adminPassword);
+            Administration administration = formulaire.getAdministration();
+            String email = administration.getEmail().trim();
+            String password = administration.getPassword().trim();
+            Administration administrationLogged = administrateurService.loginadmin(email, password);
+            if (administrationLogged != null && administrationLogged.getEmail().equals(email) && administrationLogged.getPassword().equals(password)) {
+                session.setAttribute("email", email);
+                session.setAttribute("password", password);
                 if (souvenir != null && souvenir.equals("YES")) {
-                    Cookie emailcookie = new Cookie("email", adminEmail);
-                    Cookie passwordcookie = new Cookie("password", adminPassword);
+                    Cookie emailcookie = new Cookie("email", email);
+                    Cookie passwordcookie = new Cookie("password", password);
                     emailcookie.setMaxAge(60 * 60);
                     passwordcookie.setMaxAge(60 * 60);
                     response.addCookie(emailcookie);
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'administrateur est connecté");
-                return "redirect:/index";
+                session.setAttribute("nomAdmin", administrationLogged.getNom());
+                session.setAttribute("prenomAdmin", administrationLogged.getPrenom());
+                session.setAttribute("username", administrationLogged.getUsername());
+                session.setAttribute("role", "admin");
+                return "index";
             }
         }
 

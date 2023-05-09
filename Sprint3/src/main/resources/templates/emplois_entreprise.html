@@ -35,7 +35,7 @@
           </li>
           <li>
             <a
-                    th:href="@{/}">Inscription
+                    th:href="@{/index/new}">Inscription
             </a>
           </li>
           <li>
@@ -50,20 +50,10 @@
             </div>
           </li>
           <li>
-            <div class="dropdown">
-              <button class="dropbtn">Connexion</button>
-              <div class="dropdown-content">
-                <a th:href="@{/}">Etudiant</a>
-                <a th:href="@{/}">Professeur</a>
-                <a th:href="@{/entreprises}">Entreprise</a>
-                <a th:href="@{/utilisateurs}">Administration</a>
-              </div>
-            </div>
+            <a th:href="@{/login}">Connexion</a>
           </li>
           <li>
-            <a
-                    th:href="@{/}">Quitter
-            </a>
+            <a th:href="@{/deconnexion}">Quitter</a>
           </li>
           <li>
             <div class ="language-switcher">

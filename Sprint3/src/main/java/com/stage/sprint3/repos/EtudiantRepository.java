@@ -4,6 +4,7 @@ import com.stage.sprint3.entities.Etudiant;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
     Etudiant findById(int id);
 
 
-    @Query("SELECT e FROM Etudiant e where e.email like %?1% and e.password like %?2%")
-    Etudiant findByEmailAndPassword(String email, String password);
+    @Query("SELECT e FROM Etudiant e WHERE e.email = :email AND e.password = :password")
+    Etudiant findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 
 }

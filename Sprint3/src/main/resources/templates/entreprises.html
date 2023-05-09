@@ -13,7 +13,6 @@
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
-  <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
@@ -35,14 +34,9 @@
             </a>
           </li>
           <li>
-            <div class="dropdown">
-              <button class="dropbtn">Inscription</button>
-              <div class="dropdown-content">
-                <a th:href="@{/etudiants/new}">Etudiants</a>
-                <a th:href="@{/profs/new}">Professeurs</a>
-                <a th:href="@{/entreprise/new}">Entreprises</a>
-              </div>
-            </div>
+            <a
+                    th:href="@{/index/new}">Inscription
+            </a>
           </li>
           <li>
             <div class="dropdown">
@@ -56,20 +50,10 @@
             </div>
           </li>
           <li>
-            <div class="dropdown">
-              <button class="dropbtn">Connexion</button>
-              <div class="dropdown-content">
-                <a th:href="@{/}">Etudiant</a>
-                <a th:href="@{/}">Professeur</a>
-                <a th:href="@{/entreprises}">Entreprise</a>
-                <a th:href="@{/utilisateurs}">Administration</a>
-              </div>
-            </div>
+            <a th:href="@{/login}">Connexion</a>
           </li>
           <li>
-            <a
-                    th:href="@{/}">Quitter
-            </a>
+            <a th:href="@{/deconnexion}">Quitter</a>
           </li>
           <li>
             <div class ="language-switcher">

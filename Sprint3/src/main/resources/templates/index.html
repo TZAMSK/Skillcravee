@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li>
-                        <div class="dropdown">
+                        <div th:if="${session != null and session.role == 'admin'}" class="dropdown">
                             <button class="dropbtn">Administration</button>
                             <div class="dropdown-content">
                                 <a th:href="@{/etudiants}">Etudiants</a>
@@ -44,10 +44,12 @@
                         </div>
                     </li>
                     <li>
-                            <a th:href="@{/login}">Connexion</a>
+                        <a th:href="@{/login}" th:unless="${not #strings.isEmpty(session.email)}">Connexion</a>
                     </li>
                     <li>
-                        <a th:href="@{/deconnexion}">Quitter</a>
+                        <div th:if="${session != null}">
+                            <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+                        </div>
                     </li>
                     <li>
                         <div class ="language-switcher">
@@ -73,6 +75,9 @@
 </header>
 <div th:if="${message!=null}" class="alert">
     [[${message}]]
+</div>
+<div th:if="${not #strings.isEmpty(session.email)}">
+    <p>Salut: <span th:text="${session.email}"></span></p>
 </div>
 <div class="body-container">
     <div class="center">
@@ -122,6 +127,39 @@
     </div>
 
     <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
+
+    <button onclick="openPopup()">Vos informations</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Vos informations</h2>
+            <p th:text="${session.email}"></p>
+            <p th:text="${session.password}"></p>
+
+            <div th:if="${session != null and session.role == 'étudiant'}">
+                <p th:text="${session.nomEtud}"></p>
+                <p th:text="${session.prenomEtud}"></p>
+                <p th:text="${session.statusStage}"></p>
+                <p th:text="${session.numeroStage}"></p>
+                <p th:text="${session.retenir}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'prof'}">
+                <p th:text="${session.nomProf}"></p>
+                <p th:text="${session.prenomProf}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'entreprise'}">
+                <p th:text="${session.nomInc}"></p>
+                <p th:text="${session.address}"></p>
+                <p th:text="${session.telephone}"></p>
+            </div>
+            <div th:if="${session != null and session.role == 'admin'}">
+                <p th:text="${session.nomAdmin}"></p>
+                <p th:text="${session.prenomAdmin}"></p>
+                <p th:text="${session.username}"></p>
+            </div>
+        </div>
+    </div>
 
 </div>
 <table>
@@ -207,6 +245,50 @@
         transform: translateX(-50%);
     }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .modal-content {
+        animation: show-modal 0.3s;
+    }
+
+    @keyframes show-modal {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
 
 </style>
 <script>
@@ -229,5 +311,12 @@
         });
     });
 
+    function openPopup() {
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("myModal").style.display = "none";
+    }
 </script>
 </html>
