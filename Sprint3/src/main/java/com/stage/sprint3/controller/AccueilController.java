@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public class AccueilController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public String pageAccueil (){
         return "index";
     }

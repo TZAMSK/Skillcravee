@@ -24,7 +24,7 @@
 
                     <li>
                         <a
-                                th:href="@{/}">Téléchargez CV
+                                th:href="@{/CVupload}">Téléchargez CV
                         </a>
                     </li>
                     <li>
@@ -138,41 +138,41 @@
             <h2>Vos informations</h2>
 
             <div th:if="${session != null and session.role == 'étudiant'}">
-                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'prof'}">
-                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'entreprise'}">
-                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'admin'}">
-                Vous êtes un <p style="font-style: italic;" th:text="${session.role}"></p>
+                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
             </div>
 
-            <p th:text="${session.email}"></p>
-            <p th:text="${session.password}"></p>
+            Votre Email: <div th:text="${session.email}"></div><br>
+            Votre Password: <div th:text="${session.password}"></div><br>
 
             <div th:if="${session != null and session.role == 'étudiant'}">
-                <p th:text="${session.nomEtud}"></p>
-                <p th:text="${session.prenomEtud}"></p>
-                <p th:text="${session.statusStage}"></p>
-                <p th:text="${session.numeroStage}"></p>
-                <p th:text="${session.retenir}"></p>
+                Votre Nom: <div th:text="${session.nomEtud}"></div><br>
+                Votre Prenom: <div th:text="${session.prenomEtud}"></div><br>
+                Status de Stage: <div th:text="${session.statusStage}"></div><br>
+                Le numero de Stage: <div th:text="${session.numeroStage}"></div><br>
+                <div th:text="${session.retenir}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'prof'}">
-                <p th:text="${session.nomProf}"></p>
-                <p th:text="${session.prenomProf}"></p>
+                Votre Nom: <div th:text="${session.nomProf}"></div><br>
+                Votre Prenom:<div th:text="${session.prenomProf}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'entreprise'}">
-                <p th:text="${session.nomInc}"></p>
-                <p th:text="${session.address}"></p>
-                <p th:text="${session.telephone}"></p>
+                Le nom de l'entreprise: <div th:text="${session.nomInc}"></div><br>
+                L'address: <div th:text="${session.address}"></div><br>
+                Telephone: <div th:text="${session.telephone}"></div><br>
             </div>
             <div th:if="${session != null and session.role == 'admin'}">
-                <p th:text="${session.nomAdmin}"></p>
-                <p th:text="${session.prenomAdmin}"></p>
-                <p th:text="${session.username}"></p>
+                Votre Nom: <div th:text="${session.nomAdmin}"></div><br>
+                Votre Prenom: <div th:text="${session.prenomAdmin}"></div><br>
+                Votre UserName: <div th:text="${session.username}"></div><br>
             </div>
         </div>
     </div>
