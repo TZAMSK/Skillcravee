@@ -19,9 +19,9 @@ INSERT INTO `stagedb2`.`administration`(id, nom, prenom, email, username, passwo
 (3, 'Doe', 'Jane', 'jane.doe@example.com', 'jdoe', 'password456'),
 (4, 'Williams', 'Robert', 'robert.williams@example.com', 'rwilliams', 'password789');
 
-INSERT INTO `stagedb2`.`etudiant`(email, nom, numero_stage, password, prenom, retenir, status_stage) VALUES
-('jean@gmail.com', 'LeJean', '2', 'jean123', 'Jean',1,0),
-('smith@gmail.com', 'Smith', '3', 'will123', 'Will',1,0);
+INSERT INTO `stagedb2`.`etudiant`(id_etu, email, nom, numero_stage, password, prenom, retenir, status_stage) VALUES
+(1,'jean@gmail.com', 'LeJean', '2', 'jean123', 'Jean',1,0),
+(2,'smith@gmail.com', 'Smith', '3', 'will123', 'Will',1,0);
 
 
 INSERT INTO `stagedb2`.`entreprise`(id_inc, nom, address, telephone, email, password) VALUES
@@ -42,3 +42,7 @@ INSERT INTO `stagedb2`.`emploi`(id,titre, description, id_inc, date_debut, date_
 (7, 'Associé aux ventes', 'Vendre des produits et services aux clients', 2001, '2023-05-15', '2023-11-15', '35,000$ à 50,000$'),
 (8, 'Comptable', 'Gérer les dossiers financiers et les transactions', 2003, '2023-06-15', '2023-12-15', '50,000$'),
 (9, 'Développeur web', 'Concevoir et développer des sites Web et des applications Web', 2001, '2023-05-01', '2023-10-31', '55,000$ à 90,000$');
+
+
+INSERT INTO `stagedb2`.`cv` (id,nom,id_etu) VALUES
+()

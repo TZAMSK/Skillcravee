@@ -13,7 +13,7 @@
 <body class="couleur">
 <div class="formulaire">
   <div class="contenu">
-    <a href= ""><img height="60"  width="80" src="images/logo.PNG"/></a>
+    <a th:href= "@{/}"><img height="60"  width="80" th:src="@{/images/logo.PNG}"/></a>
     <h1 class="h1">[[${PageTitle}]]</h1>
     <div th:if="${message!=null}" class="alert">
       [[${message}]]

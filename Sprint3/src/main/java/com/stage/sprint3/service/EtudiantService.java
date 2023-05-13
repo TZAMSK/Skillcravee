@@ -1,11 +1,13 @@
 package com.stage.sprint3.service;
 
+import com.stage.sprint3.entities.CV;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service

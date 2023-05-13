@@ -23,13 +23,20 @@
                     <li class="active"><a th:href="@{/}">Accueil</a></li>
 
                     <li>
+                        <div th:if="${session != null and session.role == 'étudiant'}">
                         <a
-                                th:href="@{/CVupload}">Téléchargez CV
+                                th:href="@{/uploader}">Téléchargez CV
                         </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+                            <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
+                        </div>
                     </li>
                     <li>
                         <a
-                                th:href="@{/index/new}">Inscription
+                                th:href="@{/index/new}" th:unless="${not #strings.isEmpty(session.email)}">Inscription
                         </a>
                     </li>
                     <li>
@@ -47,8 +54,14 @@
                         <a th:href="@{/login}" th:unless="${not #strings.isEmpty(session.email)}">Connexion</a>
                     </li>
                     <li>
-                        <div th:if="${session != null}">
-                            <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+                        <div  class="dropdown">
+                            <button class="dropbtn" th:text="${session.email}"></button>
+                            <div class="dropdown-content">
+                                <a onclick="openPopup()">Profile</a>
+                                <div th:if="${session != null}">
+                                    <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+                                </div>
+                            </div>
                         </div>
                     </li>
                     <li>
@@ -76,9 +89,6 @@
 <div th:if="${message!=null}" class="alert">
     [[${message}]]
 </div>
-<div th:if="${not #strings.isEmpty(session.email)}">
-    <p>Salut: <span th:text="${session.email}"></span></p>
-</div>
 <div class="body-container">
     <div class="center">
         <div class="bordure_recherche centrer_recherche">
@@ -91,7 +101,7 @@
                             </td>
                             <td style="text-align: right;">
                                 <button type="submit" style="border: none;background-color: white">
-                                    <img src="images/loupe.png" alt="loupe">
+                                    <img th:src="@{/images/loupe.png}" alt="loupe">
                                 </button>
                             </td>
                         </tr>
@@ -125,12 +135,6 @@
             </div>
         </div>
     </div>
-
-    <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
-        <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
-    </div>
-
-    <button onclick="openPopup()">Vos informations</button>
 
     <div id="myModal" class="modal">
         <div class="modal-content">

@@ -15,7 +15,7 @@
 <body class="couleur">
     <div class="formulaire">
         <div class="contenu">
-            <a th:href="@{/}"><img src="images/logo.PNG"/></a>
+            <a th:href="@{/}"><img th:src="@{/images/logo.PNG}"/></a>
                 <h1 class="h1">CONTENT DE VOUS REVOIR!</h1>
             <div th:if="${message != null}" class="alert">
                 [[${message}]]

@@ -18,7 +18,7 @@
     <div class="banniere">
       <table>
         <tr>
-          <th><a th:href="@{/}"><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
+          <th><a th:href="@{/}"><img id="logo" th:src="@{/images/logo.PNG}" alt="logo" /></a></th>
           <th><h1 id="titre">Skillcravee</h1></th>
         </tr>
       </table>
@@ -27,16 +27,23 @@
       <nav>
         <ul id='liste'>
 
-          <li class="active"><a th:href="@{/}">Accueil</a></li>
+          <<li class="active"><a th:href="@{/}">Accueil</a></li>
 
           <li>
-            <a
-                    th:href="@{/}">Téléchargez CV
-            </a>
+            <div th:if="${session != null and session.role == 'étudiant'}">
+              <a
+                      th:href="@{/uploader}">Téléchargez CV
+              </a>
+            </div>
+          </li>
+          <li>
+            <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+              <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
+            </div>
           </li>
           <li>
             <a
-                    th:href="@{/index/new}">Inscription
+                    th:href="@{/index/new}" th:unless="${not #strings.isEmpty(session.email)}">Inscription
             </a>
           </li>
           <li>
@@ -54,8 +61,14 @@
             <a th:href="@{/login}" th:unless="${not #strings.isEmpty(session.email)}">Connexion</a>
           </li>
           <li>
-            <div th:if="${session != null}">
-              <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+            <div  class="dropdown">
+              <button class="dropbtn" th:text="${session.email}"></button>
+              <div class="dropdown-content">
+                <a onclick="openPopup()">Profile</a>
+                <div th:if="${session != null}">
+                  <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
+                </div>
+              </div>
             </div>
           </li>
           <li>

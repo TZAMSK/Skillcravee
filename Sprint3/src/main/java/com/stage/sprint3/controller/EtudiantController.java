@@ -1,7 +1,7 @@
 package com.stage.sprint3.controller;
 
+import com.stage.sprint3.entities.CV;
 import com.stage.sprint3.entities.Etudiant;
-import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.service.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

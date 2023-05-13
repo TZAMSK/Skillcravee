@@ -67,6 +67,7 @@ public class ConnexionController {
                 session.setAttribute("statusStage", etudiantLogged.isStatusStage());
                 session.setAttribute("numeroStage", etudiantLogged.getNumeroStage());
                 session.setAttribute("retenir", etudiantLogged.isRetenir());
+                //session.setAttribute("CV", etudiantLogged.getCV());
                 session.setAttribute("role", "étudiant");
                 return "index";
             }
