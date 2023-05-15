@@ -23,7 +23,7 @@
     <form th:object="${etud}" th:action="@{/etudiants/save}" method="post">
       <div class="inputInscription">
         <br><br>
-        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{idEtu}" />
         <div id="professeur-fields" class="form-fields">
           <input th:field="*{nom}" type="text" placeholder="Nom"/><br>
           <input th:field="*{prenom}" type="text" placeholder="Prenom"/><br>

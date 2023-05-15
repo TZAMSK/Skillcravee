@@ -34,18 +34,18 @@ public class EtudiantController {
         return "etudiants";
     }
 
-    @GetMapping("/etudiants/delete/{id}")
-    public String supprimerEtudiant(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes){
-        etudiantService.supprimer(id);
-        redirectAttributes.addFlashAttribute("message", "L'etudiant ID " + id + " a été supprimé avec succès ");
+    @GetMapping("/etudiants/delete/{idEtu}")
+    public String supprimerEtudiant(@PathVariable(name = "idEtu") Integer idEtu, RedirectAttributes redirectAttributes){
+        etudiantService.supprimer(idEtu);
+        redirectAttributes.addFlashAttribute("message", "L'etudiant ID " + idEtu + " a été supprimé avec succès ");
         return "redirect:/etudiants";
     }
 
-    @GetMapping("/etudiants/{id}/stage/{status}")
-    public String changerStage(@PathVariable("id") Integer id, @PathVariable("status") boolean statusStage, RedirectAttributes redirectAttributes) {
-        etudiantService.updateStatus(id, statusStage);
+    @GetMapping("/etudiants/{idEtu}/stage/{status}")
+    public String changerStage(@PathVariable("idEtu") Integer idEtu, @PathVariable("status") boolean statusStage, RedirectAttributes redirectAttributes) {
+        etudiantService.updateStatus(idEtu, statusStage);
         String status = statusStage ? "active" : "desactive";
-        String message = "L'étudiant " + id + " travaille dans un stage: " + status;
+        String message = "L'étudiant " + idEtu + " travaille dans un stage: " + status;
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/etudiants";
     }
@@ -56,12 +56,21 @@ public class EtudiantController {
         etudiantService.ajouterEtudiant(etud);
         return "redirect:/etudiants";
     }
-    @GetMapping("/etudiants/edit/{id}")
-    public String EditerEtudiant(@PathVariable(name = "id") Integer id, Model model){
-        Etudiant etud = etudiantService.get(id);
-        model.addAttribute("PageTitle", "Editer Étudiant ID: " + id);
+    @GetMapping("/etudiants/edit/{idEtu}")
+    public String EditerEtudiant(@PathVariable(name = "idEtu") Integer idEtu, Model model){
+        Etudiant etud = etudiantService.get(idEtu);
+        model.addAttribute("PageTitle", "Editer Étudiant ID: " + idEtu);
         model.addAttribute("etud", etud);
         return "etudiant-editer";
     }
 
+    @GetMapping("/cv_etu/{idEtu}")
+    public String afficherCVparEtudiant(@PathVariable("idEtu") Integer idEtu, Model model){
+        Etudiant etud = etudiantService.findById(idEtu);
+        List<CV> listeCVetudiant = etudiantService.getCVByEtudiant(etud);
+        model.addAttribute("etudiant", etud);
+        model.addAttribute("listeCVetudiant", listeCVetudiant);
+        model.addAttribute("nomEtudiant", etud.getNom());
+        return "cv_etu";
+    }
 }

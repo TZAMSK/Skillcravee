@@ -11,14 +11,14 @@ import java.util.List;
 
 @Repository
 public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
-    public Long countById(Integer id);
+    public Long countById(Integer idEtu);
 
     @Query("SELECT e FROM Etudiant e where e.nom like %?1% or e.prenom like %?1%")
     public List<Etudiant> findAll(String keyword);
 
-    @Query("UPDATE Etudiant e set e.statusStage = ?2 where e.id = ?1")
+    @Query("UPDATE Etudiant e set e.statusStage = ?2 where e.idEtu = ?1")
     @Modifying
-    public void updateStatus(Integer id, boolean statusStage);
+    public void updateStatus(Integer idEtu, boolean statusStage);
 
     Etudiant findById(int id);
 

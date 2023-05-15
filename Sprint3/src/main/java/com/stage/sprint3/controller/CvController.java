@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 @Controller
-public class FileUploadController {
+public class CvController {
     @GetMapping("/uploader")
     public String CV(){
         return "uploader";

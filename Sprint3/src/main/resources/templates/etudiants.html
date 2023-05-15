@@ -130,30 +130,33 @@
   </thead>
   <tbody>
   <tr th:each="etud : ${listeEtudiants}">
-    <th>[[${etud.id}]]</th>
+    <th>[[${etud.idEtu}]]</th>
     <th>[[${etud.nom}]]</th>
     <th>[[${etud.prenom}]]</th>
     <th>[[${etud.email}]]</th>
     <th>[[${etud.password}]]</th>
     <th style="cursor: pointer">
       <a th:if="${etud.statusStage == true}" style="background-color: green;"
-         th:href="@{'/etudiants/' + ${etud.id} + '/stage/false'}"
+         th:href="@{'/etudiants/' + ${etud.idEtu} + '/stage/false'}"
          title="Dans un stage">&nbsp;</a>
 
       <a th:if="${etud.statusStage == false}" style="background-color: red;"
-         th:href="@{'/etudiants/' + ${etud.id} + '/stage/true'}"
+         th:href="@{'/etudiants/' + ${etud.idEtu} + '/stage/true'}"
          title="Pas dans un stage">&nbsp;</a>
     </th>
     <th>[[${etud.numeroStage}]]</th>
     <th>[[${etud.retenir}]]</th>
     <th>
+      <a th:href="@{'/cv_etu/'}">Voir CV</a>
+    </th>
+    <th>
       <a th:href="@{'/etudiants/edit/' + ${etud.id}}" title="Editer">Editer</a>
     </th>
     <th>
       <a class="link-delete"
-         th:href="@{'/etudiants/delete/' + ${etud.id}}"
+         th:href="@{'/etudiants/delete/' + ${etud.idEtu}}"
          th:userId="${etud.id}"
-         title="Supprimer cet étudiant">Supprimer  [[${etud.id}]]</a>
+         title="Supprimer cet étudiant">Supprimer  [[${etud.idEtu}]]</a>
     </th>
   </tr>
   </tbody>

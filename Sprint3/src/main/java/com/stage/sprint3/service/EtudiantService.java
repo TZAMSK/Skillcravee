@@ -17,17 +17,20 @@ public class EtudiantService {
     @Autowired
     private EtudiantRepository etudiantRepo;
 
+    @Autowired
+    private CVService cvService;
+
     public List<Etudiant> afficherEtudiants(){
         return (List<Etudiant>) etudiantRepo.findAll();
     }
     public Etudiant ajouterEtudiant(Etudiant etudiant) { return etudiantRepo.save(etudiant);}
 
-    public void supprimer(Integer id) {
-        etudiantRepo.deleteById(id);
+    public void supprimer(Integer idEtu) {
+        etudiantRepo.deleteById(idEtu);
     }
 
-    public Etudiant findById(Integer id) {
-        return etudiantRepo.findById(id).orElse(null);
+    public Etudiant findById(Integer idEtu) {
+        return etudiantRepo.findById(idEtu).orElse(null);
     }
 
     public List<Etudiant> rechercherEtudiantParNom(String keyword){
@@ -37,11 +40,11 @@ public class EtudiantService {
         return null;
     }
 
-    public void updateStatus(Integer id, boolean enabled){
-        etudiantRepo.updateStatus(id, enabled);
+    public void updateStatus(Integer idEtu, boolean enabled){
+        etudiantRepo.updateStatus(idEtu, enabled);
     }
 
-    public Etudiant get(Integer id){return etudiantRepo.findById(id).get();}
+    public Etudiant get(Integer idEtu){return etudiantRepo.findById(idEtu).get();}
 
     public void updateEtudiant(Etudiant etudiant) {
         Etudiant existingEtudiant = etudiantRepo.findById(etudiant.getId());
@@ -58,5 +61,16 @@ public class EtudiantService {
             return etudiantRepo.findByEmailAndPassword(email, password);
         }
         return null;
+    }
+
+    public List<CV> getCVByEtudiant(Etudiant etud){
+        List<CV> CVByEtudiant = new ArrayList<>();
+        List<CV> allCV = cvService.afficherCV();
+        for(CV cv: allCV){
+            if(cv.getEtudiant().equals(etud)){
+                CVByEtudiant.add(cv);
+            }
+        }
+        return CVByEtudiant;
     }
 }

@@ -14,13 +14,16 @@ public class CV {
     private String nom;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "etudiant", nullable = false)
+    @JoinColumn(name = "idEtu", nullable = false)
     private Etudiant etudiant;
 
     public CV(int id, String nom, Etudiant etudiant) {
         this.id = id;
         this.nom = nom;
         this.etudiant = etudiant;
+    }
+    public CV() {
+
     }
 
     public int getId() {

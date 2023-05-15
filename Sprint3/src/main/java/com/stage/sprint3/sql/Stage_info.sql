@@ -19,7 +19,7 @@ INSERT INTO `stagedb2`.`administration`(id, nom, prenom, email, username, passwo
 (3, 'Doe', 'Jane', 'jane.doe@example.com', 'jdoe', 'password456'),
 (4, 'Williams', 'Robert', 'robert.williams@example.com', 'rwilliams', 'password789');
 
-INSERT INTO `stagedb2`.`etudiant`(id_etu, email, nom, numero_stage, password, prenom, retenir, status_stage) VALUES
+INSERT INTO `stagedb2`.`etudiant`(idEtu, email, nom, numero_stage, password, prenom, retenir, status_stage) VALUES
 (1,'jean@gmail.com', 'LeJean', '2', 'jean123', 'Jean',1,0),
 (2,'smith@gmail.com', 'Smith', '3', 'will123', 'Will',1,0);
 
@@ -44,5 +44,5 @@ INSERT INTO `stagedb2`.`emploi`(id,titre, description, id_inc, date_debut, date_
 (9, 'Développeur web', 'Concevoir et développer des sites Web et des applications Web', 2001, '2023-05-01', '2023-10-31', '55,000$ à 90,000$');
 
 
-INSERT INTO `stagedb2`.`cv` (id,nom,id_etu) VALUES
+INSERT INTO `stagedb2`.`cv` (id,nom,idEtu) VALUES
 ()
