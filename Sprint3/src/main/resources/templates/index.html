@@ -29,6 +29,11 @@
                         </a>
                         </div>
                     </li>
+                    <!--<li>
+                        <div th:if="${session != null and session.role == 'étudiant'}">
+                        <a th:href="@{'/etudiants/edit/'}" title="Editer">Editer</a>
+                        </div>
+                    </li>-->
                     <li>
                         <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
                             <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>

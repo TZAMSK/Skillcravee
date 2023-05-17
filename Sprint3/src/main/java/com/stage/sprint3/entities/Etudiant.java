@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEtu;
+    private int id;
     @Column(name = "nom", length = 120, nullable = false)
     private String nom;
     @Column(name = "prenom", length = 120, nullable = false)
@@ -18,6 +18,11 @@ public class Etudiant {
     private boolean statusStage;
     @Column(name="numeroStage", nullable = false)
     private int numeroStage;
+    @Lob
+    private byte[] data;
+
+    @Column(length = 64)
+    private String CV;
     private boolean retenir;
     public Etudiant() {}
     public Etudiant( String nom, String prenom,String email, String password)
@@ -26,18 +31,19 @@ public class Etudiant {
         this.email = email;
         this.password = password;
     }
-    public Etudiant(int idEtu, String nom, String prenom, String email, String password, int numeroStage)
-    {   this.idEtu = idEtu;
+    public Etudiant(int id, String nom, String prenom, String email, String password, int numeroStage, String CV)
+    {   this.id = id;
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
         this.numeroStage = numeroStage;
+        this.CV = CV;
     }
     public int getId()
-    { return idEtu; }
-    public void setId(int idEtu)
-    { this.idEtu = idEtu; }
+    { return id; }
+    public void setId(int id)
+    { this.id = id; }
     public String getNom()
     { return nom; }
     public void setNom(String nom) { this.nom = nom; }
@@ -52,4 +58,23 @@ public class Etudiant {
     public int getNumeroStage() { return numeroStage; }
     public void setNumeroStage(int numeroStage) { this.numeroStage = numeroStage; }
     public boolean isRetenir() { return retenir; }
-    public void setRetenir(boolean retenir) { this.retenir = retenir; } }
+    public void setRetenir(boolean retenir) { this.retenir = retenir; }
+
+    public String getCV(){
+        return CV;
+    }
+    public void setCV(String CV){
+        this.CV = CV;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+
+
+}
