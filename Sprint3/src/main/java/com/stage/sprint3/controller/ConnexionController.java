@@ -44,7 +44,7 @@ public class ConnexionController {
     @PostMapping("/login/connect")
     public String submitForm(@ModelAttribute("formulaire") Formulaire formulaire, HttpServletResponse response,
                              @RequestParam("selection") String selection, RedirectAttributes redirectAttributes,
-                             HttpSession session, @RequestParam(value = "RememberMe", defaultValue = "NO") String souvenir) {
+                             HttpSession session, @RequestParam(value = "RememberMe", defaultValue = "NO") String souvenir, Model model) {
         if (selection.equals("Étudiant")) {
             Etudiant etudiant = formulaire.getEtudiant();
             String email = etudiant.getEmail().trim();
@@ -61,6 +61,9 @@ public class ConnexionController {
                     response.addCookie(emailcookie);
                     response.addCookie(passwordcookie);
                 }
+
+                session.setAttribute("id",  etudiantLogged.getId());
+               // session.setAttribute("etud", etudiantLogged);
                 redirectAttributes.addFlashAttribute("message", "L'étudiant est connecté");
                 session.setAttribute("nomEtud", etudiantLogged.getNom());
                 session.setAttribute("prenomEtud", etudiantLogged.getPrenom());
@@ -69,7 +72,7 @@ public class ConnexionController {
                 session.setAttribute("retenir", etudiantLogged.isRetenir());
                 //session.setAttribute("CV", etudiantLogged.getCV());
                 session.setAttribute("role", "étudiant");
-                return "index";
+                return "redirect:/";
             }
         } else if (selection.equals("Professeur")) {
             Prof prof = formulaire.getProf();
@@ -91,7 +94,7 @@ public class ConnexionController {
                 session.setAttribute("nomProf", profLogged.getNom());
                 session.setAttribute("prenomProf", profLogged.getPrenom());
                 session.setAttribute("role", "prof");
-                return "index";
+                return "redirect:/";
             }
         } else if (selection.equals("Entreprise")) {
             Entreprise entreprise = formulaire.getEntreprise();
@@ -114,7 +117,7 @@ public class ConnexionController {
                 session.setAttribute("address", entrepriseLogged.getAddress());
                 session.setAttribute("telephone", entrepriseLogged.getTelephone());
                 session.setAttribute("role", "entreprise");
-                return "index";
+                return "redirect:/";
             }
         } else if (selection.equals("Administrateur")) {
             Administration administration = formulaire.getAdministration();
@@ -128,16 +131,16 @@ public class ConnexionController {
                     Cookie emailcookie = new Cookie("email", email);
                     Cookie passwordcookie = new Cookie("password", password);
                     emailcookie.setMaxAge(60 * 60);
-                    passwordcookie.setMaxAge(60 * 60);
+                    //passwordcookie.setMaxAge(60 * 60);
                     response.addCookie(emailcookie);
-                    response.addCookie(passwordcookie);
+                    //response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'administrateur est connecté");
                 session.setAttribute("nomAdmin", administrationLogged.getNom());
                 session.setAttribute("prenomAdmin", administrationLogged.getPrenom());
                 session.setAttribute("username", administrationLogged.getUsername());
                 session.setAttribute("role", "admin");
-                return "index";
+                return "redirect:/";
             }
         }
 
