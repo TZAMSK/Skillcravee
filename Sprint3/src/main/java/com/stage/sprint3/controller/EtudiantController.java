@@ -61,7 +61,7 @@ public class EtudiantController {
     @PostMapping("/etudiants/save")
     public String editerEtud(Etudiant etud, RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile multipartFile, Model model) throws IOException {
 
-        long maxSize = 10000000;
+        long maxSize = 30000000;
         long fileSize = multipartFile.getSize();
         if (fileSize > maxSize) {
             model.addAttribute("message","la taille " + fileSize + " du fichier dépasse la taille limite autorisée qui est " + maxSize + " soit 10MB ");
@@ -96,4 +96,34 @@ public class EtudiantController {
         return "etudiant-editer";
     }
 
+    /*@PostMapping("/etudiants/save2")
+    public String editerEtud2(Etudiant etud, RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile multipartFile, Model model) throws IOException {
+
+        long maxSize = 10000000;
+        long fileSize = multipartFile.getSize();
+        if (fileSize > maxSize) {
+            model.addAttribute("message","la taille " + fileSize + " du fichier dépasse la taille limite autorisée qui est " + maxSize + " soit 10MB ");
+            return "inscription_form";
+        }
+
+        String chemin = multipartFile.getOriginalFilename();
+        String typeContenu = multipartFile.getContentType();
+
+        String fileName = StringUtils.cleanPath(chemin);
+
+        etud.setCV(fileName);
+        etud.setData(multipartFile.getBytes());
+
+        File directory = new File("src/main/resources/upload");
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
+        multipartFile.transferTo(serverFile);
+
+        redirectAttributes.addFlashAttribute("message","L'étudiant a été édité avec success");
+        etudiantService.ajouterEtudiant(etud);
+        return "redirect:/";
+    }*/
 }

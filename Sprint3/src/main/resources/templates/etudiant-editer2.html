@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,8 +7,8 @@
   <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-
 </head>
+
 <body class="couleur">
 <div class="formulaire">
   <div class="contenu">
@@ -20,16 +19,18 @@
     </div>
     <p>Entrez les informations suivantes :</p>
 
-    <form th:object="${admin}" th:action="@{/administrateurs/save}" method="post">
+    <form th:object="${etud}" th:action="@{/etudiants/save2}" method="post" enctype="multipart/form-data">
       <div class="inputInscription">
         <br><br>
         <input type="hidden" th:field="*{id}" />
         <div id="professeur-fields" class="form-fields">
-          <input th:field="*{username}" type="text" placeholder="Nom"/><br>
           <input th:field="*{nom}" type="text" placeholder="Nom"/><br>
           <input th:field="*{prenom}" type="text" placeholder="Prenom"/><br>
           <input th:field="*{email}" type="text" placeholder="Email"/><br>
           <input th:field="*{password}" type="password" placeholder="Password"/>
+          <div class="col-sm-10">
+            <input type="file" id="file" name="file"/>
+          </div>
         </div>
       </div>
       <br>
@@ -38,4 +39,4 @@
   </div>
 </div>
 </body>
-</html>
+</html>-->

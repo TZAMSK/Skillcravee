@@ -15,6 +15,6 @@ public class DeconnexionController {
             session.invalidate();
             model.addAttribute("message", "Deconnexion réussi");
         }
-        return "index";
+        return "redirect:/";
     }
 }
