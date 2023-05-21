@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,7 +19,7 @@
     </div>
     <p>Entrez les informations suivantes :</p>
 
-    <form th:object="${etud}" th:action="@{/etudiants/save2}" method="post" enctype="multipart/form-data">
+    <form th:object="${etud}" th:action="@{/Admin_etudiants/save}" method="post" enctype="multipart/form-data">
       <div class="inputInscription">
         <br><br>
         <input type="hidden" th:field="*{id}" />
@@ -39,4 +39,4 @@
   </div>
 </div>
 </body>
-</html>-->
+</html>

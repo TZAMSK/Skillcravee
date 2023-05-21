@@ -3,8 +3,10 @@ package com.stage.sprint3.controller;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EtudiantRepository;
 import com.stage.sprint3.service.EtudiantService;
+import jdk.internal.loader.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -93,10 +95,18 @@ public class EtudiantController {
         Etudiant etud = etudiantService.get(id);
         model.addAttribute("PageTitle", "Editer Étudiant ID: " + id);
         model.addAttribute("etud", etud);
+        return "etudiant-editer2";
+    }
+
+    @GetMapping("/Admin_etudiants/etu_edit/{id}")
+    public String EditerEtudiant2(@PathVariable(name = "id") Integer id, Model model){
+        Etudiant etud = etudiantService.get(id);
+        model.addAttribute("PageTitle", "Editer Étudiant ID: ");
+        model.addAttribute("etud", etud);
         return "etudiant-editer";
     }
 
-    /*@PostMapping("/etudiants/save2")
+    @PostMapping("/Admin_etudiants/save")
     public String editerEtud2(Etudiant etud, RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile multipartFile, Model model) throws IOException {
 
         long maxSize = 10000000;
@@ -125,5 +135,10 @@ public class EtudiantController {
         redirectAttributes.addFlashAttribute("message","L'étudiant a été édité avec success");
         etudiantService.ajouterEtudiant(etud);
         return "redirect:/";
+    }
+
+    /*@GetMapping("/download/{id}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String file) {
+
     }*/
 }
