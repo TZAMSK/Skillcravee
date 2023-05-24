@@ -56,6 +56,11 @@
                         </div>
                     </li>
                     <li>
+                        <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'prof')}">
+                            <a th:href="@{'/etudiants'}" title="Etudiant">Etudiant</a>
+                        </div>
+                    </li>
+                    <li>
                         <a th:href="@{/login}" th:unless="${not #strings.isEmpty(session.email)}">Connexion</a>
                     </li>
                     <li>

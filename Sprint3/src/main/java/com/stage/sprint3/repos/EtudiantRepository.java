@@ -28,4 +28,7 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 
     @Query("SELECT u FROM Etudiant u WHERE u.CV = :fileName")
     public List<Etudiant> findByFileName(@Param("fileName") String fileName);
+
+    @Query("SELECT s.CV FROM Etudiant s WHERE s.id = :id")
+    byte[] getCVById(@Param("id") Long id);
 }

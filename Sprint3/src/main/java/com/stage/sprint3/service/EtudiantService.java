@@ -4,8 +4,12 @@ import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +20,6 @@ public class EtudiantService {
     @Autowired
     private EtudiantRepository etudiantRepo;
 
-    /*@Autowired
-    private CVService cvService;*/
 
     public List<Etudiant> afficherEtudiants(){
         return (List<Etudiant>) etudiantRepo.findAll();
@@ -61,5 +63,4 @@ public class EtudiantService {
         }
         return null;
     }
-
 }

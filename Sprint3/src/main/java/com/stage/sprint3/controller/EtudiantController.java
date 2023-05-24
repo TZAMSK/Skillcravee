@@ -3,12 +3,15 @@ package com.stage.sprint3.controller;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EtudiantRepository;
 import com.stage.sprint3.service.EtudiantService;
-import jdk.internal.loader.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -137,8 +141,21 @@ public class EtudiantController {
         return "redirect:/";
     }
 
-    /*@GetMapping("/download/{id}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String file) {
+    @GetMapping("/etudiants/{id}/cv")
+    public ResponseEntity<ByteArrayResource> getCV(@PathVariable Integer id) {
+        Etudiant etudiant = etudiantRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid student ID: " + id));
 
-    }*/
+        if (etudiant.getCV() == null) {
+            throw new IllegalArgumentException("CV not found for student with ID: " + id);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("attachment", "");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(new ByteArrayResource(etudiant.getCV().getBytes()));
+    }
 }
