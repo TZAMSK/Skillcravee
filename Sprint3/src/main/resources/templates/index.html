@@ -21,6 +21,37 @@
                 <ul id='liste'>
 
                     <li class="active"><a th:href="@{/}">Accueil</a></li>
+                    <div th:if="${session != null and (session.role != 'admin')}">
+                        <a onclick="openContactModal()" style="cursor: pointer;">Contact</a>
+                    </div>
+                    <div th:if="${session != null and (session.role == 'admin')}">
+                        <img src="images/email.png" onclick="openEmailModal()" style="cursor: pointer; width: 50px">
+                    </div>
+
+                    <div id="contactModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeContactModal()">&times;</span>
+                            <h2>Contact Information</h2>
+                            <label>Demande:</label>
+                            <div>
+                                <button onclick="setTextarea('Je souhaite que mes informations soient modifiées')">Modifier infos</button>
+                                <button onclick="setTextarea('Supprimer compte')">Supprimer compte</button><br>
+                            </div>
+                            <textarea id="myTextarea" rows="4" cols="50"></textarea><br>
+
+                            <button id="sendButton" onclick="prepareEmailContent()">Envoyer</button>
+                        </div>
+                    </div>
+
+                    <div id="emailModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeEmailModal()">&times;</span>
+                            <h2>Messagerie</h2>
+                            <p id="emailContent"></p><br>
+                            <p id="userInfo">Role: <span id="userRole"></span>, ID: <span id="userID"></span></p>
+                            <button onclick="clearEmailContent()">Effacer</button>
+                        </div>
+                    </div>
 
                     <!--<li>
                         <div th:if="${session != null and session.role == 'étudiant'}">
@@ -29,11 +60,11 @@
                         </a>
                         </div>
                     </li>-->
-                   <!-- <li>
-                        <div th:if="${session != null and session.role == 'étudiant'}">
-                        <a th:href="@{'/etudiants/edit/' + ${session.id}}" title="Editer">Editer</a>
-                        </div>
-                    </li>-->
+                    <!-- <li>
+                         <div th:if="${session != null and session.role == 'étudiant'}">
+                         <a th:href="@{'/etudiants/edit/' + ${session.id}}" title="Editer">Editer</a>
+                         </div>
+                     </li>-->
                     <li>
                         <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
                             <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
@@ -67,10 +98,10 @@
                         <div  class="dropdown">
                             <button class="dropbtn" th:text="${session.email}" ></button>
                             <div class="dropdown-content">
-                                <a onclick="openPopup()">Profile</a>
-                                    <div th:if="${session != null and session.role == 'étudiant'}">
-                                        <a th:href="@{'/etudiants/edit/' + ${session.id}}" title="Editer">Editer</a>
-                                    </div>
+                                <a onclick="openPopup()" style="cursor: pointer;">Profile</a>
+                                <div th:if="${session != null and session.role == 'étudiant'}">
+                                    <a th:href="@{'/etudiants/edit/' + ${session.id}}" title="Editer">Editer</a>
+                                </div>
                                 <div th:if="${session != null}">
                                     <a th:href="@{/deconnexion}" th:if="${!#strings.isEmpty(session.email)}">Quitter</a>
                                 </div>
@@ -149,47 +180,48 @@
         </div>
     </div>
 
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closePopup()">&times;</span>
             <h2>Vos informations</h2>
 
             <div th:if="${session != null and session.role == 'étudiant'}">
-                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
+                <p><strong>Vous êtes un:</strong> <span style="font-style: italic;" th:text="${session.role}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'prof'}">
-                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
+                <p><strong>Vous êtes un:</strong> <span style="font-style: italic;" th:text="${session.role}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'entreprise'}">
-                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
+                <p><strong>Vous êtes un:</strong> <span style="font-style: italic;" th:text="${session.role}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'admin'}">
-                Vous êtes un: <div style="font-style: italic;" th:text="${session.role}"></div><br>
+                <p><strong>Vous êtes un:</strong> <span style="font-style: italic;" th:text="${session.role}"></span></p>
             </div>
 
-            Votre Email: <div th:text="${session.email}"></div><br>
-            Votre Password: <div th:text="${session.password}"></div><br>
+            <p><strong>Votre Email:</strong> <span th:text="${session.email}"></span></p>
+            <p><strong>Votre Password:</strong> <span th:text="${session.password}"></span></p>
 
             <div th:if="${session != null and session.role == 'étudiant'}">
-                Votre Nom: <div th:text="${session.nomEtud}"></div><br>
-                Votre Prenom: <div th:text="${session.prenomEtud}"></div><br>
-                Status de Stage: <div th:text="${session.statusStage}"></div><br>
-                Le numero de Stage: <div th:text="${session.numeroStage}"></div><br>
-                <div th:text="${session.retenir}"></div><br>
+                <p><strong>Votre Nom:</strong> <span th:text="${session.nomEtud}"></span></p>
+                <p><strong>Votre Prénom:</strong> <span th:text="${session.prenomEtud}"></span></p>
+                <p><strong>Status de Stage:</strong> <span th:text="${session.statusStage}"></span></p>
+                <p><strong>Le numéro de Stage:</strong> <span th:text="${session.numeroStage}"></span></p>
+                <p><span th:text="${session.retenir}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'prof'}">
-                Votre Nom: <div th:text="${session.nomProf}"></div><br>
-                Votre Prenom:<div th:text="${session.prenomProf}"></div><br>
+                <p><strong>Votre Nom:</strong> <span th:text="${session.nomProf}"></span></p>
+                <p><strong>Votre Prénom:</strong> <span th:text="${session.prenomProf}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'entreprise'}">
-                Le nom de l'entreprise: <div th:text="${session.nomInc}"></div><br>
-                L'address: <div th:text="${session.address}"></div><br>
-                Telephone: <div th:text="${session.telephone}"></div><br>
+                <p><strong>Le nom de l'entreprise:</strong> <span th:text="${session.nomInc}"></span></p>
+                <p><strong>L'adresse:</strong> <span th:text="${session.address}"></span></p>
+                <p><strong>Téléphone:</strong> <span th:text="${session.telephone}"></span></p>
             </div>
             <div th:if="${session != null and session.role == 'admin'}">
-                Votre Nom: <div th:text="${session.nomAdmin}"></div><br>
-                Votre Prenom: <div th:text="${session.prenomAdmin}"></div><br>
-                Votre UserName: <div th:text="${session.username}"></div><br>
+                <p><strong>Votre Nom:</strong> <span th:text="${session.nomAdmin}"></span></p>
+                <p><strong>Votre Prénom:</strong> <span th:text="${session.prenomAdmin}"></span></p>
+                <p><strong>Votre UserName:</strong> <span th:text="${session.username}"></span></p>
             </div>
         </div>
     </div>
@@ -227,7 +259,10 @@
                 <p>
                     <span th:text="${emploi.description}"></span>
                 </p>
-                <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+                <div th:if="${session != null and session.role == 'étudiant'}">
+                    <a title="Postuler">Postuler</a>
+                </div>
+                <div th:if="${session != null and (session.role == '' or session.role == 'admin')}">
                     <a th:href="@{'/emploi/edit/' + ${emploi.id}}" title="Editer">Editer</a>
                 </div>
             </div>
@@ -241,18 +276,14 @@
 <style>
 
     .travail {
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color:white;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ccc;
     }
 
     table {
         width: 100%;
-    }
-
-    .yo {
-        display: flex;
-        align-items: center;
+        border-collapse: collapse;
     }
 
     .yo img {
@@ -261,11 +292,32 @@
         margin-right: 10px;
     }
 
+
     .job-title {
         margin: 0;
         font-size: 18px;
+        color: #333;
     }
 
+    .show-info-btn {
+        background-color: rgb(196, 119, 119);
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .job-info p {
+        margin: 5px 0;
+    }
+
+    .job-info a {
+        color: rgb(196, 119, 119);
+        text-decoration: none;
+    }
+
+    .job-info a:hover {
+        text-decoration: underline;
+    }
     .body-container {
         display: flex;
     }
@@ -297,8 +349,12 @@
         margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
+        width: 15%;
         max-width: 400px;
+    }
+
+    .modal-content textarea {
+        width: 100%;
     }
 
     .close {
@@ -326,6 +382,7 @@
 
 
 </style>
+
 <script>
     const showInfoBtns = document.querySelectorAll('.show-info-btn');
 
@@ -352,6 +409,81 @@
 
     function closePopup() {
         document.getElementById("myModal").style.display = "none";
+    }
+
+    function openContactModal() {
+        document.getElementById("contactModal").style.display = "block";
+    }
+
+    function closeContactModal() {
+        document.getElementById("contactModal").style.display = "none";
+    }
+
+    function openEmailModal() {
+        document.getElementById("emailModal").style.display = "block";
+    }
+
+    function closeEmailModal() {
+        document.getElementById("emailModal").style.display = "none";
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+        var storedEmailContent = localStorage.getItem("emailContent");
+        var storedUserInfo = localStorage.getItem("userInfo");
+        if (storedEmailContent) {
+            document.getElementById("emailContent").innerHTML = storedEmailContent;
+        }
+        if (storedUserInfo) {
+            document.getElementById("userInfo").innerHTML = storedUserInfo;
+        }
+    });
+
+    function setTextarea(message) {
+        document.getElementById("myTextarea").value = message;
+    }
+
+    function prepareEmailContent() {
+        var userRole = "[[${session.role}]]";
+        var userID = "[[${session.id}]]";
+
+        localStorage.setItem("userRole", userRole);
+        localStorage.setItem("userID", userID);
+
+        document.getElementById("userRole").textContent = userRole;
+        document.getElementById("userID").textContent = userID;
+
+        console.log(userID);
+        console.log(userRole);
+        sendEmail();
+    }
+
+    function sendEmail() {
+        var myTextarea = document.getElementById("myTextarea");
+        var emailContent = document.getElementById("emailContent");
+
+        emailContent.innerHTML = myTextarea.value;
+
+        localStorage.setItem("emailContent", myTextarea.value);
+    }
+
+    function clearEmailContent() {
+        localStorage.removeItem("emailContent");
+        localStorage.removeItem("userInfo");
+
+        document.getElementById("emailContent").textContent = "";
+        document.getElementById("userInfo").textContent = "";
+    }
+
+    function closeEmailModal() {
+        clearEmailContent();
+    }
+
+    function openEmailModal() {
+        document.getElementById("emailModal").style.display = "block";
+    }
+
+    function closeEmailModal() {
+        document.getElementById("emailModal").style.display = "none";
     }
 </script>
 </html>

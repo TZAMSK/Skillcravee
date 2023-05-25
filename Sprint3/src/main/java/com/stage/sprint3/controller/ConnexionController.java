@@ -65,6 +65,7 @@ public class ConnexionController {
                 session.setAttribute("id",  etudiantLogged.getId());
                // session.setAttribute("etud", etudiantLogged);
                 redirectAttributes.addFlashAttribute("message", "L'étudiant est connecté");
+                session.setAttribute("id", etudiantLogged.getId());
                 session.setAttribute("nomEtud", etudiantLogged.getNom());
                 session.setAttribute("prenomEtud", etudiantLogged.getPrenom());
                 session.setAttribute("statusStage", etudiantLogged.isStatusStage());
@@ -91,6 +92,7 @@ public class ConnexionController {
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "Le Prof est connecté");
+                session.setAttribute("id", profLogged.getIdProf());
                 session.setAttribute("nomProf", profLogged.getNom());
                 session.setAttribute("prenomProf", profLogged.getPrenom());
                 session.setAttribute("role", "prof");
@@ -113,6 +115,7 @@ public class ConnexionController {
                     response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'entreprise est connectée");
+                session.setAttribute("id", entrepriseLogged.getIdInc());
                 session.setAttribute("nomInc", entrepriseLogged.getNom());
                 session.setAttribute("address", entrepriseLogged.getAddress());
                 session.setAttribute("telephone", entrepriseLogged.getTelephone());
@@ -136,6 +139,7 @@ public class ConnexionController {
                     //response.addCookie(passwordcookie);
                 }
                 redirectAttributes.addFlashAttribute("message", "L'administrateur est connecté");
+                session.setAttribute("id", administrationLogged.getId());
                 session.setAttribute("nomAdmin", administrationLogged.getNom());
                 session.setAttribute("prenomAdmin", administrationLogged.getPrenom());
                 session.setAttribute("username", administrationLogged.getUsername());

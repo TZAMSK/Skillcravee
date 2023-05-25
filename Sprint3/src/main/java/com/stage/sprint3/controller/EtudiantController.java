@@ -136,7 +136,7 @@ public class EtudiantController {
         File serverFile = new File(directory.getAbsolutePath() + File.separator + fileName);
         multipartFile.transferTo(serverFile);
 
-        redirectAttributes.addFlashAttribute("message","L'étudiant a été édité avec success");
+        redirectAttributes.addFlashAttribute("message","Vous avez édité vos données avec success");
         etudiantService.ajouterEtudiant(etud);
         return "redirect:/";
     }
@@ -158,4 +158,5 @@ public class EtudiantController {
                 .headers(headers)
                 .body(new ByteArrayResource(etudiant.getCV().getBytes()));
     }
+
 }
