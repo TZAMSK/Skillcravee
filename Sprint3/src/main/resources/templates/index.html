@@ -27,6 +27,9 @@
                     <div th:if="${session != null and (session.role == 'admin')}">
                         <img src="images/email.png" onclick="openEmailModal()" style="cursor: pointer; width: 50px">
                     </div>
+                    <div th:if="${session != null and (session.role == 'prof')}">
+                        <a style="cursor: pointer">Mes étudiants</a>
+                    </div>
 
                     <div id="contactModal" class="modal">
                         <div class="modal-content">
@@ -48,7 +51,7 @@
                             <span class="close" onclick="closeEmailModal()">&times;</span>
                             <h2>Messagerie</h2>
                             <p id="emailContent"></p><br>
-                            <p id="userInfo">Role: <span id="userRole"></span>, ID: <span id="userID"></span></p>
+                            <p id="userInfo">Role: etudiant <span id="userRole"></span>, ID: 1<span id="userID"></span></p>
                             <button onclick="clearEmailContent()">Effacer</button>
                         </div>
                     </div>
@@ -130,9 +133,16 @@
         </div>
     </div>
 </header>
-<div th:if="${message!=null}" class="alert">
+
+<div th:if="${message != null}" class="alert">
     [[${message}]]
+    <div th:if="${session != null and session.role == 'entreprise'}">
+        <form th:action="@{'/accepter/' + ${etudiantId} + '/' + ${emploiId}}" method="post">
+            <button type="submit" title="Accepter">Accepter</button>
+        </form>
+    </div>
 </div>
+
 <div class="body-container">
     <div class="center">
         <div class="bordure_recherche centrer_recherche">
@@ -260,7 +270,9 @@
                     <span th:text="${emploi.description}"></span>
                 </p>
                 <div th:if="${session != null and session.role == 'étudiant'}">
-                    <a title="Postuler">Postuler</a>
+                    <form th:action="@{'/demanderTravail/' + ${#strings.toString(emploi.entreprise.idInc)} + '/' + ${#strings.toString(emploi.id)}}" method="post">
+                        <button type="submit" title="Postuler">Postuler</button>
+                    </form>
                 </div>
                 <div th:if="${session != null and (session.role == '' or session.role == 'admin')}">
                     <a th:href="@{'/emploi/edit/' + ${emploi.id}}" title="Editer">Editer</a>

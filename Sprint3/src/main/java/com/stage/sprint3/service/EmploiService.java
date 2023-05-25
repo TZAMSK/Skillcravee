@@ -45,4 +45,7 @@ public class EmploiService {
 
     public Emploi get(Integer id){return emploiRepo.findById(id).get();}
 
+    public Emploi getEmploiById(Integer id) {
+        return emploiRepo.findById(id).orElse(null);
+    }
 }

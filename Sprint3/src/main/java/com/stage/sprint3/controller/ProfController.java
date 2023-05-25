@@ -1,5 +1,7 @@
 package com.stage.sprint3.controller;
 
+import com.stage.sprint3.entities.Emploi;
+import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.service.EtudiantService;
@@ -57,5 +59,17 @@ public class ProfController {
         model.addAttribute("prof", prof);
         return "prof-editer";
     }
+
+    /*
+    @GetMapping("/etudiants_prof/{id}")
+    public String afficherEtudiantParProf(@PathVariable("id") Integer id, Model model){
+        Prof prof = profService.findById(id);
+        List<Etudiant> listeEtudiantProf= profService.getEtudiantByProf(prof);
+        model.addAttribute("prof", prof);
+        model.addAttribute("listeEtudiantProf", listeEtudiantProf);
+        model.addAttribute("nomProf", prof.getNom());
+        return "etudiant_prof";
+    }
+     */
 
 }

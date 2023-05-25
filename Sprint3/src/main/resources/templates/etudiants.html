@@ -125,6 +125,7 @@
     <th> Password </th>
     <th> Statut stage </th>
     <th> Numero stage </th>
+    <th> Poste </th>
     <th> retention </th>
   </tr>
   </thead>
@@ -145,6 +146,7 @@
          title="Pas dans un stage">&nbsp;</a>
     </th>
     <th>[[${etud.numeroStage}]]</th>
+    <th>[[${etud.emploi.titre}]]</th>
     <th>[[${etud.retenir}]]</th>
     <th>
       <a th:href="@{'/etudiants/{id}/cv'}" download>Download CV</a>

@@ -1,6 +1,9 @@
 package com.stage.sprint3.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "entreprise")
 public class Entreprise {
@@ -17,6 +20,10 @@ public class Entreprise {
     private String email;
     @Column(name = "password",length = 64, nullable = false)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "entreprise")
+    private List<Emploi> emplois;
+
     public Entreprise() {
     }
     public Entreprise( String nom, String address,String email, String password) {
@@ -31,6 +38,7 @@ public class Entreprise {
         this.telephone = telephone;
         this.email = email;
         this.password = password;
+        emplois = new ArrayList<>();
     }
     public Entreprise(int idInc, String nom, String address, String telephone, String email, String password) {
         this.idInc = idInc;
@@ -39,6 +47,7 @@ public class Entreprise {
         this.address = address;
         this.password = password;
         this.telephone = telephone;
+        emplois = new ArrayList<>();
     }
 
     public Integer getIdInc() {
@@ -88,4 +97,23 @@ public class Entreprise {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    public List<Emploi> getEmplois() {
+        return emplois;
+    }
+
+    public void setEmplois(List<Emploi> emplois) {
+        this.emplois = emplois;
+    }
+
+    public Emploi getEmploi(Integer emploiId) {
+        for (Emploi emploi : emplois) {
+            if (emploi.getId() == emploiId) {
+                return emploi;
+            }
+        }
+        return null;
+    }
+
 }

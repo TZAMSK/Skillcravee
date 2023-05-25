@@ -1,5 +1,7 @@
 package com.stage.sprint3.service;
 
+import com.stage.sprint3.entities.Emploi;
+import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.ProfRepository;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,6 +18,8 @@ public class ProfService {
 
     @Autowired
     private ProfRepository profRepo;
+    @Autowired
+    EtudiantService etudiantService;
 
     public List<Prof> afficherProfs(){
         return (List<Prof>) profRepo.findAll();
@@ -44,4 +49,18 @@ public class ProfService {
         }
         return null;
     }
+
+    /*
+    public List<Etudiant> getEtudiantByProf(Prof prof) {
+        List<Etudiant> etudiantByProf = new ArrayList<>();
+        List<Etudiant> allEtudiants = etudiantService.afficherEtudiants();
+        for (Etudiant etudiant : allEtudiants) {
+            if (etudiant.getProf().equals(prof)) {
+                etudiantByProf.add(etudiant);
+            }
+        }
+        return etudiantByProf;
+    }
+
+     */
 }

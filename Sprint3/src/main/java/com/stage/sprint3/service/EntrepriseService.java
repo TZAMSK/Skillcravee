@@ -3,7 +3,6 @@ package com.stage.sprint3.service;
 import com.stage.sprint3.entities.Emploi;
 import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.entities.Etudiant;
-import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.EntrepriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,21 +17,24 @@ public class EntrepriseService {
 
     @Autowired
     private EntrepriseRepository incRepo;
+
     @Autowired
     private EmploiService emploiService;
+
+    @Autowired
+    private EtudiantService etudiantService;
 
     public List<Entreprise> afficherEntreprises(){
         return (List<Entreprise>) incRepo.findAll();
     }
-    public Entreprise ajouterEntreprise(Entreprise entreprise) { return incRepo.save(entreprise);}
 
+    public Entreprise ajouterEntreprise(Entreprise entreprise) {
+        return incRepo.save(entreprise);
+    }
 
     public void supprimer(Integer id) {
         incRepo.deleteById(id);
     }
-
-
-
 
     public List<Emploi> getEmploisByEntreprise(Entreprise entreprise) {
         List<Emploi> emploisByEntreprise = new ArrayList<>();
@@ -56,7 +58,9 @@ public class EntrepriseService {
         return incRepo.findById(id).orElse(null);
     }
 
-    public Entreprise get(Integer id){return incRepo.findById(id).get();}
+    public Entreprise get(Integer id){
+        return incRepo.findById(id).get();
+    }
 
     public Entreprise loginEntreprise(String email, String password){
         if(email != null && password != null){
@@ -65,4 +69,21 @@ public class EntrepriseService {
         return null;
     }
 
+    public Entreprise getEntrepriseById(Integer id) {
+        return incRepo.findById(id).orElse(null);
+    }
+
+    public boolean accepter(Integer etudiantId, Integer entrepriseId, Integer emploiId) {
+        Etudiant etudiant = etudiantService.getEtudiantById(etudiantId);
+        Entreprise entreprise = this.getEntrepriseById(entrepriseId);
+        Emploi emploi = emploiService.getEmploiById(emploiId);
+
+        if (etudiant != null && entreprise != null && emploi != null) {
+            etudiant.setStatusStage(true);
+            etudiant.setEmploi(emploi);
+            etudiantService.updateEtudiant(etudiant);
+            return true;
+        }
+        return false;
+    }
 }

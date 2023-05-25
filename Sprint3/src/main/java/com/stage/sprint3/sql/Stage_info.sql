@@ -1,6 +1,6 @@
 
 
-INSERT INTO `stagedb2`.`professeur`(id_prof , nom, prenom, email, password) VALUES
+INSERT INTO `stagedb2`.`professeur`(id_prof, nom, prenom, email, password) VALUES
 (1, 'emile', 'lerouge', 'emile@gmail.com','pass123'),
 (2, 'Doe', 'John', 'johndoe1@example.com','password123'),
 (3, 'Smith', 'Jane', 'janesmith2@example.com', 'password456'),
@@ -18,10 +18,6 @@ INSERT INTO `stagedb2`.`administration`(id, nom, prenom, email, username, passwo
 (2, 'Smith', 'John', 'john.smith@example.com', 'jsmith', 'password123'),
 (3, 'Doe', 'Jane', 'jane.doe@example.com', 'jdoe', 'password456'),
 (4, 'Williams', 'Robert', 'robert.williams@example.com', 'rwilliams', 'password789');
-
-INSERT INTO `stagedb2`.`etudiant`(id, email, nom, numero_stage, password, prenom, retenir, status_stage, cv) VALUES
-(1,'jean@gmail.com', 'LeJean', '2', 'jean123', 'Jean',1,0, NULL),
-(2,'smith@gmail.com', 'Smith', '3', 'will123', 'Will',1,0,NULL);
 
 
 INSERT INTO `stagedb2`.`entreprise`(id_inc, nom, address, telephone, email, password) VALUES
@@ -43,3 +39,6 @@ INSERT INTO `stagedb2`.`emploi`(id,titre, description, id_inc, date_debut, date_
 (8, 'Comptable', 'Gérer les dossiers financiers et les transactions', 2003, '2023-06-15', '2023-12-15', '50,000$'),
 (9, 'Développeur web', 'Concevoir et développer des sites Web et des applications Web', 2001, '2023-05-01', '2023-10-31', '55,000$ à 90,000$');
 
+INSERT INTO `stagedb2`.`etudiant`(id, email, nom, numero_stage, password, prenom, retenir, status_stage, cv, id_emp) VALUES
+                                                                                                                                 (1,'jean@gmail.com', 'LeJean', '2', 'jean123', 'Jean',1,0, NULL,2),
+                                                                                                                                 (2,'smith@gmail.com', 'Smith', '3', 'will123', 'Will',1,0,NULL,3);

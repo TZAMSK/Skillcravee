@@ -1,16 +1,12 @@
 package com.stage.sprint3.controller;
 
 import com.stage.sprint3.entities.*;
+import com.stage.sprint3.repos.EntrepriseRepository;
 import com.stage.sprint3.repos.EtudiantRepository;
-import com.stage.sprint3.service.AdministrateurService;
-import com.stage.sprint3.service.EntrepriseService;
-import com.stage.sprint3.service.EtudiantService;
-import com.stage.sprint3.service.ProfService;
+import com.stage.sprint3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.HttpSessionRequiredException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +20,10 @@ public class ConnexionController {
     EtudiantRepository etudiantRepository;
 
     @Autowired
+    EntrepriseRepository entrepriseRepository;
+
+
+    @Autowired
     private EtudiantService etudiantService;
 
     @Autowired
@@ -31,6 +31,9 @@ public class ConnexionController {
 
     @Autowired
     private ProfService profService;
+    @Autowired
+    private EmploiService emploiService;
+
 
     @Autowired
     private AdministrateurService administrateurService;
@@ -63,7 +66,7 @@ public class ConnexionController {
                 }
 
                 session.setAttribute("id",  etudiantLogged.getId());
-               // session.setAttribute("etud", etudiantLogged);
+                // session.setAttribute("etud", etudiantLogged);
                 redirectAttributes.addFlashAttribute("message", "L'étudiant est connecté");
                 session.setAttribute("id", etudiantLogged.getId());
                 session.setAttribute("nomEtud", etudiantLogged.getNom());
@@ -152,4 +155,45 @@ public class ConnexionController {
         return "redirect:/login";
     }
 
+
+    @PostMapping("/demanderTravail/{entrepriseId}/{emploiId}")
+    public String postuler(
+            @PathVariable("entrepriseId") Integer entrepriseId,
+            @PathVariable("emploiId") Integer emploiId,
+            HttpSession session,
+            RedirectAttributes redirectAttributes
+    ) {
+        Integer etudiantId = (Integer) session.getAttribute("id");
+        Emploi emploi = emploiService.getEmploiById(emploiId);
+        Entreprise entreprise = emploi.getEntreprise();
+        session.setAttribute("emploiId", emploiId);
+        session.setAttribute("entrepriseId", entrepriseId);
+        sendMessageToEntreprise(etudiantId, entreprise, redirectAttributes);
+        return "index";
+    }
+
+    private void sendMessageToEntreprise(Integer etudiantId, Entreprise entreprise, RedirectAttributes redirectAttributes) {
+        String message = "A student with ID " + etudiantId + " has applied for the job.";
+        redirectAttributes.addFlashAttribute("message", message);
+    }
+
+    @PostMapping("/accepter/{etudiantId}/{emploiId}")
+    public String accepter(@PathVariable("etudiantId") Integer etudiantId, @PathVariable("emploiId") Integer emploiId,
+                           HttpSession session, RedirectAttributes redirectAttributes) {
+        if (session != null && session.getAttribute("role") != null && session.getAttribute("role").equals("entreprise")) {
+            Integer entrepriseId = (Integer) session.getAttribute("id");
+            boolean accepterSuccess = entrepriseService.accepter(etudiantId, entrepriseId, emploiId);
+            if (accepterSuccess) {
+                String message = "Félicitations ! Vous avez été accepté pour le poste.";
+                redirectAttributes.addFlashAttribute("message", message);
+            } else {
+                String errorMessage = "Échec de l'acceptation. Veuillez réessayer.";
+                redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+            }
+        } else {
+            String errorMessage = "Vous devez être connecté en tant qu'entreprise pour accepter.";
+            redirectAttributes.addFlashAttribute("errorMessage", errorMessage);
+        }
+        return "index";
+    }
 }

@@ -1,5 +1,5 @@
 package com.stage.sprint3.entities;
-import org.hibernate.annotations.CollectionId;
+
 import javax.persistence.*;
 @Entity
 @Table(name = "etudiant")
@@ -24,6 +24,21 @@ public class Etudiant {
     @Column(length = 64)
     private String CV;
     private boolean retenir;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_emp", nullable = true)
+    private Emploi emploi;
+
+    /*
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idProf", nullable = false)
+    private Prof prof;
+
+     */
+
+
+
+
     public Etudiant() {}
     public Etudiant( String nom, String prenom,String email, String password)
     { this.nom = nom;
@@ -74,6 +89,22 @@ public class Etudiant {
     public void setData(byte[] data) {
         this.data = data;
     }
+    public Emploi getEmploi() {
+        return emploi;
+    }
+    public void setEmploi(Emploi emploi) {
+        this.emploi = emploi;
+    }
+
+/*
+    public Prof getProf() {
+        return prof;
+    }
+    public void setProf(Prof prof) {
+        this.prof = prof;
+    }
+
+ */
 
 
 

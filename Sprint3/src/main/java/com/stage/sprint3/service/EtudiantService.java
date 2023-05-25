@@ -4,13 +4,8 @@ import com.stage.sprint3.entities.Etudiant;
 import com.stage.sprint3.repos.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,11 +15,13 @@ public class EtudiantService {
     @Autowired
     private EtudiantRepository etudiantRepo;
 
-
     public List<Etudiant> afficherEtudiants(){
         return (List<Etudiant>) etudiantRepo.findAll();
     }
-    public Etudiant ajouterEtudiant(Etudiant etudiant) { return etudiantRepo.save(etudiant);}
+
+    public Etudiant ajouterEtudiant(Etudiant etudiant) {
+        return etudiantRepo.save(etudiant);
+    }
 
     public void supprimer(Integer id) {
         etudiantRepo.deleteById(id);
@@ -45,7 +42,9 @@ public class EtudiantService {
         etudiantRepo.updateStatus(id, enabled);
     }
 
-    public Etudiant get(Integer id){return etudiantRepo.findById(id).get();}
+    public Etudiant get(Integer id){
+        return etudiantRepo.findById(id).get();
+    }
 
     public void updateEtudiant(Etudiant etudiant) {
         Etudiant existingEtudiant = etudiantRepo.findById(etudiant.getId());
@@ -57,10 +56,15 @@ public class EtudiantService {
             etudiantRepo.save(existingEtudiant);
         }
     }
+
     public Etudiant loginEtudiant(String email, String password) {
         if (email != null && password != null) {
             return etudiantRepo.findByEmailAndPassword(email, password);
         }
         return null;
+    }
+
+    public Etudiant getEtudiantById(Integer id) {
+        return etudiantRepo.findById(id).orElse(null);
     }
 }
