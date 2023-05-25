@@ -25,7 +25,7 @@ public class Etudiant {
     private String CV;
     private boolean retenir;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_emp", nullable = true)
     private Emploi emploi;
 

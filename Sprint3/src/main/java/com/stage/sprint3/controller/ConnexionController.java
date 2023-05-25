@@ -173,8 +173,8 @@ public class ConnexionController {
     }
 
     private void sendMessageToEntreprise(Integer etudiantId, Entreprise entreprise, RedirectAttributes redirectAttributes) {
-        String message = "A student with ID " + etudiantId + " has applied for the job.";
-        redirectAttributes.addFlashAttribute("message", message);
+        String messageDemande = "L'etudiant ID " + etudiantId + " veux s'appliquer.";
+        redirectAttributes.addFlashAttribute("messageDemande", messageDemande);
     }
 
     @PostMapping("/accepter/{etudiantId}/{emploiId}")

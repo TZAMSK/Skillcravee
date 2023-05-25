@@ -24,6 +24,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -151,13 +152,16 @@ public class EtudiantController {
             throw new IllegalArgumentException("CV not found for student with ID: " + id);
         }
 
+        // Convert CV string to byte array
+        byte[] cvBytes = etudiant.getCV().getBytes(StandardCharsets.UTF_8);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDispositionFormData("attachment", "");
 
         return ResponseEntity.ok()
                 .headers(headers)
-                .body(new ByteArrayResource(etudiant.getCV().getBytes()));
+                .body(new ByteArrayResource(cvBytes));
     }
 
 }

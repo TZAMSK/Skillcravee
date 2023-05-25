@@ -29,6 +29,7 @@
           <input th:field="*{prenom}" type="text" placeholder="Prenom"/><br>
           <input th:field="*{email}" type="text" placeholder="Email"/><br>
           <input th:field="*{password}" type="password" placeholder="Password"/>
+          <input th:field="*{emploi}" th:value="${null}" type="hidden" placeholder="Emploi"/>
           <div class="col-sm-10">
             <input type="file" id="file" name="file"/>
           </div>
@@ -40,4 +41,5 @@
   </div>
 </div>
 </body>
+
 </html>

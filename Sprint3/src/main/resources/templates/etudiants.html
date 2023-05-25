@@ -28,14 +28,6 @@
         <ul id='liste'>
 
           <li class="active"><a th:href="@{/}">Accueil</a></li>
-
-          <li>
-            <div th:if="${session != null and session.role == 'étudiant'}">
-              <a
-                      th:href="@{/uploader}">Téléchargez CV
-              </a>
-            </div>
-          </li>
           <li>
             <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
               <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
@@ -146,7 +138,8 @@
          title="Pas dans un stage">&nbsp;</a>
     </th>
     <th>[[${etud.numeroStage}]]</th>
-    <th>[[${etud.emploi.titre}]]</th>
+    <th th:if="${etud.emploi != null}" th:text="${etud.emploi.titre}"></th>
+    <th th:unless="${etud.emploi != null}">Pas d'emploi</th>
     <th>[[${etud.retenir}]]</th>
     <th>
       <a th:href="@{'/etudiants/{id}/cv'}" download>Download CV</a>
