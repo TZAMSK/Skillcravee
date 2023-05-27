@@ -67,4 +67,22 @@ public class EtudiantService {
     public Etudiant getEtudiantById(Integer id) {
         return etudiantRepo.findById(id).orElse(null);
     }
+
+    public boolean isEmailUnique(String email,Integer id) {
+        Etudiant userByEmail = etudiantRepo.getEtudiantByEmail(email);
+        if (userByEmail == null) return true;
+        boolean isCreatingNewUser = false;
+        if (id == null){
+            isCreatingNewUser=true;
+        }
+        if(isCreatingNewUser){
+            if (userByEmail != null) return false;
+        }else{
+            if (userByEmail.getId() != id) {
+                return false;
+            }
+        }
+        return true;
+
+    }
 }

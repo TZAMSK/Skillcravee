@@ -1,8 +1,11 @@
 package com.stage.sprint3.controller;
 
+import com.stage.sprint3.entities.Entreprise;
 import com.stage.sprint3.entities.Etudiant;
+import com.stage.sprint3.entities.Prof;
 import com.stage.sprint3.repos.EtudiantRepository;
 import com.stage.sprint3.service.EtudiantService;
+import com.stage.sprint3.service.ProfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.repository.query.Param;
@@ -32,6 +35,8 @@ public class EtudiantController {
 
     @Autowired
     EtudiantService etudiantService;
+    @Autowired
+    ProfService profService;
 
     @Autowired
     EtudiantRepository etudiantRepository;
@@ -99,16 +104,20 @@ public class EtudiantController {
     @GetMapping("/etudiants/edit/{id}")
     public String EditerEtudiant(@PathVariable(name = "id") Integer id, Model model){
         Etudiant etud = etudiantService.get(id);
+        List<Prof> listeProf = profService.afficherProfs();
         model.addAttribute("PageTitle", "Editer Étudiant ID: " + id);
         model.addAttribute("etud", etud);
+        model.addAttribute("listeProf",listeProf);
         return "etudiant-editer2";
     }
 
     @GetMapping("/Admin_etudiants/etu_edit/{id}")
     public String EditerEtudiant2(@PathVariable(name = "id") Integer id, Model model){
         Etudiant etud = etudiantService.get(id);
+        List<Prof> listeProf = profService.afficherProfs();
         model.addAttribute("PageTitle", "Editer Étudiant ID: ");
         model.addAttribute("etud", etud);
+        model.addAttribute("listeProf",listeProf);
         return "etudiant-editer";
     }
 
@@ -162,6 +171,13 @@ public class EtudiantController {
         return ResponseEntity.ok()
                 .headers(headers)
                 .body(new ByteArrayResource(cvBytes));
+    }
+
+    @GetMapping("/etudiants_prof/delete/{id}")
+    public String supprimerEntreprise(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes){
+        etudiantService.supprimer(id);
+        redirectAttributes.addFlashAttribute("message", "Votre étudiant ID " + id + " a été supprimé avec succès ");
+        return "redirect:/";
     }
 
 }

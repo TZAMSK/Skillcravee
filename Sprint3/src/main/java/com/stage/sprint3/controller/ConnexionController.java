@@ -166,16 +166,28 @@ public class ConnexionController {
         Integer etudiantId = (Integer) session.getAttribute("id");
         Emploi emploi = emploiService.getEmploiById(emploiId);
         Entreprise entreprise = emploi.getEntreprise();
-        session.setAttribute("emploiId", emploiId);
-        session.setAttribute("entrepriseId", entrepriseId);
-        sendMessageToEntreprise(etudiantId, entreprise, redirectAttributes);
-        return "index";
+        sendMessageToEntreprise(etudiantId, entreprise, session);
+
+        String messageDemande = (String) session.getAttribute("messageDemande");
+        String sessionID = session.getId();
+
+        session.removeAttribute("messageDemande");
+        session.removeAttribute("sessionID");
+
+        redirectAttributes.addAttribute("messageDemande", messageDemande);
+        redirectAttributes.addAttribute("sessionID", sessionID);
+        return "redirect:/";
     }
 
-    private void sendMessageToEntreprise(Integer etudiantId, Entreprise entreprise, RedirectAttributes redirectAttributes) {
-        String messageDemande = "L'etudiant ID " + etudiantId + " veux s'appliquer.";
-        redirectAttributes.addFlashAttribute("messageDemande", messageDemande);
+    private void sendMessageToEntreprise(Integer etudiantId, Entreprise entreprise, HttpSession session) {
+        String etudiantNom = (String) session.getAttribute("nomEtud");
+        String etudiantID = session.getAttribute("id").toString();
+        String messageDemande = "L'étudiant " + etudiantNom + " (ID: " + etudiantId + ") souhaite postuler pour le poste. Contact: " + etudiantID;
+
+        session.setAttribute("messageDemande", messageDemande);
     }
+
+
 
     @PostMapping("/accepter/{etudiantId}/{emploiId}")
     public String accepter(@PathVariable("etudiantId") Integer etudiantId, @PathVariable("emploiId") Integer emploiId,

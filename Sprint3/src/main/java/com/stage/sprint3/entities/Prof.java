@@ -1,13 +1,13 @@
 package com.stage.sprint3.entities;
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Entity
 @Table(name = "professeur")
 public class Prof {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProf", columnDefinition = "INT AUTO_INCREMENT")
     private int idProf;
     @Column(name = "nom", length = 120, nullable = false)
     private String nom;
@@ -17,6 +17,7 @@ public class Prof {
     private String email;
     @Column(name = "password",length = 64, nullable = false)
     private String password;
+
     public Prof() { }
     public Prof( String nom, String prenom,String email, String password)
     {

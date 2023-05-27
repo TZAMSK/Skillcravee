@@ -29,12 +29,10 @@ public class Etudiant {
     @JoinColumn(name = "id_emp", nullable = true)
     private Emploi emploi;
 
-    /*
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "idProf", nullable = false)
-    private Prof prof;
 
-     */
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "idProf", nullable = true)
+    private Prof prof;
 
 
 
@@ -96,7 +94,7 @@ public class Etudiant {
         this.emploi = emploi;
     }
 
-/*
+
     public Prof getProf() {
         return prof;
     }
@@ -104,7 +102,12 @@ public class Etudiant {
         this.prof = prof;
     }
 
- */
+    public int getProfId() {
+        if (prof != null) {
+            return prof.getIdProf();
+        }
+        return 0;
+    }
 
 
 

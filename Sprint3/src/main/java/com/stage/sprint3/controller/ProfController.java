@@ -60,7 +60,7 @@ public class ProfController {
         return "prof-editer";
     }
 
-    /*
+
     @GetMapping("/etudiants_prof/{id}")
     public String afficherEtudiantParProf(@PathVariable("id") Integer id, Model model){
         Prof prof = profService.findById(id);
@@ -68,8 +68,7 @@ public class ProfController {
         model.addAttribute("prof", prof);
         model.addAttribute("listeEtudiantProf", listeEtudiantProf);
         model.addAttribute("nomProf", prof.getNom());
-        return "etudiant_prof";
+        return "etudiants_prof";
     }
-     */
 
 }

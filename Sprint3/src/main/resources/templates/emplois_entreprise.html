@@ -13,11 +13,12 @@
   <link th:href="@{/css/menuCSS.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/alert.css}" rel="stylesheet" type="text/css" />
   <link th:href="@{/css/recherche.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{/css/tableGestion.css}" rel="stylesheet" type="text/css" />
   <div class='tete'>
     <div class="banniere">
       <table>
         <tr>
-          <th><a th:href="@{/}"><img id="logo" th:src="@{/images/logo.PNG}" alt="logo" /></a></th>
+          <th><a th:href="@{/}"><img id="logo" th:src="@{images/logo.PNG}" alt="logo" /></a></th>
           <th><h1 id="titre">Skillcravee</h1></th>
         </tr>
       </table>
@@ -33,6 +34,11 @@
               <a
                       th:href="@{/uploader}">Téléchargez CV
               </a>
+            </div>
+          </li>
+          <li>
+            <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
+              <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
             </div>
           </li>
           <li>
@@ -92,7 +98,7 @@
 </div>
 <h1>Liste des emplois de l'entreprise<span> [[${nomEntreprise}]]</span></h1>
 
-    <div class="row" id="travailContenu">
+    <div class="row" id="travailContenu" th:if="${listeEmploisEntreprise}">
         <div class="card m-1 p-1 bg-light"
              th:each="emploi : ${listeEmploisEntreprise}">
           <div class="emploiDescrition">
@@ -125,6 +131,11 @@
         </div>
       </div>
     </div>
+
+<div class="no-emplois" th:if="${#lists.isEmpty(listeEmploisEntreprise)}">
+  <div class="stop-sign"></div>
+  <p class="no-emplois-message">La compagnie [[${nomEntreprise}]] n'a pas d'emplois</p>
+</div>
 </body>
 <style>
   .row {
@@ -148,6 +159,49 @@
   .emploiDescrition:hover {
     transform: rotate(2deg) scale(0.95);
     z-index: 1;
+  }
+
+  .no-emplois {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .stop-sign {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    position: relative;
+    transform: rotate(45deg);
+    margin-bottom: 20px;
+  }
+
+  .stop-sign:before,
+  .stop-sign:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: white;
+  }
+
+  .stop-sign:before {
+    width: 20px;
+    height: 80px;
+    top: 35px;
+    left: 65px;
+  }
+
+  .stop-sign:after {
+    width: 80px;
+    height: 20px;
+    top: 65px;
+    left: 35px;
+  }
+
+  .no-emplois-message {
+    font-size: 20px;
+    margin-top: 20px;
   }
 </style>
 </html>

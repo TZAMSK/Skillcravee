@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -33,17 +34,22 @@ public class FormController {
     @GetMapping("index/new")
     public String showForm(Model model) {
         model.addAttribute("formulaire", new Formulaire());
+        List<Prof> listeProf = profService.afficherProfs();
+        model.addAttribute("listeProf", listeProf);
         return "inscription_form";
     }
 
     @RequestMapping(value = "/index/save", method = RequestMethod.POST)
     public String submitForm(@ModelAttribute("formulaire") Formulaire formulaire, @RequestParam("selection") String selection, RedirectAttributes redirectAttributes,@RequestParam("file") MultipartFile multipartFile,Model model) throws IOException {
         if (selection.equals("Étudiant")) {
+
             Etudiant etudiant = new Etudiant();
             etudiant.setNom(formulaire.getEtudiant().getNom());
             etudiant.setPrenom(formulaire.getEtudiant().getPrenom());
             etudiant.setEmail(formulaire.getEtudiant().getEmail());
             etudiant.setPassword(formulaire.getEtudiant().getPassword());
+            etudiant.setEmploi(formulaire.getEtudiant().getEmploi());
+            etudiant.setProf(formulaire.getEtudiant().getProf());
 
             long maxSize = 30000000;
             long fileSize = multipartFile.getSize();

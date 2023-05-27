@@ -24,24 +24,23 @@
                     <div th:if="${session != null and (session.role != 'admin')}">
                         <a onclick="openContactModal()" style="cursor: pointer;">Contact</a>
                     </div>
-                    <div th:if="${session != null and (session.role != 'prof')}">
+                    <div th:if="${session != null and (session.role == 'entreprise')}">
                         <a onclick="openDemandeModal()" style="cursor: pointer;">Demandes</a>
                     </div>
                     <div th:if="${session != null and (session.role == 'admin')}">
                         <img src="images/email.png" onclick="openEmailModal()" style="cursor: pointer; width: 50px">
                     </div>
                     <div th:if="${session != null and (session.role == 'prof')}">
-                        <a style="cursor: pointer">Mes étudiants</a>
+                        <a th:href="@{'/etudiants_prof/' + ${session.id}}" th:userId="${session.id}" style="cursor: pointer">Mes étudiants</a>
                     </div>
 
                     <div id="messageModal" class="modal">
                         <div class="modal-content">
                             <span class="close" onclick="closeDemandeModal()">&times;</span>
                             <h2>Les demandes</h2>
-                            <div th:if="${message != null}" class="alert">
-                                [[${messageDemande}]]
-                            </div>
-                            <form th:action="@{'/accepter/' + ${etudiantId} + '/' + ${emploiId}}" method="post">
+                            <div th:if="${messageDemande != null}" class="alert" th:text="${messageDemande}"></div>
+                            <div th:if="${sessionID != null}" class="alert" th:text="${sessionID}"></div>
+                            <form th:action="@{'/accepter/' + ${entrepriseId} + '/' + ${emploiId}}" method="post">
                                 <button type="submit" title="Accepter">Accepter</button>
                             </form>
                         </div>
@@ -67,7 +66,7 @@
                             <span class="close" onclick="closeEmailModal()">&times;</span>
                             <h2>Messagerie</h2>
                             <p id="emailContent"></p><br>
-                            <p id="userInfo">Role: etudiant <span id="userRole"></span>, ID: 1<span id="userID"></span></p>
+                            <p id="userInfo">Role: <span id="userRole"></span>, ID:<span id="userID"></span></p>
                             <button onclick="clearEmailContent()">Effacer</button>
                         </div>
                     </div>
@@ -490,10 +489,18 @@
     function sendEmail() {
         var myTextarea = document.getElementById("myTextarea");
         var emailContent = document.getElementById("emailContent");
+        var userRole = document.getElementById("userRole");
+        var userID = document.getElementById("userID");
+        var utilisateurRole = "[[${session.role}]]";
+        var utilisateurID = "[[${session.id}]]";
 
         emailContent.innerHTML = myTextarea.value;
+        userRole.innerHTML = utilisateurRole;
+        userID.innerHTML = utilisateurID;
 
         localStorage.setItem("emailContent", myTextarea.value);
+        localStorage.setItem("userRole", utilisateurRole);
+        localStorage.setItem("userID", utilisateurID);
     }
 
     function clearEmailContent() {

@@ -50,7 +50,6 @@ public class ProfService {
         return null;
     }
 
-    /*
     public List<Etudiant> getEtudiantByProf(Prof prof) {
         List<Etudiant> etudiantByProf = new ArrayList<>();
         List<Etudiant> allEtudiants = etudiantService.afficherEtudiants();
@@ -62,5 +61,7 @@ public class ProfService {
         return etudiantByProf;
     }
 
-     */
+    public Prof getProfById(Integer id) {
+        return profRepo.findById(id).orElse(null);
+    }
 }

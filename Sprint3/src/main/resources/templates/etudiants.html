@@ -28,6 +28,14 @@
         <ul id='liste'>
 
           <li class="active"><a th:href="@{/}">Accueil</a></li>
+
+          <li>
+            <div th:if="${session != null and session.role == 'étudiant'}">
+              <a
+                      th:href="@{/uploader}">Téléchargez CV
+              </a>
+            </div>
+          </li>
           <li>
             <div th:if="${session != null and (session.role == 'entreprise' or session.role == 'admin')}">
               <a th:href="@{'/emploi/new'}" title="Ajouter un emploi">Ajouter un emploi</a>
@@ -83,7 +91,6 @@
       </nav>
 
     </div>
-  </div>
   </div>
 </header>
 <div th:if="${message!=null}" class="alert">

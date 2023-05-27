@@ -31,4 +31,7 @@ public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 
     @Query("SELECT s.CV FROM Etudiant s WHERE s.id = :id")
     byte[] getCVById(@Param("id") Long id);
+
+    @Query("SELECT e FROM Etudiant e WHERE e.email = :email")
+    public Etudiant getEtudiantByEmail(@Param("email") String email);
 }
